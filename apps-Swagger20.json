@@ -1,0 +1,477 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.1.0",
+    "title": "Swagger API"
+  },
+  "host": "apisandbox.dev.clover.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/apps/{aId}/merchants/{mId}/billing_info": {
+      "get": {
+        "description": "Get merchant's billing information for an app",
+        "summary": "GetMerchantBillingInfo",
+        "operationId": "V3AppsMerchantsBillingInfoByAIdAndMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppBillingInfo"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/apps/{aId}/merchants/{mId}/metereds/{meteredId}": {
+      "get": {
+        "description": "Get the app metered billing events for an app metered, e.g. all the billing events for the event 'reservation'",
+        "summary": "GetMerchantAppMeteredEvents",
+        "operationId": "V3AppsMerchantsMeteredsMeteredIdByAIdAndMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "meteredId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Metered Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppMeteredEvent"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an app billing metered event",
+        "summary": "CreateMerchantAppMeteredEvent",
+        "operationId": "V3AppsMerchantsMeteredsMeteredIdByAIdAndMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "meteredId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Metered Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppMeteredEvent"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/apps/{aId}/merchants/{mId}/metereds/{meteredId}/events/{eventId}": {
+      "get": {
+        "description": "Get an app billing metered event",
+        "summary": "GetMerchantAppMeteredEvent",
+        "operationId": "V3AppsMerchantsMeteredsMeteredIdEventsEventIdByAIdAndMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "meteredId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Metered Id"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppMeteredEvent"
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete an app billing metered event, if not charged.",
+        "summary": "DeleteMerchantAppMeteredEvent",
+        "operationId": "V3AppsMerchantsMeteredsMeteredIdEventsEventIdByAIdAndMIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "meteredId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Metered Id"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppMeteredEvent"
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "AppMetered": {
+      "title": "AppMetered",
+      "type": "object",
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/Reference"
+        },
+        "amount": {
+          "description": "DEPRECATED: App metered amount. Instead use per country pricing in meteredCountries",
+          "type": "integer",
+          "format": "int64"
+        },
+        "action": {
+          "description": "DEPRECATED: App metered action. Instead use per country pricing in meteredCountries",
+          "type": "string"
+        },
+        "active": {
+          "description": "DEPRECATED: App metered active status. Instead use per country pricing in meteredCountries",
+          "type": "boolean"
+        },
+        "meteredCountries": {
+          "description": "Metered country options for this app metered",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppMeteredCountry"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "label": {
+          "description": "A label used to identify this metered action",
+          "type": "string"
+        }
+      }
+    },
+    "AppMeteredCountry": {
+      "title": "AppMeteredCountry",
+      "type": "object",
+      "properties": {
+        "country": {
+          "description": "The country of the metered country",
+          "type": "string"
+        },
+        "amount": {
+          "description": "The cost of the metered country",
+          "type": "integer",
+          "format": "int64"
+        },
+        "appMetered": {
+          "$ref": "#/definitions/Reference"
+        },
+        "action": {
+          "description": "App metered action",
+          "type": "string"
+        },
+        "active": {
+          "description": "App metered country active status",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "country",
+        "amount",
+        "action"
+      ]
+    },
+    "Reference": {
+      "title": "Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      }
+    },
+    "AppMeteredEvent": {
+      "title": "AppMeteredEvent",
+      "type": "object",
+      "properties": {
+        "modifiedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "charge": {
+          "$ref": "#/definitions/Reference"
+        },
+        "appMetered": {
+          "$ref": "#/definitions/AppMetered"
+        },
+        "count": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "createdTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "appMetered",
+        "count"
+      ]
+    },
+    "Status": {
+      "title": "status",
+      "example": "ACTIVE",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "LAPSED"
+      ]
+    },
+    "AppBillingInfo": {
+      "title": "AppBillingInfo",
+      "type": "object",
+      "properties": {
+        "appSubscription": {
+          "$ref": "#/definitions/AppSubscription"
+        },
+        "billingStartTime": {
+          "description": "When the merchant's trial ends.  Only valid for paid apps that offer trials",
+          "type": "integer",
+          "format": "int64"
+        },
+        "daysLapsed": {
+          "description": "If the merchant's account is lapsed (i.e. merchant is behind on paying), the number of days since it lapsed",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isInTrial": {
+          "description": "Returns true if the merchant is in trial for this app.  Only valid for paid apps that offer trials.  Trials apply to app metereds and app subscriptions",
+          "type": "boolean"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        }
+      }
+    },
+    "AppSubscription": {
+      "title": "AppSubscription",
+      "type": "object",
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/Reference"
+        },
+        "amount": {
+          "description": "DEPRECATED: The cost of the subscription.  Per country pricing in subscriptionCountries.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "subscriptionCountries": {
+          "description": "Subscription country options for this app subscription",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppSubscriptionCountry"
+          }
+        },
+        "name": {
+          "description": "DEPRECATED: App subscription name.  Per country pricing in subscriptionCountries.",
+          "type": "string"
+        },
+        "description": {
+          "description": "DEPRECATED: App subscription name.  Per country pricing in subscriptionCountries.",
+          "type": "string"
+        },
+        "active": {
+          "description": "DEPRECATED: App subscription active status.  Per country pricing in subscriptionCountries.",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "label": {
+          "description": "App subscription label",
+          "type": "string"
+        },
+        "plan": {
+          "description": "True if special zero cost app pricing for default app in custom service plans.",
+          "type": "boolean"
+        }
+      }
+    },
+    "AppSubscriptionCountry": {
+      "title": "AppSubscriptionCountry",
+      "type": "object",
+      "properties": {
+        "installCount": {
+          "description": "The number of merchants that have this app subscription country installed",
+          "type": "integer",
+          "format": "int64"
+        },
+        "country": {
+          "description": "The country of the subscription country",
+          "type": "string"
+        },
+        "appSubscription": {
+          "$ref": "#/definitions/Reference"
+        },
+        "amount": {
+          "description": "The cost of the subscription country",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "App subscription country name",
+          "type": "string"
+        },
+        "description": {
+          "description": "App subscription country name",
+          "type": "string"
+        },
+        "active": {
+          "description": "App subscription country active status",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "country",
+        "amount",
+        "name",
+        "description"
+      ]
+    }
+  }
+}

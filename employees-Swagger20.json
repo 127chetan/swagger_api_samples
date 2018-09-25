@@ -1,0 +1,3290 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3",
+    "title": "Swagger API"
+  },
+  "host": "apisandbox.dev.clover.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/merchants/{mId}/employees": {
+      "get": {
+        "description": "Get all employees",
+        "summary": "GetEmployees",
+        "operationId": "V3MerchantsEmployeesByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, name, email, role, customId, role.id, nickname, pin, deletedTime, modifiedTime, deleted_time]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [roles, shifts]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an employee",
+        "summary": "CreateEmployee",
+        "operationId": "V3MerchantsEmployeesByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [shifts, payments, orders, roles]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employees/{empId}": {
+      "get": {
+        "description": "Get a single employee",
+        "summary": "GetEmployee",
+        "operationId": "V3MerchantsEmployeesByMIdAndEmpIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [roles, shifts]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update an employee",
+        "summary": "UpdateEmployee",
+        "operationId": "V3MerchantsEmployeesByMIdAndEmpIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [shifts, payments, orders, roles]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete an employee",
+        "summary": "DeleteEmployee",
+        "operationId": "V3MerchantsEmployeesByMIdAndEmpIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/shifts": {
+      "get": {
+        "description": "Get all shifts",
+        "summary": "GetAllShifts",
+        "operationId": "V3MerchantsShiftsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/shifts/{shiftId}": {
+      "get": {
+        "description": "Get a single shift",
+        "summary": "GetShift",
+        "operationId": "V3MerchantsShiftsByMIdAndShiftIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Shift Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/shifts.csv": {
+      "get": {
+        "description": "Get .csv of all shifts",
+        "summary": "GetAllShiftsCSV",
+        "operationId": "V3MerchantsShiftsCsvByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employees/{empId}/shifts": {
+      "get": {
+        "description": "Get all shifts for an employee",
+        "summary": "GetEmployeeShifts",
+        "operationId": "V3MerchantsEmployeesShiftsByMIdAndEmpIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create shift for an employee",
+        "summary": "CreateShift",
+        "operationId": "V3MerchantsEmployeesShiftsByMIdAndEmpIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employees/{empId}/shifts/{shiftId}": {
+      "get": {
+        "description": "Get a single shift",
+        "summary": "GetEmployeeShift",
+        "operationId": "V3MerchantsEmployeesShiftsShiftIdByMIdAndEmpIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Shift Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a single shift",
+        "summary": "UpdateShift",
+        "operationId": "V3MerchantsEmployeesShiftsShiftIdByMIdAndEmpIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Shift Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Shift"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a single shift",
+        "summary": "DeleteShift",
+        "operationId": "V3MerchantsEmployeesShiftsShiftIdByMIdAndEmpIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Shift Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employees/{empId}/orders": {
+      "get": {
+        "description": "Get all orders for an employee",
+        "summary": "GetEmployeeOrders",
+        "operationId": "V3MerchantsEmployeesOrdersByMIdAndEmpIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Employee Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employee_cards": {
+      "get": {
+        "summary": "GetEmployeeCards",
+        "operationId": "V3MerchantsEmployeeCardsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, employee.id, updater.id, number, status, createdTime, modifiedTime]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "CreateOrUpdateEmployeeCard",
+        "operationId": "V3MerchantsEmployeeCardsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EmployeeCard"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/employee_cards/{employeeCardId}": {
+      "get": {
+        "summary": "GetEmployeeCard",
+        "operationId": "V3MerchantsEmployeeCardsByMIdAndEmployeeCardIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "employeeCardId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "DeleteEmployeeCard",
+        "operationId": "V3MerchantsEmployeeCardsByMIdAndEmployeeCardIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "employeeCardId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "Modification": {
+      "title": "Modification",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "the additional cost of the modifier when it was applied",
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifier": {
+          "$ref": "#/definitions/Modifier"
+        },
+        "name": {
+          "description": "the name of the modifier when it was applied",
+          "type": "string"
+        },
+        "alternateName": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "quantitySold": {
+          "description": "This is only used in reports. The count of how many of these modifiers that were sold.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "TaxableAmountRate": {
+      "title": "TaxableAmountRate",
+      "type": "object",
+      "properties": {
+        "taxableAmount": {
+          "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isVat": {
+          "description": "Whether the taxable amount includes tax.",
+          "type": "boolean"
+        },
+        "rate": {
+          "description": "The tax rate. 100% = 1e7.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Tax rate name. This field is optional.",
+          "type": "string"
+        },
+        "transactionRef": {
+          "$ref": "#/definitions/Reference"
+        },
+        "id": {
+          "description": "Tax rate id.",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Status": {
+      "title": "status",
+      "example": "ACTIVE",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DISABLED"
+      ]
+    },
+    "EmployeeCard": {
+      "title": "EmployeeCard",
+      "type": "object",
+      "properties": {
+        "number": {
+          "description": "Unique number on the employee card.",
+          "type": "string"
+        },
+        "modifiedTime": {
+          "description": "Timestamp of when this employee card was last updated",
+          "type": "integer",
+          "format": "int64"
+        },
+        "merchant": {
+          "$ref": "#/definitions/Reference"
+        },
+        "createdTime": {
+          "description": "Timestamp of when this employee card was created",
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "updater": {
+          "$ref": "#/definitions/Reference"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        }
+      }
+    },
+    "Discount": {
+      "title": "Discount",
+      "type": "object",
+      "properties": {
+        "approver": {
+          "$ref": "#/definitions/Reference"
+        },
+        "amount": {
+          "description": "Discount amount in fraction of currency unit (e.g. cents) based on currency fraction digits supported",
+          "type": "integer",
+          "format": "int64"
+        },
+        "percentage": {
+          "description": "Discount amount in percent",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Name of the discount",
+          "type": "string"
+        },
+        "discount": {
+          "$ref": "#/definitions/Reference"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "zip": {
+          "description": "",
+          "type": "string"
+        },
+        "country": {
+          "description": "",
+          "type": "string"
+        },
+        "address3": {
+          "description": "",
+          "type": "string"
+        },
+        "address2": {
+          "description": "",
+          "type": "string"
+        },
+        "city": {
+          "description": "",
+          "type": "string"
+        },
+        "address1": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "state": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zip",
+        "country",
+        "city",
+        "address1",
+        "state"
+      ]
+    },
+    "Customer": {
+      "title": "Customer",
+      "type": "object",
+      "properties": {
+        "customerSince": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "firstName": {
+          "description": "First/given name of the customer",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name/surname of the customer",
+          "type": "string"
+        },
+        "addresses": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/CustomerMetadata"
+        },
+        "emailAddresses": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmailAddress"
+          }
+        },
+        "cards": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Card"
+          }
+        },
+        "marketingAllowed": {
+          "description": "",
+          "type": "boolean"
+        },
+        "merchant": {
+          "$ref": "#/definitions/Reference"
+        },
+        "orders": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "phoneNumbers": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhoneNumber"
+          }
+        }
+      }
+    },
+    "ServiceChargeAmount": {
+      "title": "ServiceChargeAmount",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    },
+    "IdType": {
+      "title": "idType",
+      "example": "DRIVERS_LICENSE",
+      "type": "string",
+      "enum": [
+        "DRIVERS_LICENSE",
+        "PASSPORT"
+      ]
+    },
+    "CashAdvanceCustomerIdentification": {
+      "title": "CashAdvanceCustomerIdentification",
+      "type": "object",
+      "properties": {
+        "addressZipCode": {
+          "description": "",
+          "type": "string"
+        },
+        "addressCountry": {
+          "description": "",
+          "type": "string"
+        },
+        "idType": {
+          "$ref": "#/definitions/IdType"
+        },
+        "serialNumber": {
+          "description": "Identification serial number",
+          "type": "string"
+        },
+        "maskedSerialNumber": {
+          "description": "Masked identification serial number",
+          "type": "string"
+        },
+        "issuingState": {
+          "description": "State in which identification was issued",
+          "type": "string"
+        },
+        "addressState": {
+          "description": "",
+          "type": "string"
+        },
+        "customerName": {
+          "description": "Full customer name",
+          "type": "string"
+        },
+        "issuingCountry": {
+          "description": "Country in which identification was issued",
+          "type": "string"
+        },
+        "addressStreet1": {
+          "description": "",
+          "type": "string"
+        },
+        "addressStreet2": {
+          "description": "",
+          "type": "string"
+        },
+        "encryptedSerialNumber": {
+          "description": "Encrypted identification serial number",
+          "type": "string"
+        },
+        "expirationDate": {
+          "description": "Expiration date in format MMDDYYYY",
+          "type": "string"
+        },
+        "addressCity": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    },
+    "HourRange": {
+      "title": "HourRange",
+      "type": "object",
+      "properties": {
+        "start": {
+          "description": "",
+          "type": "integer",
+          "format": "int32"
+        },
+        "end": {
+          "description": "",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ]
+    },
+    "LineItemPayment": {
+      "title": "LineItemPayment",
+      "type": "object",
+      "properties": {
+        "binName": {
+          "description": "Bin this line item payment was for",
+          "type": "string"
+        },
+        "percentage": {
+          "description": "Percent of this line item covered by this payment",
+          "type": "integer",
+          "format": "int64"
+        },
+        "refunded": {
+          "description": "Payment has been refunded",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier; TBD this is confusing because it's used as either line item id or payment id",
+          "type": "string"
+        }
+      }
+    },
+    "CardType": {
+      "title": "cardType",
+      "example": "VISA",
+      "type": "string",
+      "enum": [
+        "VISA",
+        "MC",
+        "AMEX",
+        "DISCOVER",
+        "DINERS_CLUB",
+        "JCB",
+        "MAESTRO",
+        "SOLO",
+        "LASER",
+        "CHINA_UNION_PAY",
+        "CARTE_BLANCHE",
+        "UNKNOWN",
+        "GIFT_CARD",
+        "EBT",
+        "GIROCARD",
+        "INTERAC",
+        "OTHER"
+      ]
+    },
+    "Type": {
+      "title": "type",
+      "example": "TAB",
+      "type": "string",
+      "enum": [
+        "TAB",
+        "AUTH"
+      ]
+    },
+    "Authorization": {
+      "title": "Authorization",
+      "type": "object",
+      "properties": {
+        "authcode": {
+          "description": "Authorization code",
+          "type": "string"
+        },
+        "last4": {
+          "description": "Last 4 digits of credit card used for authorization",
+          "type": "string"
+        },
+        "note": {
+          "description": "",
+          "type": "string"
+        },
+        "tabName": {
+          "description": "Name of tab",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount authorized",
+          "type": "integer",
+          "format": "int64"
+        },
+        "closingPayment": {
+          "$ref": "#/definitions/Payment"
+        },
+        "cardType": {
+          "$ref": "#/definitions/CardType"
+        },
+        "createdTime": {
+          "description": "Time authorization was recorded on server",
+          "type": "integer",
+          "format": "int64"
+        },
+        "payment": {
+          "$ref": "#/definitions/Payment"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type"
+        }
+      }
+    },
+    "CustomerIdMethod": {
+      "title": "customerIdMethod",
+      "example": "NAME",
+      "type": "string",
+      "enum": [
+        "NAME",
+        "TABLE",
+        "NAME_TABLE"
+      ]
+    },
+    "HoursAvailable": {
+      "title": "hoursAvailable",
+      "example": "ALL",
+      "type": "string",
+      "enum": [
+        "ALL",
+        "BUSINESS",
+        "CUSTOM"
+      ]
+    },
+    "OrderType": {
+      "title": "OrderType",
+      "type": "object",
+      "properties": {
+        "customerIdMethod": {
+          "$ref": "#/definitions/CustomerIdMethod"
+        },
+        "maxRadius": {
+          "description": "The maximum radius allowed for an order (i.e. delivery)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "hours": {
+          "$ref": "#/definitions/HoursSet"
+        },
+        "taxable": {
+          "description": "If this order type is taxable",
+          "type": "boolean"
+        },
+        "filterCategories": {
+          "description": "If set to false, then this order type includes all of the merchant's categories. Otherwise, it only contains the categories defined in the \"categories\" field on this object.",
+          "type": "boolean"
+        },
+        "fee": {
+          "description": "The price of a fee added to this order type, not fully implemented at this time.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "avgOrderTime": {
+          "description": "The average time it takes to complete the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "label": {
+          "description": "Label Key",
+          "type": "string"
+        },
+        "systemOrderTypeId": {
+          "description": "Optional system order type that this order type is associated with.",
+          "type": "string"
+        },
+        "isHidden": {
+          "description": "If this order type is hidden on the register",
+          "type": "boolean"
+        },
+        "isDefault": {
+          "description": "If this order type is the default",
+          "type": "boolean"
+        },
+        "minOrderAmount": {
+          "description": "The minimum amount required for an order to be placed",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDeleted": {
+          "description": "If this order type is deleted",
+          "type": "boolean"
+        },
+        "hoursAvailable": {
+          "$ref": "#/definitions/HoursAvailable"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "maxOrderAmount": {
+          "description": "The maximum amount for an order allowed",
+          "type": "integer",
+          "format": "int64"
+        },
+        "categories": {
+          "description": "The categories of items that can be assigned to this order type",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "labelKey": {
+          "description": "Label Key",
+          "type": "string"
+        }
+      }
+    },
+    "ServiceCharge": {
+      "title": "ServiceCharge",
+      "type": "object",
+      "properties": {
+        "percentage": {
+          "description": "DEPRECATED",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Service charge name",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "If this service charge is enabled",
+          "type": "boolean"
+        },
+        "percentageDecimal": {
+          "description": "Percent to charge times 10000, e.g. 12.5% will be 125000",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Result": {
+      "title": "result",
+      "example": "SUCCESS",
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "FAIL",
+        "INITIATED",
+        "VOIDED",
+        "VOIDING",
+        "VOID_FAILED",
+        "AUTH",
+        "AUTH_COMPLETED"
+      ]
+    },
+    "Credit": {
+      "title": "Credit",
+      "type": "object",
+      "properties": {
+        "tender": {
+          "$ref": "#/definitions/Tender"
+        },
+        "amount": {
+          "description": "Amount paid",
+          "type": "integer",
+          "format": "int64"
+        },
+        "voidReason": {
+          "description": "",
+          "type": "string"
+        },
+        "germanInfo": {
+          "$ref": "#/definitions/GermanInfo"
+        },
+        "cardTransaction": {
+          "$ref": "#/definitions/CardTransaction"
+        },
+        "transactionSettings": {
+          "$ref": "#/definitions/TransactionSettings"
+        },
+        "dccInfo": {
+          "$ref": "#/definitions/DCCInfo"
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "result": {
+          "$ref": "#/definitions/Result"
+        },
+        "clientCreatedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "taxRates": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaxableAmountRate"
+          }
+        },
+        "orderRef": {
+          "$ref": "#/definitions/Reference"
+        },
+        "appTracking": {
+          "$ref": "#/definitions/AppTracking"
+        },
+        "createdTime": {
+          "description": "Time payment was recorded on server",
+          "type": "integer",
+          "format": "int64"
+        },
+        "voided": {
+          "description": "",
+          "type": "boolean"
+        },
+        "creditRefunds": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreditRefund"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "customers": {
+          "$ref": "#/definitions/Customer"
+        },
+        "taxAmount": {
+          "description": "Amount paid in tax",
+          "type": "integer",
+          "format": "int64"
+        },
+        "device": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "CreditRefund": {
+      "title": "CreditRefund",
+      "type": "object",
+      "properties": {
+        "clientCreatedTime": {
+          "description": "The time when the refund was recorded on the client",
+          "type": "integer",
+          "format": "int64"
+        },
+        "orderRef": {
+          "$ref": "#/definitions/Reference"
+        },
+        "germanInfo": {
+          "$ref": "#/definitions/GermanInfo"
+        },
+        "appTracking": {
+          "$ref": "#/definitions/AppTracking"
+        },
+        "createdTime": {
+          "description": "The time when the refund was recorded on the server",
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "credit": {
+          "$ref": "#/definitions/Reference"
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "device": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "GermanInfo": {
+      "title": "GermanInfo",
+      "type": "object",
+      "properties": {
+        "customerTransactionDOLValues": {
+          "description": "",
+          "type": "string"
+        },
+        "traceNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "transactionAID": {
+          "description": "",
+          "type": "string"
+        },
+        "merchantJournalDOL": {
+          "description": "",
+          "type": "string"
+        },
+        "transactionTypeGermany": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvMandate": {
+          "description": "",
+          "type": "string"
+        },
+        "merchantJournalDOLValues": {
+          "description": "",
+          "type": "string"
+        },
+        "hostResponsePrintDataBM60": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvReceiptFormat": {
+          "description": "",
+          "type": "string"
+        },
+        "cardSequenceNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "receiptNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "transactionCaseGermany": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvIban": {
+          "description": "",
+          "type": "string"
+        },
+        "cardTrack2": {
+          "description": "",
+          "type": "string"
+        },
+        "receiptType": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvCreditorId": {
+          "description": "",
+          "type": "string"
+        },
+        "terminalID": {
+          "description": "",
+          "type": "string"
+        },
+        "oldTraceNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "configProductLabel": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvExtAppLabel": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvPreNotification": {
+          "description": "",
+          "type": "string"
+        },
+        "configMerchantId": {
+          "description": "",
+          "type": "string"
+        },
+        "hostResponseAidParBMP53": {
+          "description": "",
+          "type": "string"
+        },
+        "sepaElvMandateId": {
+          "description": "",
+          "type": "string"
+        },
+        "transactionScriptResults": {
+          "description": "",
+          "type": "string"
+        },
+        "transactionMSApp": {
+          "description": "",
+          "type": "string"
+        },
+        "merchantTransactionDOLValues": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    },
+    "SignatureEntryLocation": {
+      "title": "signatureEntryLocation",
+      "example": "ON_SCREEN",
+      "type": "string",
+      "enum": [
+        "ON_SCREEN",
+        "ON_PAPER",
+        "NONE"
+      ]
+    },
+    "TipMode": {
+      "title": "tipMode",
+      "example": "TIP_PROVIDED",
+      "type": "string",
+      "enum": [
+        "TIP_PROVIDED",
+        "ON_SCREEN_BEFORE_PAYMENT",
+        "ON_SCREEN_AFTER_PAYMENT",
+        "ON_PAPER",
+        "NO_TIP"
+      ]
+    },
+    "TransactionSettings": {
+      "title": "TransactionSettings",
+      "type": "object",
+      "properties": {
+        "disableCashBack": {
+          "description": "",
+          "type": "boolean"
+        },
+        "disableDuplicateCheck": {
+          "description": "",
+          "type": "boolean"
+        },
+        "cloverShouldHandleReceipts": {
+          "description": "",
+          "type": "boolean"
+        },
+        "returnResultOnTransactionComplete": {
+          "description": "",
+          "type": "boolean"
+        },
+        "cardEntryMethods": {
+          "description": "",
+          "type": "integer",
+          "format": "int32"
+        },
+        "disableRestartTransactionOnFailure": {
+          "description": "",
+          "type": "boolean"
+        },
+        "forceOfflinePayment": {
+          "description": "",
+          "type": "boolean"
+        },
+        "signatureEntryLocation": {
+          "$ref": "#/definitions/SignatureEntryLocation"
+        },
+        "tipMode": {
+          "$ref": "#/definitions/TipMode"
+        },
+        "allowOfflinePayment": {
+          "description": "",
+          "type": "boolean"
+        },
+        "disableReceiptSelection": {
+          "description": "",
+          "type": "boolean"
+        },
+        "autoAcceptSignature": {
+          "description": "",
+          "type": "boolean"
+        },
+        "forcePinEntryOnSwipe": {
+          "description": "",
+          "type": "boolean"
+        },
+        "signatureThreshold": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "tippableAmount": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "autoAcceptPaymentConfirmations": {
+          "description": "",
+          "type": "boolean"
+        },
+        "approveOfflinePaymentWithoutPrompt": {
+          "description": "",
+          "type": "boolean"
+        }
+      }
+    },
+    "TaxType": {
+      "title": "taxType",
+      "example": "VAT_TAXABLE",
+      "type": "string",
+      "enum": [
+        "VAT_TAXABLE",
+        "VAT_NON_TAXABLE",
+        "VAT_EXEMPT",
+        "INTERNAL_TAX"
+      ]
+    },
+    "TaxRate": {
+      "title": "TaxRate",
+      "type": "object",
+      "properties": {
+        "modifiedTime": {
+          "description": "Timestamp when tax rate was last modified",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDefault": {
+          "description": "",
+          "type": "boolean"
+        },
+        "rate": {
+          "description": "For percentage based discounts like sales tax",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "For a flat tax like recycling redemption fee, expressed as number of cents",
+          "type": "integer",
+          "format": "int64"
+        },
+        "deletedTime": {
+          "description": "Timestamp when tax rate was last deleted",
+          "type": "integer",
+          "format": "int64"
+        },
+        "items": {
+          "description": "Items associated with this tax rate",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "taxType": {
+          "$ref": "#/definitions/TaxType"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "SignatureDisclaimer": {
+      "title": "SignatureDisclaimer",
+      "type": "object",
+      "properties": {
+        "disclaimerText": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    },
+    "SelectedService": {
+      "title": "selectedService",
+      "example": "NONE",
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PAYMENT",
+        "REFUND",
+        "CANCELLATION",
+        "PRE_AUTH",
+        "UPDATE_PRE_AUTH",
+        "PAYMENT_COMPLETION",
+        "CASH_ADVANCE",
+        "DEFERRED_PAYMENT",
+        "DEFERRED_PAYMENT_COMPLETION",
+        "VOICE_AUTHORISATION",
+        "CARDHOLDER_DETECTION"
+      ]
+    },
+    "AccountSelection": {
+      "title": "accountSelection",
+      "example": "CREDIT",
+      "type": "string",
+      "enum": [
+        "CREDIT",
+        "DEBIT",
+        "CHECKING",
+        "SAVINGS"
+      ]
+    },
+    "TransactionResult": {
+      "title": "transactionResult",
+      "example": "APPROVED",
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "DECLINED",
+        "ABORTED",
+        "VOICE_AUTHORISATION",
+        "PAYMENT_PART_ONLY",
+        "PARTIALLY_APPROVED",
+        "NONE"
+      ]
+    },
+    "ReversalReason": {
+      "title": "reversalReason",
+      "example": "CHIP_DECLINE",
+      "type": "string",
+      "enum": [
+        "CHIP_DECLINE",
+        "CARDHOLDER_CANCELLATION",
+        "COMMUNICATION_ERROR",
+        "OTHER_REASON"
+      ]
+    },
+    "TxFormat": {
+      "title": "txFormat",
+      "example": "DEFAULT",
+      "type": "string",
+      "enum": [
+        "DEFAULT",
+        "NEXO"
+      ]
+    },
+    "TransactionInfo": {
+      "title": "TransactionInfo",
+      "type": "object",
+      "properties": {
+        "receiptExtraData": {
+          "description": "Extra data for receipt",
+          "type": "string"
+        },
+        "selectedService": {
+          "$ref": "#/definitions/SelectedService"
+        },
+        "identityDocument": {
+          "$ref": "#/definitions/IdentityDocument"
+        },
+        "accountSelection": {
+          "$ref": "#/definitions/AccountSelection"
+        },
+        "reversalMacKsn": {
+          "description": "MAC KSN for reversal",
+          "type": "string"
+        },
+        "transactionLocale": {
+          "description": "Locale for the transaction (e.g. en-CA)",
+          "type": "string"
+        },
+        "maskedTrack2": {
+          "description": "Masked track2 data",
+          "type": "string"
+        },
+        "installmentsPlanDesc": {
+          "description": "AR Installments: selected plan desc",
+          "type": "string"
+        },
+        "transactionResult": {
+          "$ref": "#/definitions/TransactionResult"
+        },
+        "transactionTags": {
+          "description": "Contains a hex string with needed TLV tags for certification",
+          "type": "string"
+        },
+        "merchantIdentifier": {
+          "description": "When concatenated with the Acquirer Identifier, uniquely identifies a given merchant",
+          "type": "string"
+        },
+        "reversalReason": {
+          "$ref": "#/definitions/ReversalReason"
+        },
+        "merchantNameLocation": {
+          "description": "Indicates the name and location of the merchant",
+          "type": "string"
+        },
+        "receiptNumber": {
+          "description": "Transaction Receipt Number",
+          "type": "string"
+        },
+        "reversalMac": {
+          "description": "MAC for reversal",
+          "type": "string"
+        },
+        "batchNumber": {
+          "description": "Transaction Batch Number",
+          "type": "string"
+        },
+        "txFormat": {
+          "$ref": "#/definitions/TxFormat"
+        },
+        "fiscalInvoiceNumber": {
+          "description": "Consists of 4 digits prefix + 8 digits",
+          "type": "string"
+        },
+        "installmentsPlanCode": {
+          "description": "AR Installments: plan alphanum code",
+          "type": "string"
+        },
+        "installmentsQuantity": {
+          "description": "AR Installments: number of installments",
+          "type": "integer",
+          "format": "int32"
+        },
+        "terminalIdentification": {
+          "description": "Designates the unique location of a terminal at a merchant",
+          "type": "string"
+        },
+        "languageIndicator": {
+          "description": "2 character language used for the transaction.  Deprecated in factor of transactionLocale.",
+          "type": "string"
+        },
+        "stan": {
+          "description": "STAN(System Audit Trace Number)",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reversalStan": {
+          "description": "STAN for reversal",
+          "type": "integer",
+          "format": "int32"
+        },
+        "installmentsPlanId": {
+          "description": "AR Installments: selected plan id",
+          "type": "string"
+        },
+        "cardTypeLabel": {
+          "description": "Card type label",
+          "type": "string"
+        }
+      }
+    },
+    "VaultedCard": {
+      "title": "VaultedCard",
+      "type": "object",
+      "properties": {
+        "last4": {
+          "description": "",
+          "type": "string"
+        },
+        "cardholderName": {
+          "description": "",
+          "type": "string"
+        },
+        "first6": {
+          "description": "",
+          "type": "string"
+        },
+        "expirationDate": {
+          "description": "",
+          "type": "string"
+        },
+        "token": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "last4",
+        "first6"
+      ]
+    },
+    "CustomerMetadata": {
+      "title": "CustomerMetadata",
+      "type": "object",
+      "properties": {
+        "note": {
+          "description": "A note about the customer.",
+          "type": "string"
+        },
+        "modifiedTime": {
+          "description": "The timestamp from when this customer's data was last updated.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "businessName": {
+          "description": "The name of the business the customer is associated with.",
+          "type": "string"
+        },
+        "dobDay": {
+          "description": "The day part of the date of birth for this customer.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "dobYear": {
+          "description": "The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "dobMonth": {
+          "description": "The month part of the date of birth for this customer.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Modifier": {
+      "title": "Modifier",
+      "type": "object",
+      "properties": {
+        "price": {
+          "description": "Additional cost when used",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Name of the modifier",
+          "type": "string"
+        },
+        "modifierGroup": {
+          "$ref": "#/definitions/Reference"
+        },
+        "alternateName": {
+          "description": "Alternate name of the modifier",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "price",
+        "name"
+      ]
+    },
+    "Shift": {
+      "title": "Shift",
+      "type": "object",
+      "properties": {
+        "inTime": {
+          "description": "Clock in time",
+          "type": "integer",
+          "format": "int64"
+        },
+        "cashTipsCollected": {
+          "description": "Amount of cash tips collected",
+          "type": "integer",
+          "format": "int64"
+        },
+        "serverBanking": {
+          "description": "Whether the employee used server banking",
+          "type": "boolean"
+        },
+        "overrideInEmployee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "overrideInTime": {
+          "description": "Overridden clock in time",
+          "type": "integer",
+          "format": "int64"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "overrideOutEmployee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "outTime": {
+          "description": "Clock out time",
+          "type": "integer",
+          "format": "int64"
+        },
+        "overrideOutTime": {
+          "description": "Overridden clock out time",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PayType": {
+      "title": "payType",
+      "example": "SPLIT_GUEST",
+      "type": "string",
+      "enum": [
+        "SPLIT_GUEST",
+        "SPLIT_ITEM",
+        "SPLIT_CUSTOM",
+        "FULL"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "type": "object",
+      "properties": {
+        "note": {
+          "description": "An arbitrary string with information about this order, may be printed on the order receipt and displayed in apps",
+          "type": "string"
+        },
+        "orderType": {
+          "$ref": "#/definitions/OrderType"
+        },
+        "modifiedTime": {
+          "description": "Last modified time of the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "preAuths": {
+          "description": "Pre-authorizations associated with this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        },
+        "payments": {
+          "description": "Payments that were made for this order. If multiple payments were made, then the payType field should reflect the method used to split the total amount.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        },
+        "authorizations": {
+          "description": "Card authorizations associated with this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Authorization"
+          }
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "title": {
+          "description": "",
+          "type": "string"
+        },
+        "deletedTimestamp": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "refunds": {
+          "description": "Refunds that were made for this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Refund"
+          }
+        },
+        "lineItems": {
+          "description": "Line items associated with this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItem"
+          }
+        },
+        "total": {
+          "description": "Total price of the order in cents",
+          "type": "integer",
+          "format": "int64"
+        },
+        "serviceCharge": {
+          "$ref": "#/definitions/ServiceCharge"
+        },
+        "payType": {
+          "$ref": "#/definitions/PayType"
+        },
+        "discounts": {
+          "description": "Discounts applied to this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "credits": {
+          "description": "Credits associated with this order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Credit"
+          }
+        },
+        "createdTime": {
+          "description": "Creation timestamp",
+          "type": "integer",
+          "format": "int64"
+        },
+        "currency": {
+          "description": "Currency of this order. For example, \"USD\"",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "customers": {
+          "description": "List of customers associated with this order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Customer"
+          }
+        },
+        "state": {
+          "description": "A String generally describing the state of this Order. The value null indicates an empty Order that is not displayed in user interfaces. Other value such as \"open\" and \"locked\" are not checked or enforced by client or server and thus are not useful for making any logical decisions about this Order.",
+          "type": "string"
+        },
+        "groupLineItems": {
+          "description": "Whether similar line items should be grouped together on the receipt that this order generates. Item \"similarity\" is based on items having matching values for a set of properties including price, modifiers, and discounts.",
+          "type": "boolean"
+        },
+        "isVat": {
+          "description": "This order was created by merchant with VAT enabled.",
+          "type": "boolean"
+        },
+        "manualTransaction": {
+          "description": "Whether this order represents a manual transaction. A manual transaction is a transaction that has an arbitrary amount defined and is not associated with any inventory items. For example, the Clover Sale App and Clover Manual Transaction App create manual transactions. A manual transactions will have a single associated line item to hold the sale amount, but the generated receipt will display this differently to indicate that it is not considered a typical order with inventory items.",
+          "type": "boolean"
+        },
+        "voids": {
+          "description": "Voided payments associated with this order",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        },
+        "clientCreatedTime": {
+          "description": "The time at which the client created this order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "testMode": {
+          "description": "Whether this order was created in test mode. Payments made against test orders are not processed. Test mode orders can be deleted from the Orders App on the merchant's device or web dashboard (https://www.clover.com/orders/m/{mId}/orders). They will also be deleted when the device sends a POST to the /v2/merchant/{mId}/orders/delete_all_tests endpoint.",
+          "type": "boolean"
+        },
+        "taxRemoved": {
+          "description": "If true then this order should not have taxes applied to it",
+          "type": "boolean"
+        },
+        "device": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "Reference": {
+      "title": "Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      }
+    },
+    "IdentityDocument": {
+      "title": "IdentityDocument",
+      "type": "object",
+      "properties": {
+        "number": {
+          "description": "The identification number",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of personal identification: National Document, Passport, etc",
+          "type": "string"
+        }
+      }
+    },
+    "LineItem": {
+      "title": "LineItem",
+      "type": "object",
+      "properties": {
+        "orderLevelDiscountAmount": {
+          "description": "The calculated sum of order level discounts attributed, approximately to the nearest cent, to this the line item. This is only used in reporting.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "note": {
+          "description": "",
+          "type": "string"
+        },
+        "userData": {
+          "description": "",
+          "type": "string"
+        },
+        "priceWithModifiersAndItemAndOrderDiscounts": {
+          "description": "Price of item after adding all modifications and subtracting all line item and order level discounts. This is used only for reporting.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "itemCode": {
+          "description": "",
+          "type": "string"
+        },
+        "payments": {
+          "description": "Payments that apply to this line item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItemPayment"
+          }
+        },
+        "discountAmount": {
+          "description": "Unnamed fixed discount amount in cents. Or, in reporting, this may be the calculated sum of all the line item discounts.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "revenueAmount": {
+          "description": "Revenue collected for this. This field is only used in reporting.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "orderLevelDiscounts": {
+          "description": "List of order level discounts attributed to this line item. Amounts are rounded to the nearest penny. This is for reporting purposes only. These rounding approximates are not used when calculating the transaction.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "exchangedLineItem": {
+          "$ref": "#/definitions/Reference"
+        },
+        "taxRates": {
+          "description": "Tax rates that apply to this line item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaxRate"
+          }
+        },
+        "discounts": {
+          "description": "List of line item discounts.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "price": {
+          "description": "Price of the item, typically in cents of merchant currency. When unit quantity is not null then this is the price for a single unit and is not the complete price.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "createdTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "refunded": {
+          "description": "True if this line item has been refunded",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier.",
+          "type": "string"
+        },
+        "quantitySold": {
+          "description": "Quantity sold for this line item. This field is only used in reporting",
+          "type": "integer",
+          "format": "int32"
+        },
+        "orderClientCreatedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifications": {
+          "description": "List of references to modifications applied to this line item.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Modification"
+          }
+        },
+        "item": {
+          "$ref": "#/definitions/Reference"
+        },
+        "unitName": {
+          "description": "Unit name (e.g. oz, lb, etc) if priced by unit, otherwise null.",
+          "type": "string"
+        },
+        "alternateName": {
+          "description": "Alternate name of the line item.",
+          "type": "string"
+        },
+        "isRevenue": {
+          "description": "True if this item should be counted as revenue, for example gift cards and donations would not.",
+          "type": "boolean"
+        },
+        "priceWithModifiers": {
+          "description": "Price of item after adding all modifications. This is used only for reporting.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "binName": {
+          "description": "",
+          "type": "string"
+        },
+        "printed": {
+          "description": "True if this line item has been printed out on an order printer at least once already.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Line item name.",
+          "type": "string"
+        },
+        "unitQty": {
+          "description": "Unit quantity if this line item is priced by quantity, or null if the item is not priced by quantity. The value is a fixed-point integer with scaling factor of 1000 (e.g. if charging by ounces then the value should be set to 2500 for 2.5 ounces). To compute the complete price perform the following calculation: PRICE * (UNIT QTY / 1000).",
+          "type": "integer",
+          "format": "int32"
+        },
+        "exchanged": {
+          "description": "",
+          "type": "boolean"
+        },
+        "refund": {
+          "$ref": "#/definitions/Refund"
+        }
+      }
+    },
+    "CashAdvanceExtra": {
+      "title": "CashAdvanceExtra",
+      "type": "object",
+      "properties": {
+        "cashAdvanceCustomerIdentification": {
+          "$ref": "#/definitions/CashAdvanceCustomerIdentification"
+        },
+        "cashAdvanceSerialNum": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    },
+    "Tender": {
+      "title": "Tender",
+      "type": "object",
+      "properties": {
+        "instructions": {
+          "description": "Label Key",
+          "type": "string"
+        },
+        "visible": {
+          "description": "If this merchant tender is visible",
+          "type": "boolean"
+        },
+        "editable": {
+          "description": "If this merchant tender is editable",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "label": {
+          "description": "Label Key",
+          "type": "string"
+        },
+        "labelKey": {
+          "description": "Label Key",
+          "type": "string"
+        },
+        "opensCashDrawer": {
+          "description": "If this tender opens the cash drawer",
+          "type": "boolean"
+        },
+        "supportsTipping": {
+          "description": "Allow tipping on payment from tender",
+          "type": "boolean"
+        },
+        "enabled": {
+          "description": "If this merchant tender is enabled",
+          "type": "boolean"
+        }
+      }
+    },
+    "PaymentTaxRate": {
+      "title": "PaymentTaxRate",
+      "type": "object",
+      "properties": {
+        "taxableAmount": {
+          "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDefault": {
+          "description": "Whether the tax rate was configued as a default tax rate at the time that the payment was created.",
+          "type": "boolean"
+        },
+        "isVat": {
+          "description": "Whether merchant is configured as VAT",
+          "type": "boolean"
+        },
+        "rate": {
+          "description": "The tax rate. 100% = 1e7.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Tax rate name. This field is optional.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Tax rate id.",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "taxableAmount",
+        "rate",
+        "name"
+      ]
+    },
+    "EmailAddress": {
+      "title": "EmailAddress",
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "verifiedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "emailAddress"
+      ]
+    },
+    "Card": {
+      "title": "Card",
+      "type": "object",
+      "properties": {
+        "last4": {
+          "description": "",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "",
+          "type": "string"
+        },
+        "cardType": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "first6": {
+          "description": "",
+          "type": "string"
+        },
+        "expirationDate": {
+          "description": "",
+          "type": "string"
+        },
+        "token": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "last4",
+        "first6"
+      ]
+    },
+    "AppTracking": {
+      "title": "AppTracking",
+      "type": "object",
+      "properties": {
+        "developerAppId": {
+          "description": "The uuid from the developer application.  This is typically populated and used only on the back end.",
+          "type": "string"
+        },
+        "applicationVersion": {
+          "description": "A string representing a semanticversion.  See http://semver.org/",
+          "type": "string"
+        },
+        "sourceSDKVersion": {
+          "description": "A string representing a semanticversion.  See http://semver.org/",
+          "type": "string"
+        },
+        "sourceSDK": {
+          "description": "A string representing a SDK",
+          "type": "string"
+        },
+        "applicationID": {
+          "description": "A string representing an application",
+          "type": "string"
+        },
+        "applicationName": {
+          "description": "The name of the developer application.",
+          "type": "string"
+        }
+      }
+    },
+    "OrderTaxRate": {
+      "title": "OrderTaxRate",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "name"
+      ]
+    },
+    "EntryType": {
+      "title": "entryType",
+      "example": "SWIPED",
+      "type": "string",
+      "enum": [
+        "SWIPED",
+        "KEYED",
+        "VOICE",
+        "VAULTED",
+        "OFFLINE_SWIPED",
+        "OFFLINE_KEYED",
+        "EMV_CONTACT",
+        "EMV_CONTACTLESS",
+        "MSD_CONTACTLESS",
+        "PINPAD_MANUAL_ENTRY",
+        "QR_CODE",
+        "SCANNED"
+      ]
+    },
+    "AvsResult": {
+      "title": "avsResult",
+      "example": "SUCCESS",
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "ZIP_CODE_MATCH",
+        "ZIP_CODE_MATCH_ADDRESS_NOT_CHECKED",
+        "ADDRESS_MATCH",
+        "ADDRESS_MATCH_ZIP_NOT_CHECKED",
+        "NEITHER_MATCH",
+        "SERVICE_FAILURE",
+        "SERVICE_UNAVAILABLE",
+        "NOT_CHECKED",
+        "ZIP_CODE_NOT_MATCHED_ADDRESS_NOT_CHECKED",
+        "ADDRESS_NOT_MATCHED_ZIP_CODE_NOT_CHECKED"
+      ]
+    },
+    "Type5354": {
+      "title": "type5354",
+      "example": "AUTH",
+      "type": "string",
+      "enum": [
+        "AUTH",
+        "PREAUTH",
+        "PREAUTHCAPTURE",
+        "ADJUST",
+        "VOID",
+        "VOIDRETURN",
+        "RETURN",
+        "REFUND",
+        "NAKEDREFUND",
+        "GETBALANCE",
+        "BATCHCLOSE",
+        "ACTIVATE",
+        "BALANCE_LOCK",
+        "LOAD",
+        "CASHOUT",
+        "CASHOUT_ACTIVE_STATUS",
+        "REDEMPTION",
+        "REDEMPTION_UNLOCK",
+        "RELOAD",
+        "CASH_ADVANCE",
+        "VOID_CREDIT",
+        "REFUND_CREDIT",
+        "INTERNET_ACTIVATE",
+        "TOKEN_REQUEST",
+        "VERIFICATION"
+      ]
+    },
+    "GatewayTxState": {
+      "title": "gatewayTxState",
+      "example": "INITIATED",
+      "type": "string",
+      "enum": [
+        "INITIATED",
+        "INITIATED_ON_AUTH",
+        "ACKNOWLEDGED",
+        "CONNECT_FAILED",
+        "TIMEOUT",
+        "FAILED",
+        "REVERSE_INITIATED",
+        "REVERSE_INITIATED_ON_AUTH",
+        "REVERSED",
+        "REVERSAL_FAILED",
+        "EXTERNAL"
+      ]
+    },
+    "State": {
+      "title": "state",
+      "example": "PENDING",
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "CLOSED"
+      ]
+    },
+    "CardTransaction": {
+      "title": "CardTransaction",
+      "type": "object",
+      "properties": {
+        "entryType": {
+          "$ref": "#/definitions/EntryType"
+        },
+        "last4": {
+          "description": "The last four digits of the card number",
+          "type": "string"
+        },
+        "authCode": {
+          "description": "Authorization code (if successful)",
+          "type": "string"
+        },
+        "avsResult": {
+          "$ref": "#/definitions/AvsResult"
+        },
+        "cardType": {
+          "$ref": "#/definitions/CardType"
+        },
+        "transactionNo": {
+          "description": "",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type5354"
+        },
+        "first6": {
+          "description": "The first four digits of the card number",
+          "type": "string"
+        },
+        "referenceId": {
+          "description": "",
+          "type": "string"
+        },
+        "begBalance": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "token": {
+          "description": "",
+          "type": "string"
+        },
+        "vaultedCard": {
+          "$ref": "#/definitions/VaultedCard"
+        },
+        "endBalance": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "cardholderName": {
+          "description": "",
+          "type": "string"
+        },
+        "gatewayTxState": {
+          "$ref": "#/definitions/GatewayTxState"
+        },
+        "currency": {
+          "description": "Currency code",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        }
+      }
+    },
+    "VoidReason": {
+      "title": "voidReason",
+      "example": "USER_CANCEL",
+      "type": "string",
+      "enum": [
+        "USER_CANCEL",
+        "TRANSPORT_ERROR",
+        "REJECT_SIGNATURE",
+        "REJECT_PARTIAL_AUTH",
+        "NOT_APPROVED",
+        "FAILED",
+        "AUTH_CLOSED_NEW_CARD",
+        "DEVELOPER_PAY_PARTIAL_AUTH",
+        "REJECT_DUPLICATE",
+        "REJECT_OFFLINE",
+        "GIFTCARD_LOAD_FAILED",
+        "USER_GIFTCARD_LOAD_CANCEL",
+        "DEVELOPER_PAY_TIP_ADJUST_FAILED"
+      ]
+    },
+    "Payment": {
+      "title": "Payment",
+      "type": "object",
+      "properties": {
+        "modifiedTime": {
+          "description": "Last modified time of the payment",
+          "type": "integer",
+          "format": "int64"
+        },
+        "note": {
+          "description": "",
+          "type": "string"
+        },
+        "voidReason": {
+          "$ref": "#/definitions/VoidReason"
+        },
+        "lineItemPayments": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItemPayment"
+          }
+        },
+        "germanInfo": {
+          "$ref": "#/definitions/GermanInfo"
+        },
+        "cashTendered": {
+          "description": "Amount of cash given by the customer",
+          "type": "integer",
+          "format": "int64"
+        },
+        "cardTransaction": {
+          "$ref": "#/definitions/CardTransaction"
+        },
+        "transactionSettings": {
+          "$ref": "#/definitions/TransactionSettings"
+        },
+        "cashbackAmount": {
+          "description": "Amount given back in a cash back transaction",
+          "type": "integer",
+          "format": "int64"
+        },
+        "cashAdvanceExtra": {
+          "$ref": "#/definitions/CashAdvanceExtra"
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "refunds": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Refund"
+          }
+        },
+        "result": {
+          "$ref": "#/definitions/Result"
+        },
+        "offline": {
+          "description": "",
+          "type": "boolean"
+        },
+        "serviceCharge": {
+          "$ref": "#/definitions/ServiceChargeAmount"
+        },
+        "taxRates": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentTaxRate"
+          }
+        },
+        "createdTime": {
+          "description": "Time payment was recorded on server",
+          "type": "integer",
+          "format": "int64"
+        },
+        "externalPaymentId": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "order": {
+          "$ref": "#/definitions/Reference"
+        },
+        "tender": {
+          "$ref": "#/definitions/Tender"
+        },
+        "amount": {
+          "description": "Total amount paid",
+          "type": "integer",
+          "format": "int64"
+        },
+        "signatureDisclaimer": {
+          "$ref": "#/definitions/SignatureDisclaimer"
+        },
+        "tipAmount": {
+          "description": "Amount paid in tips",
+          "type": "integer",
+          "format": "int64"
+        },
+        "dccInfo": {
+          "$ref": "#/definitions/DCCInfo"
+        },
+        "transactionInfo": {
+          "$ref": "#/definitions/TransactionInfo"
+        },
+        "clientCreatedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "additionalCharges": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalChargeAmount"
+          }
+        },
+        "appTracking": {
+          "$ref": "#/definitions/AppTracking"
+        },
+        "taxAmount": {
+          "description": "Amount paid in tax",
+          "type": "integer",
+          "format": "int64"
+        },
+        "device": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "Role": {
+      "title": "role",
+      "example": "ADMIN",
+      "type": "string",
+      "enum": [
+        "ADMIN",
+        "MANAGER",
+        "EMPLOYEE"
+      ]
+    },
+    "Employee": {
+      "title": "Employee",
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/Role"
+        },
+        "roles": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "payments": {
+          "description": "This employee's payments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "inviteSent": {
+          "description": "Returns true if this employee was sent an invite to activate their account",
+          "type": "boolean"
+        },
+        "customId": {
+          "description": "Custom ID of the employee",
+          "type": "string"
+        },
+        "employeeCards": {
+          "description": "This employee's employee cards",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "pin": {
+          "description": "Employee PIN (hashed)",
+          "type": "string"
+        },
+        "isOwner": {
+          "description": "Returns true if this employee is the owner account for this merchant",
+          "type": "boolean"
+        },
+        "claimedTime": {
+          "description": "Timestamp of when this employee claimed their account",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Full name of the employee",
+          "type": "string"
+        },
+        "nickname": {
+          "description": "Nickname of the employee (shows up on receipts)",
+          "type": "string"
+        },
+        "shifts": {
+          "description": "This employee's shifts",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "unhashedPin": {
+          "description": "Employee PIN",
+          "type": "string"
+        },
+        "orders": {
+          "description": "This employee's orders",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "deletedTime": {
+          "description": "Timestamp of when this employee was deleted",
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "description": "Email of the employee (optional)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Refund": {
+      "title": "Refund",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "Total amount refunded, including tax and tip",
+          "type": "integer",
+          "format": "int64"
+        },
+        "overrideMerchantTender": {
+          "$ref": "#/definitions/Tender"
+        },
+        "voidReason": {
+          "description": "",
+          "type": "string"
+        },
+        "germanInfo": {
+          "$ref": "#/definitions/GermanInfo"
+        },
+        "tipAmount": {
+          "description": "Tip amount refunded",
+          "type": "integer",
+          "format": "int64"
+        },
+        "cardTransaction": {
+          "$ref": "#/definitions/CardTransaction"
+        },
+        "taxableAmountRates": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaxableAmountRate"
+          }
+        },
+        "employee": {
+          "$ref": "#/definitions/Reference"
+        },
+        "lineItems": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "clientCreatedTime": {
+          "description": "The time when the refund was recorded on the client",
+          "type": "integer",
+          "format": "int64"
+        },
+        "serviceChargeAmount": {
+          "$ref": "#/definitions/ServiceChargeAmount"
+        },
+        "additionalCharges": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalChargeAmount"
+          }
+        },
+        "orderRef": {
+          "$ref": "#/definitions/Reference"
+        },
+        "appTracking": {
+          "$ref": "#/definitions/AppTracking"
+        },
+        "createdTime": {
+          "description": "The time when the refund was recorded on the server",
+          "type": "integer",
+          "format": "int64"
+        },
+        "payment": {
+          "$ref": "#/definitions/Reference"
+        },
+        "voided": {
+          "description": "",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "Tax amount refunded",
+          "type": "integer",
+          "format": "int64"
+        },
+        "device": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "HoursSet": {
+      "title": "HoursSet",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        },
+        "sunday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "saturday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "tuesday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "name": {
+          "description": "Friendly name to describe the hours",
+          "type": "string"
+        },
+        "wednesday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "thursday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "friday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "monday": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HourRange"
+          }
+        }
+      }
+    },
+    "PhoneNumber": {
+      "title": "PhoneNumber",
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber"
+      ]
+    },
+    "DCCInfo": {
+      "title": "DCCInfo",
+      "type": "object",
+      "properties": {
+        "marginRatePercentage": {
+          "description": "Margin Rate Percentage",
+          "type": "string"
+        },
+        "dccApplied": {
+          "description": "Flag indicating whether DCC was applied on this txn",
+          "type": "boolean"
+        },
+        "exchangeRate": {
+          "description": "Exchange Rate",
+          "type": "integer",
+          "format": "int32"
+        },
+        "exchangeRateSourceTimeStamp": {
+          "description": "Exchange Rate Source Timestamp",
+          "type": "string"
+        },
+        "inquiryRateId": {
+          "description": "Inquiry Rate ID (IPG)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "exchangeRateSourceName": {
+          "description": "Exchange Rate Source Name",
+          "type": "string"
+        },
+        "foreignCurrencyCode": {
+          "description": "Foreign currency code",
+          "type": "string"
+        },
+        "foreignAmount": {
+          "description": "Foreign (transaction) amount",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Type6566": {
+      "title": "type6566",
+      "example": "INTERAC",
+      "type": "string",
+      "enum": [
+        "INTERAC"
+      ]
+    },
+    "AdditionalChargeAmount": {
+      "title": "AdditionalChargeAmount",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "Amount of the additional charge",
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "description": "Additional charge id",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Type6566"
+        }
+      }
+    }
+  }
+}

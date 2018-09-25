@@ -1,0 +1,136 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3",
+    "title": "Swagger API"
+  },
+  "host": "apisandbox.dev.clover.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/apps/{aId}/merchants/{mId}/notifications": {
+      "post": {
+        "description": "Create a notification for an app",
+        "summary": "CreateMerchantAppNotification",
+        "operationId": "V3AppsMerchantsNotificationsByAIdAndMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppNotification"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/apps/{aId}/devices/{dId}/notifications": {
+      "post": {
+        "description": "Create a notification for a device",
+        "summary": "CreateDeviceAppNotification",
+        "operationId": "V3AppsDevicesNotificationsByAIdAndDIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "aId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "App Id"
+          },
+          {
+            "name": "dId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Developer Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppNotification"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "Reference": {
+      "title": "Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      }
+    },
+    "AppNotification": {
+      "title": "AppNotification",
+      "type": "object",
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/Reference"
+        },
+        "timeToLive": {
+          "description": "The time to live of the notification in seconds. By default this is 5 days.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "data": {
+          "description": "Payload of the notification. This is at most 4000 characters.",
+          "type": "string"
+        },
+        "event": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

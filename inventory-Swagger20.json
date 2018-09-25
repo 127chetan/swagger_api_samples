@@ -1,0 +1,3276 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3",
+    "title": "Swagger API"
+  },
+  "host": "apisandbox.dev.clover.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/merchants/{mId}/items": {
+      "get": {
+        "description": "Get all inventory items",
+        "summary": "GetItems",
+        "operationId": "V3MerchantsItemsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an inventory item",
+        "summary": "CreateItem",
+        "operationId": "V3MerchantsItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Bulk delete inventory items",
+        "summary": "BulkDeleteItems",
+        "operationId": "V3MerchantsItemsByMIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/items/{itemId}": {
+      "get": {
+        "description": "Get a single inventory item",
+        "summary": "GetItem",
+        "operationId": "V3MerchantsItemsByMIdAndItemIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update an existing inventory item",
+        "summary": "UpdateItem",
+        "operationId": "V3MerchantsItemsByMIdAndItemIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete an inventory item",
+        "summary": "DeleteItem",
+        "operationId": "V3MerchantsItemsByMIdAndItemIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/bulk_items": {
+      "put": {
+        "description": "Update existing inventory items. ",
+        "summary": "BulkPatchInventoryItems",
+        "operationId": "V3MerchantsBulkItemsByMIdPut",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InventoryItems"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create multiple inventory items.",
+        "summary": "BulkCreateInventoryItems",
+        "operationId": "V3MerchantsBulkItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InventoryItems"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/item_stocks": {
+      "get": {
+        "description": "Get the stock of all inventory items",
+        "summary": "GetItemStocks",
+        "operationId": "V3MerchantsItemStocksByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/item_stocks/{itemId}": {
+      "get": {
+        "description": "Get the stock of an inventory item",
+        "summary": "GetItemStock",
+        "operationId": "V3MerchantsItemStocksByMIdAndItemIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update the stock of an inventory item",
+        "summary": "UpdateItemStock",
+        "operationId": "V3MerchantsItemStocksByMIdAndItemIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ItemStock"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete the stock of an inventory item",
+        "summary": "DeleteItemStock",
+        "operationId": "V3MerchantsItemStocksByMIdAndItemIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/item_groups": {
+      "get": {
+        "description": "Get all item groups",
+        "summary": "GetItemGroups",
+        "operationId": "V3MerchantsItemGroupsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, name, id, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, attributes]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ItemGroup"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an item group",
+        "summary": "CreateItemGroup",
+        "operationId": "V3MerchantsItemGroupsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, attributes]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ItemGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/item_groups/{itemGroupId}": {
+      "get": {
+        "description": "Get a single item group",
+        "summary": "GetItemGroup",
+        "operationId": "V3MerchantsItemGroupsByMIdAndItemGroupIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Group Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, attributes]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ItemGroup"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update an item group",
+        "summary": "UpdateItemGroup",
+        "operationId": "V3MerchantsItemGroupsByMIdAndItemGroupIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Group Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, attributes]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ItemGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete an item group",
+        "summary": "DeleteItemGroup",
+        "operationId": "V3MerchantsItemGroupsByMIdAndItemGroupIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Group Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tags": {
+      "get": {
+        "description": "Get all tags",
+        "summary": "GetTags",
+        "operationId": "V3MerchantsTagsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, printers]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create a tag",
+        "summary": "CreateTag",
+        "operationId": "V3MerchantsTagsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tags/{tagId}": {
+      "get": {
+        "description": "Get a single tag",
+        "summary": "GetTag",
+        "operationId": "V3MerchantsTagsByMIdAndTagIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "tagId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tag Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, printers]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a single tag",
+        "summary": "UpdateTag",
+        "operationId": "V3MerchantsTagsByMIdAndTagIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "tagId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tag Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, printers]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a tag",
+        "summary": "DeleteTag",
+        "operationId": "V3MerchantsTagsByMIdAndTagIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "tagId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tag Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/items/{itemId}/tags": {
+      "get": {
+        "description": "Get tags for a single item",
+        "summary": "GetItemTags",
+        "operationId": "V3MerchantsItemsTagsByMIdAndItemIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, printers]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tags/{tagId}/items": {
+      "get": {
+        "description": "Get all items for a single tag",
+        "summary": "GetTaggedItems",
+        "operationId": "V3MerchantsTagsItemsByMIdAndTagIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "tagId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tag Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, hidden, itemCode, alternateName, option.id, deleted, item.id, price, name, id, sku, itemGroup.id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items, printers]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tag_items": {
+      "post": {
+        "description": "Create or delete tag items",
+        "summary": "CreateOrDeleteTagItems",
+        "operationId": "V3MerchantsTagItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tax_rates": {
+      "get": {
+        "description": "Get all tax rates",
+        "summary": "GetTaxRates",
+        "operationId": "V3MerchantsTaxRatesByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [isDefault, rate, items.id, name, id, taxAmount, taxType]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaxRate"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create a tax rate for a merchant",
+        "summary": "CreateTaxRate",
+        "operationId": "V3MerchantsTaxRatesByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaxRate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaxRate"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tax_rates/{taxId}": {
+      "get": {
+        "description": "Get a single tax rate",
+        "summary": "GetTaxRate",
+        "operationId": "V3MerchantsTaxRatesByMIdAndTaxIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "taxId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tax Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaxRate"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a single tax rate",
+        "summary": "UpdateTaxRate",
+        "operationId": "V3MerchantsTaxRatesByMIdAndTaxIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "taxId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tax Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaxRate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a single tax rate",
+        "summary": "DeleteTaxRate",
+        "operationId": "V3MerchantsTaxRatesByMIdAndTaxIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "taxId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tax Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/categories": {
+      "get": {
+        "description": "Get all categories",
+        "summary": "GetCategories",
+        "operationId": "V3MerchantsCategoriesByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an item category",
+        "summary": "CreateCategory",
+        "operationId": "V3MerchantsCategoriesByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/categories/{catId}": {
+      "get": {
+        "description": "Get a category",
+        "summary": "GetCategory",
+        "operationId": "V3MerchantsCategoriesByMIdAndCatIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Category Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a category",
+        "summary": "UpdateCategory",
+        "operationId": "V3MerchantsCategoriesByMIdAndCatIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Category Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a single item category",
+        "summary": "DeleteCategory",
+        "operationId": "V3MerchantsCategoriesByMIdAndCatIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Category Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/categories/{catId}/items": {
+      "get": {
+        "description": "Get all items in a single category",
+        "summary": "GetCategoryItems",
+        "operationId": "V3MerchantsCategoriesItemsByMIdAndCatIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Category Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/items/{itemId}/categories": {
+      "get": {
+        "description": "Get all categories of a single item",
+        "summary": "GetItemCategories",
+        "operationId": "V3MerchantsItemsCategoriesByMIdAndItemIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Item Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/category_items": {
+      "post": {
+        "description": "Create or delete an item/category association",
+        "summary": "CreateOrDeleteCategoryItems",
+        "operationId": "V3MerchantsCategoryItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tax_rate_items": {
+      "post": {
+        "description": "Create or delete a tax rate item",
+        "summary": "CreateOrDeleteTaxRateItems",
+        "operationId": "V3MerchantsTaxRateItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/tax_rates/{taxId}/items": {
+      "get": {
+        "description": "Get items by tax rate",
+        "summary": "GetItemsByTaxRate",
+        "operationId": "V3MerchantsTaxRatesItemsByMIdAndTaxIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "taxId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Tax Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifier_groups": {
+      "get": {
+        "description": "Get all modifier groups",
+        "summary": "GetModifierGroups",
+        "operationId": "V3MerchantsModifierGroupsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, item.id, sortOrder, name, id, category.id, showByDefault, negativeSortOrder]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifiers, items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ModifierGroup"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create a modifier group",
+        "summary": "CreateModifierGroup",
+        "operationId": "V3MerchantsModifierGroupsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifiers, items]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ModifierGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifier_groups/{modGroupId}": {
+      "get": {
+        "description": "Get a modifier group",
+        "summary": "GetModifierGroup",
+        "operationId": "V3MerchantsModifierGroupsByMIdAndModGroupIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifiers, items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ModifierGroup"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a modifier group",
+        "summary": "UpdateModifierGroup",
+        "operationId": "V3MerchantsModifierGroupsByMIdAndModGroupIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifiers, items]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ModifierGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a modifier group",
+        "summary": "DeleteModifierGroup",
+        "operationId": "V3MerchantsModifierGroupsByMIdAndModGroupIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/item_modifier_groups": {
+      "post": {
+        "description": "Create or delete item to modifier group associations",
+        "summary": "CreateOrDeleteItemModifierGroups",
+        "operationId": "V3MerchantsItemModifierGroupsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifier_group_sort_orders": {
+      "post": {
+        "description": "Update the priorities for a collection of up to 200 modifier groups at a time",
+        "summary": "UpdateModifierGroupSortOrders",
+        "operationId": "V3MerchantsModifierGroupSortOrdersByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ModifierGroupArray"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifiers": {
+      "get": {
+        "description": "Get all modifiers",
+        "summary": "GetModifiers",
+        "operationId": "V3MerchantsModifiersByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifierGroup]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Modifier"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifier_groups/{modGroupId}/modifiers": {
+      "get": {
+        "description": "Get all modifiers belonging to a single modifier group",
+        "summary": "GetModifiersByGroup",
+        "operationId": "V3MerchantsModifierGroupsModifiersByMIdAndModGroupIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifiers, items]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Modifier"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create a modifier",
+        "summary": "CreateModifier",
+        "operationId": "V3MerchantsModifierGroupsModifiersByMIdAndModGroupIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifierGroup]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Modifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/modifier_groups/{modGroupId}/modifiers/{modId}": {
+      "get": {
+        "description": "Get a single modifier",
+        "summary": "GetModifier",
+        "operationId": "V3MerchantsModifierGroupsModifiersModIdByMIdAndModGroupIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "modId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifierGroup]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Modifier"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a single modifier",
+        "summary": "UpdateModifier",
+        "operationId": "V3MerchantsModifierGroupsModifiersModIdByMIdAndModGroupIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "modId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [modifierGroup]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Modifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a single modifier",
+        "summary": "DeleteModifier",
+        "operationId": "V3MerchantsModifierGroupsModifiersModIdByMIdAndModGroupIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "modGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Modifier Group Id"
+          },
+          {
+            "name": "modId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/attributes": {
+      "get": {
+        "description": "Get all attributes",
+        "summary": "GetAttributes",
+        "operationId": "V3MerchantsAttributesByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, name, id, deletedTime, itemGroup.id]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an attribute",
+        "summary": "CreateAttribute",
+        "operationId": "V3MerchantsAttributesByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [options]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/attributes/{attributeId}": {
+      "get": {
+        "description": "Get a single attribute",
+        "summary": "GetAttribute",
+        "operationId": "V3MerchantsAttributesByMIdAndAttributeIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a single attribute",
+        "summary": "UpdateAttribute",
+        "operationId": "V3MerchantsAttributesByMIdAndAttributeIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [options]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a single attribute",
+        "summary": "DeleteAttribute",
+        "operationId": "V3MerchantsAttributesByMIdAndAttributeIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/options": {
+      "get": {
+        "description": "Get all options",
+        "summary": "GetOptions",
+        "operationId": "V3MerchantsOptionsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: []"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Option"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/attributes/{attributeId}/options": {
+      "get": {
+        "description": "Get all options with a given attribute",
+        "summary": "GetOptionsByAttribute",
+        "operationId": "V3MerchantsAttributesOptionsByMIdAndAttributeIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: []"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Option"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an option",
+        "summary": "CreateOption",
+        "operationId": "V3MerchantsAttributesOptionsByMIdAndAttributeIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: []"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Option"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/attributes/{attributeId}/options/{optionId}": {
+      "get": {
+        "description": "Get all options with a given attribute",
+        "summary": "GetOptionsByAttribute",
+        "operationId": "V3MerchantsAttributesOptionsOptionIdByMIdAndAttributeIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "optionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Option Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: []"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Option"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update an option",
+        "summary": "UpdateOption",
+        "operationId": "V3MerchantsAttributesOptionsOptionIdByMIdAndAttributeIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "optionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Option Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: []"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Option"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete an option",
+        "summary": "DeleteOption",
+        "operationId": "V3MerchantsAttributesOptionsOptionIdByMIdAndAttributeIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Attribute Id"
+          },
+          {
+            "name": "optionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Option Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/option_items": {
+      "post": {
+        "description": "Create or delete item/option association",
+        "summary": "CreateOrDeleteOptionItems",
+        "operationId": "V3MerchantsOptionItemsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/discounts": {
+      "get": {
+        "description": "Get all discounts",
+        "summary": "GetDiscounts",
+        "operationId": "V3MerchantsDiscountsByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, amount, percentage, modifiedtime]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create an discount",
+        "summary": "CreateDiscount",
+        "operationId": "V3MerchantsDiscountsByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/discounts/{discountId}": {
+      "get": {
+        "description": "Get a single discount",
+        "summary": "GetDiscount",
+        "operationId": "V3MerchantsDiscountsByMIdAndDiscountIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Discount Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update an discount",
+        "summary": "UpdateDiscount",
+        "operationId": "V3MerchantsDiscountsByMIdAndDiscountIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Discount Id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a discount",
+        "summary": "DeleteDiscount",
+        "operationId": "V3MerchantsDiscountsByMIdAndDiscountIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Discount Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "title": "Category",
+      "type": "object",
+      "properties": {
+        "modifiedTime": {
+          "description": "The time this category was last modified",
+          "type": "integer",
+          "format": "int64"
+        },
+        "deleted": {
+          "description": "Whether the category has been deleted.",
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "description": "Integer used to determine how this category is sorted against other categories.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "description": "The name of the category which will appear in Clover Register App.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "items": {
+          "description": "Ordered list of items associated with this category.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Discount": {
+      "title": "Discount",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "Discount amount in fraction of currency unit (e.g. cents) based on currency fraction digits supported",
+          "type": "integer",
+          "format": "int64"
+        },
+        "percentage": {
+          "description": "Discount amount in percent",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Name of the discount",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Attribute": {
+      "title": "Attribute",
+      "type": "object",
+      "properties": {
+        "itemGroup": {
+          "$ref": "#/definitions/Reference"
+        },
+        "name": {
+          "description": "Name of this attribute",
+          "type": "string"
+        },
+        "options": {
+          "description": "Options associated with this attribute",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Option"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "itemGroup",
+        "name"
+      ]
+    },
+    "Reference": {
+      "title": "Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      }
+    },
+    "ModifierGroup": {
+      "title": "ModifierGroup",
+      "type": "object",
+      "properties": {
+        "maxAllowed": {
+          "description": "The maximum amount of modifiers from this group that can be applied to associated lineItems when using Register",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minRequired": {
+          "description": "The minimum amount of modifiers from this group that must be applied to associated lineItems when using Register",
+          "type": "integer",
+          "format": "int32"
+        },
+        "sortOrder": {
+          "description": "The ordinal value used to determine where in an ordered list this modifier group should appear relative to others.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "description": "Name of the modifier group",
+          "type": "string"
+        },
+        "alternateName": {
+          "description": "",
+          "type": "string"
+        },
+        "modifierIds": {
+          "description": "An ordered, comma-separated list of modifier ids in this group. (READ ONLY)",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "modifiers": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Modifier"
+          }
+        },
+        "items": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "showByDefault": {
+          "description": "Whether employees will be automatically prompted to add modifiers from this category when using Register",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "ItemStock": {
+      "title": "ItemStock",
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "#/definitions/Reference"
+        },
+        "quantity": {
+          "description": "Current count of this item in stock",
+          "type": "integer",
+          "format": "int32"
+        },
+        "stockCount": {
+          "description": "DEPRECATED: use quantity instead",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PriceType": {
+      "title": "priceType",
+      "example": "FIXED",
+      "type": "string",
+      "enum": [
+        "FIXED",
+        "VARIABLE",
+        "PER_UNIT"
+      ]
+    },
+    "Item": {
+      "title": "Item",
+      "type": "object",
+      "properties": {
+        "itemGroup": {
+          "$ref": "#/definitions/Reference"
+        },
+        "modifiedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "code": {
+          "description": "Product code, e.g. UPC or EAN",
+          "type": "string"
+        },
+        "cost": {
+          "description": "Cost of the item to merchant, as opposed to customer price",
+          "type": "integer",
+          "format": "int64"
+        },
+        "hidden": {
+          "description": "True if this item is hidden from Clover Register App",
+          "type": "boolean"
+        },
+        "unitName": {
+          "description": "Unit name, e.g. oz, lb",
+          "type": "string"
+        },
+        "priceType": {
+          "$ref": "#/definitions/PriceType"
+        },
+        "alternateName": {
+          "description": "Alternate name of the item",
+          "type": "string"
+        },
+        "isRevenue": {
+          "description": "True if this item should be counted as revenue, for example gift cards and donations would not",
+          "type": "boolean"
+        },
+        "modifierGroups": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "description": "Tags associated with this item",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "taxRates": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "itemStock": {
+          "$ref": "#/definitions/ItemStock"
+        },
+        "price": {
+          "description": "Price of the item, typically in cents; use priceType and merchant currency to determine actual item price. For non-VAT merchants, this field is exclusive of tax. For VAT merchants, this field is inclusive of tax.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "options": {
+          "description": "List of options pertaining to this item's attribute variation",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Name of the item",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "categories": {
+          "description": "Categories associated with this item",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "description": "SKU of the item",
+          "type": "string"
+        },
+        "deletedTime": {
+          "description": "Timestamp when item was last deleted",
+          "type": "integer",
+          "format": "int64"
+        },
+        "defaultTaxRates": {
+          "description": "Flag to indicate whether or not to use default tax rates",
+          "type": "boolean"
+        },
+        "stockCount": {
+          "description": "DEPRECATED: use itemStock instead",
+          "type": "integer",
+          "format": "int64"
+        },
+        "priceWithoutVat": {
+          "description": "The price without value-added tax (VAT). For non-VAT merchants, this field is ignored. For VAT merchants, this field is the base price of an item.",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "price",
+        "name"
+      ]
+    },
+    "InventoryItems": {
+      "title": "InventoryItems",
+      "type": "object",
+      "properties": {
+        "items": {
+          "description": "Array of inventory items",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        }
+      },
+      "required": [
+        "items"
+      ]
+    },
+    "ItemGroup": {
+      "title": "ItemGroup",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the option",
+          "type": "string"
+        },
+        "attributes": {
+          "description": "Attributes that belong to this group",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "items": {
+          "description": "Items that are members of this group",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "ModifierGroupArray": {
+      "title": "ModifierGroupArray",
+      "type": "object",
+      "properties": {
+        "modifierGroups": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModifierGroup"
+          }
+        }
+      }
+    },
+    "TaxType": {
+      "title": "taxType",
+      "example": "VAT_TAXABLE",
+      "type": "string",
+      "enum": [
+        "VAT_TAXABLE",
+        "VAT_NON_TAXABLE",
+        "VAT_EXEMPT",
+        "INTERNAL_TAX"
+      ]
+    },
+    "TaxRate": {
+      "title": "TaxRate",
+      "type": "object",
+      "properties": {
+        "modifiedTime": {
+          "description": "Timestamp when tax rate was last modified",
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDefault": {
+          "description": "",
+          "type": "boolean"
+        },
+        "rate": {
+          "description": "For percentage based discounts like sales tax",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "For a flat tax like recycling redemption fee, expressed as number of cents",
+          "type": "integer",
+          "format": "int64"
+        },
+        "deletedTime": {
+          "description": "Timestamp when tax rate was last deleted",
+          "type": "integer",
+          "format": "int64"
+        },
+        "items": {
+          "description": "Items associated with this tax rate",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "taxType": {
+          "$ref": "#/definitions/TaxType"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Option": {
+      "title": "Option",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the option",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "attribute": {
+          "$ref": "#/definitions/Reference"
+        },
+        "items": {
+          "description": "Items associated with this option",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Tag": {
+      "title": "Tag",
+      "type": "object",
+      "properties": {
+        "printers": {
+          "description": "Printers associated with this tag",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Tag name",
+          "type": "string"
+        },
+        "showInReporting": {
+          "description": "True if tag is a summary label in the reporting app",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "items": {
+          "description": "Items associated with this tag",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Modifier": {
+      "title": "Modifier",
+      "type": "object",
+      "properties": {
+        "price": {
+          "description": "Additional cost when used",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Name of the modifier",
+          "type": "string"
+        },
+        "modifierGroup": {
+          "$ref": "#/definitions/Reference"
+        },
+        "alternateName": {
+          "description": "Alternate name of the modifier",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "price",
+        "name"
+      ]
+    }
+  }
+}

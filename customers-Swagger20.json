@@ -1,0 +1,1062 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3",
+    "title": "Swagger API"
+  },
+  "host": "apisandbox.dev.clover.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/merchants/{mId}/customers.csv": {
+      "get": {
+        "description": "Get a list of customers",
+        "summary": "DelegatedGetCustomers",
+        "operationId": "V3MerchantsCustomersCsvByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers": {
+      "get": {
+        "description": "Get a list of customers",
+        "summary": "DelegatedGetCustomers1",
+        "operationId": "V3MerchantsCustomersByMIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Create a customer",
+        "summary": "DelegatedCreateCustomer",
+        "operationId": "V3MerchantsCustomersByMIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}": {
+      "get": {
+        "description": "Get a single customer",
+        "summary": "DelegatedGetCustomer",
+        "operationId": "V3MerchantsCustomersByMIdAndCustomerIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Update a customer",
+        "summary": "DelegatedUpdateCustomer",
+        "operationId": "V3MerchantsCustomersByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a customer",
+        "summary": "DelegatedDeleteCustomer",
+        "operationId": "V3MerchantsCustomersByMIdAndCustomerIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/phone_numbers": {
+      "post": {
+        "description": "Create a phone number for a customer",
+        "summary": "DelegatedCreateCustomerPhoneNumber",
+        "operationId": "V3MerchantsCustomersPhoneNumbersByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PhoneNumber"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/phone_numbers/{phoneId}": {
+      "post": {
+        "description": "Update a phone number for a customer",
+        "summary": "DelegatedUpdateCustomerPhoneNumber",
+        "operationId": "V3MerchantsCustomersPhoneNumbersPhoneIdByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "phoneId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PhoneNumber"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a customer phone number",
+        "summary": "DelegatedDeleteCustomerPhoneNumber",
+        "operationId": "V3MerchantsCustomersPhoneNumbersPhoneIdByMIdAndCustomerIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "phoneId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/email_addresses": {
+      "post": {
+        "description": "Create an email address for a customer",
+        "summary": "DelegatedCreateCustomerEmailAddress",
+        "operationId": "V3MerchantsCustomersEmailAddressesByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EmailAddress"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/email_addresses/{emailId}": {
+      "post": {
+        "description": "Update an email address for a customer",
+        "summary": "DelegatedUpdateCustomerEmailAddress",
+        "operationId": "V3MerchantsCustomersEmailAddressesEmailIdByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "emailId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EmailAddress"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a customer email address",
+        "summary": "DelegatedDeleteCustomerEmailAddress",
+        "operationId": "V3MerchantsCustomersEmailAddressesEmailIdByMIdAndCustomerIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "emailId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/addresses": {
+      "post": {
+        "description": "Create an address for a customer",
+        "summary": "DelegatedCreateCustomerAddress",
+        "operationId": "V3MerchantsCustomersAddressesByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/addresses/{addressId}": {
+      "post": {
+        "description": "Update an address for a customer",
+        "summary": "DelegatedUpdateCustomerAddress",
+        "operationId": "V3MerchantsCustomersAddressesAddressIdByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a customer address",
+        "summary": "DelegatedDeleteCustomerAddress",
+        "operationId": "V3MerchantsCustomersAddressesAddressIdByMIdAndCustomerIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/cards": {
+      "post": {
+        "description": "Create a credit/debit card entry for a customer",
+        "summary": "DelegatedCreateCustomerCard",
+        "operationId": "V3MerchantsCustomersCardsByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Card"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/cards/{cardId}": {
+      "post": {
+        "description": "Update a credit/debit card record for a customer",
+        "summary": "DelegatedUpdateCustomerCard",
+        "operationId": "V3MerchantsCustomersCardsCardIdByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Card"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a customer card",
+        "summary": "DelegatedDeleteCustomerCard",
+        "operationId": "V3MerchantsCustomersCardsCardIdByMIdAndCustomerIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/v3/merchants/{mId}/customers/{customerId}/metadata": {
+      "post": {
+        "description": "Create note, birthday, business name for a customer",
+        "summary": "DelegatedCreateOrUpdateCustomerMetadata",
+        "operationId": "V3MerchantsCustomersMetadataByMIdAndCustomerIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Merchant Id"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CustomerMetadata"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "Address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "zip": {
+          "description": "",
+          "type": "string"
+        },
+        "country": {
+          "description": "",
+          "type": "string"
+        },
+        "address3": {
+          "description": "",
+          "type": "string"
+        },
+        "address2": {
+          "description": "",
+          "type": "string"
+        },
+        "city": {
+          "description": "",
+          "type": "string"
+        },
+        "address1": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "state": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zip",
+        "country",
+        "city",
+        "address1",
+        "state"
+      ]
+    },
+    "Customer": {
+      "title": "Customer",
+      "type": "object",
+      "properties": {
+        "customerSince": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        },
+        "firstName": {
+          "description": "First/given name of the customer",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name/surname of the customer",
+          "type": "string"
+        },
+        "addresses": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/CustomerMetadata"
+        },
+        "emailAddresses": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmailAddress"
+          }
+        },
+        "cards": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Card"
+          }
+        },
+        "marketingAllowed": {
+          "description": "",
+          "type": "boolean"
+        },
+        "merchant": {
+          "$ref": "#/definitions/Reference"
+        },
+        "orders": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "phoneNumbers": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhoneNumber"
+          }
+        }
+      }
+    },
+    "Reference": {
+      "title": "Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        }
+      }
+    },
+    "PhoneNumber": {
+      "title": "PhoneNumber",
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber"
+      ]
+    },
+    "CustomerMetadata": {
+      "title": "CustomerMetadata",
+      "type": "object",
+      "properties": {
+        "note": {
+          "description": "A note about the customer.",
+          "type": "string"
+        },
+        "modifiedTime": {
+          "description": "The timestamp from when this customer's data was last updated.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "businessName": {
+          "description": "The name of the business the customer is associated with.",
+          "type": "string"
+        },
+        "dobDay": {
+          "description": "The day part of the date of birth for this customer.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "dobYear": {
+          "description": "The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "dobMonth": {
+          "description": "The month part of the date of birth for this customer.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "EmailAddress": {
+      "title": "EmailAddress",
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "verifiedTime": {
+          "description": "",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "emailAddress"
+      ]
+    },
+    "Card": {
+      "title": "Card",
+      "type": "object",
+      "properties": {
+        "last4": {
+          "description": "",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "",
+          "type": "string"
+        },
+        "cardType": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "first6": {
+          "description": "",
+          "type": "string"
+        },
+        "expirationDate": {
+          "description": "",
+          "type": "string"
+        },
+        "token": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "last4",
+        "first6"
+      ]
+    }
+  }
+}
