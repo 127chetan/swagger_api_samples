@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "3",
-    "title": "Swagger API"
+    "title": "Cash"
   },
   "host": "apisandbox.dev.clover.com",
   "basePath": "/",
