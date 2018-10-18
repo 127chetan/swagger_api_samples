@@ -16,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "Merchants": {
+    "/v3/merchants/{mId}": {
       "get": {
         "description": "Get a single merchant",
         "summary": "GetMerchant",
