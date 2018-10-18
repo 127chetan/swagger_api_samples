@@ -37,7 +37,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "enum: [employees, bankProcessing, externalMerchant, merchantBoarding, deviceBoarding, programExpress, hierarchy, shifts, orders, address, logos, owner, items, tags, tenders, payments, gateway, printers, modifierGroups, properties, tipSuggestions, openingHours, partnerApp, selfBoardingApplication, enterprises, equipment]"
+            "enum": "[employees, bankProcessing, externalMerchant, merchantBoarding, deviceBoarding, programExpress, hierarchy, shifts, orders, address, logos, owner, items, tags, tenders, payments, gateway, printers, modifierGroups, properties, tipSuggestions, openingHours, partnerApp, selfBoardingApplication, enterprises, equipment]"
           }
         ],
         "responses": {
