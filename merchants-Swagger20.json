@@ -19,7 +19,7 @@
     "/v3/merchants/{mId}": {
       "get": {
         "description": "Get a single merchant",
-        "summary": "GetMerchant",
+        "summary": "Get a single merchant",
         "operationId": "V3MerchantsByMIdGet",
         "produces": [
           "application/json"
