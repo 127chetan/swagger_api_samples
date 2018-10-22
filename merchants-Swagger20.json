@@ -15,6 +15,9 @@
   "produces": [
     "application/json"
   ],
+  "x-samples-languages": [
+    "curl", "node", "java", "swift", "objectivec", "csharp"
+  ],
   "paths": {
     "/v3/merchants/{mId}": {
       "get": {
