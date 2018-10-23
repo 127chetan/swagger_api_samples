@@ -24,18 +24,18 @@
                         "name": "filter",
                         "in": "query",
                         "required": false,
-                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
                     {
                         "name": "expand",
                         "in": "query",
                         "required": false,
-                        "description": "Expandable fields: [employee, device]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee, device]"
                         }
                     }
                 ],
@@ -82,18 +82,18 @@
                         "name": "filter",
                         "in": "query",
                         "required": false,
-                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
                     {
                         "name": "expand",
                         "in": "query",
                         "required": false,
-                        "description": "Expandable fields: [employee, device]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee, device]"
                         }
                     }
                 ],
@@ -140,18 +140,18 @@
                         "name": "filter",
                         "in": "query",
                         "required": false,
-                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
                     {
                         "name": "expand",
                         "in": "query",
                         "required": false,
-                        "description": "Expandable fields: [employee, device]",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": "[employee, device]"
                         }
                     }
                 ],
