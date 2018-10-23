@@ -40,14 +40,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+            "enum": ["id", "name", "sku", "modifiedTime", "deleted", "hidden", "price", "alternateName", "itemCode", "item.id", "option.id", "tags.id", "tags.name", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           }
         ],
         "responses": {
@@ -80,7 +80,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           },
           {
             "name": "body",
@@ -151,7 +151,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           }
         ],
         "responses": {
@@ -191,7 +191,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           },
           {
             "name": "body",
@@ -460,14 +460,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, name, id, deletedTime]"
+            "enum": ["modifiedTime", "name", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           }
         ],
         "responses": {
@@ -500,7 +500,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           },
           {
             "name": "body",
@@ -548,7 +548,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           }
         ],
         "responses": {
@@ -588,7 +588,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           },
           {
             "name": "body",
@@ -659,14 +659,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+            "enum": ["id", "name", "modifiedTime", "deleted"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -740,7 +740,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -780,7 +780,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           },
           {
             "name": "body",
@@ -858,14 +858,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+            "enum": ["id", "name", "modifiedTime", "deleted"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -907,14 +907,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, hidden, itemCode, alternateName, option.id, deleted, item.id, price, name, id, sku, itemGroup.id]"
+            "enum": ["modifiedTime", "hidden", "itemCode", "alternateName", "option.id", "deleted", "item.id", "price", "name", "id", "sku", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -974,14 +974,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [isDefault, rate, items.id, name, id, taxAmount, taxType]"
+            "enum": ["isDefault", "rate", "items.id", "name", "id", "taxAmount", "taxType"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1014,7 +1014,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1065,7 +1065,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1169,14 +1169,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1209,7 +1209,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1257,7 +1257,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1297,7 +1297,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1375,14 +1375,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1424,14 +1424,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1466,7 +1466,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1530,14 +1530,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+            "enum": ["id", "name", "sku", "modifiedTime", "deleted", "hidden", "price", "alternateName", "itemCode", "item.id", "option.id", "tags.id", "tags.name", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1572,14 +1572,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, sortOrder, name, id, category.id, showByDefault, negativeSortOrder]"
+            "enum": ["modifiedTime", "item.id", "sortOrder", "name", "id", "category.id", "showByDefault", "negativeSortOrder"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1612,7 +1612,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           },
           {
             "name": "body",
@@ -1660,7 +1660,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1700,7 +1700,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           },
           {
             "name": "body",
@@ -1830,14 +1830,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+            "enum": ["modifiedTime", "price", "name", "alternateName", "id", "modifierGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           }
         ],
         "responses": {
@@ -1879,14 +1879,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+            "enum": ["modifiedTime", "price", "name", "alternateName", "id", "modifierGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1926,7 +1926,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           },
           {
             "name": "body",
@@ -1981,7 +1981,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           }
         ],
         "responses": {
@@ -2028,7 +2028,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           },
           {
             "name": "body",
@@ -2106,7 +2106,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, name, id, deletedTime, itemGroup.id]"
+            "enum": ["modifiedTime", "name", "id", "deletedTime", "itemGroup.id"]
           }
         ],
         "responses": {
@@ -2139,7 +2139,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [options]"
+            "enum": ["options"]
           },
           {
             "name": "body",
@@ -2220,7 +2220,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [options]"
+            "enum": ["options"]
           },
           {
             "name": "body",
@@ -2291,14 +2291,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: []"
+            "enum": [""]
           }
         ],
         "responses": {
@@ -2340,14 +2340,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: []"
+            "enum": [""]
           }
         ],
         "responses": {
@@ -2387,7 +2387,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: []"
+            "enum": [""]
           },
           {
             "name": "body",
@@ -2442,14 +2442,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: []"
+            "enum": [""]
           }
         ],
         "responses": {
@@ -2496,7 +2496,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: []"
+            "enum": [""]
           },
           {
             "name": "body",
@@ -2599,7 +2599,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, amount, percentage, modifiedtime]"
+            "enum": ["id", "amount", "percentage", "modifiedtime"]
           }
         ],
         "responses": {
