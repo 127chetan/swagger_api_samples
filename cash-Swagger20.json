@@ -47,7 +47,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
@@ -56,7 +56,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee, device]"
                         }
                     }
@@ -105,7 +105,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
@@ -114,7 +114,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee, device]"
                         }
                     }
@@ -163,7 +163,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
                         }
                     },
@@ -172,7 +172,7 @@
                         "in": "query",
                         "required": false,
                         "schema": {
-                            "type": "array",
+                            "type": "string",
                             "enum": "[employee, device]"
                         }
                     }
