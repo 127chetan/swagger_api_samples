@@ -40,14 +40,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, email, role, customId, role.id, nickname, pin, deletedTime, modifiedTime, deleted_time]"
+            "enum": ["id", "name", "email", "role", "customId", "role.id", "nickname", "pin", "deletedTime", "modifiedTime", "deleted_time"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [roles, shifts]"
+            "enum": ["roles", "shifts"]
           }
         ],
         "responses": {
@@ -80,7 +80,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [shifts, payments, orders, roles]"
+            "enum": ["shifts", "payments", "orders", "roles"]
           },
           {
             "name": "body",
@@ -128,7 +128,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [roles, shifts]"
+            "enum": ["roles", "shifts"]
           }
         ],
         "responses": {
@@ -168,7 +168,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [shifts, payments, orders, roles]"
+            "enum": ["shifts", "payments", "orders", "roles"]
           },
           {
             "name": "body",
@@ -239,14 +239,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+            "enum": ["id", "employee.id", "employee.name", "in_time", "has_in_time", "out_time", "server_banking", "override_in_time", "in_and_override_time", "out_and_override_time", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+            "enum": ["employee", "overrideInEmployee", "overrideOutEmployee"]
           }
         ],
         "responses": {
@@ -288,7 +288,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+            "enum": ["employee", "overrideInEmployee", "overrideOutEmployee"]
           }
         ],
         "responses": {
@@ -323,7 +323,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+            "enum": ["id", "employee.id", "employee.name", "in_time", "has_in_time", "out_time", "server_banking", "override_in_time", "in_and_override_time", "out_and_override_time", "deletedTime"]
           }
         ],
         "responses": {
@@ -365,14 +365,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, employee.id, employee.name, in_time, has_in_time, out_time, server_banking, override_in_time, in_and_override_time, out_and_override_time, deletedTime]"
+            "enum": ["id", "employee.id", "employee.name", "in_time", "has_in_time", "out_time", "server_banking", "override_in_time", "in_and_override_time", "out_and_override_time", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+            "enum": ["employee", "overrideInEmployee", "overrideOutEmployee"]
           }
         ],
         "responses": {
@@ -460,7 +460,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+            "enum": ["employee", "overrideInEmployee", "overrideOutEmployee"]
           }
         ],
         "responses": {
@@ -507,7 +507,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, overrideInEmployee, overrideOutEmployee]"
+            "enum": ["employee", "overrideInEmployee", "overrideOutEmployee"]
           },
           {
             "name": "body",
@@ -592,14 +592,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           }
         ],
         "responses": {
@@ -633,7 +633,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, employee.id, updater.id, number, status, createdTime, modifiedTime]"
+            "enum": ["id", "employee.id", "updater.id", "number", "status", "createdTime", "modifiedTime"]
           }
         ],
         "responses": {
