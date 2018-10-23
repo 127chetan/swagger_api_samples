@@ -402,7 +402,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": ["id, deletedTime"]
+            "enum": ["id", "deletedTime"]
           },
           {
             "name": "expand",
