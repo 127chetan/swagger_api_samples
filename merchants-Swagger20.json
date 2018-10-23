@@ -16,7 +16,7 @@
     "application/json"
   ],
   "x-samples-languages": [
-    "curl", "node", "java", "swift", "objectivec", "csharp"
+    "curl", "node", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}": {
@@ -73,7 +73,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employees, bankProcessing, externalMerchant, merchantBoarding, deviceBoarding, programExpress, hierarchy, shifts, orders, address, logos, owner, items, tags, tenders, payments, gateway, printers, modifierGroups, properties, tipSuggestions, openingHours, partnerApp, selfBoardingApplication, enterprises, equipment]"
+            "enum": ["employees", "bankProcessing", "externalMerchant", "merchantBoarding", "deviceBoarding", "programExpress", "hierarchy", "shifts", "orders", "address", "logos", "owner", "items", "tags", "tenders", "payments", "gateway", "printers", "modifierGroups", "properties", "tipSuggestions", "openingHours", "partnerApp", "selfBoardingApplication", "enterprises", "equipment"]
           },
           {
             "name": "body",
@@ -293,7 +293,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, percentage, enabled]"
+            "enum": ["id", "name", "percentage", "enabled"]
           }
         ],
         "responses": {
@@ -402,14 +402,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, deletedTime]"
+            "enum": ["id, deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [hours, attributes, categories]"
+            "enum": ["hours", "attributes", "categories"]
           }
         ],
         "responses": {
@@ -442,7 +442,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [hours, attributes, categories]"
+            "enum": ["hours", "attributes", "categories"]
           },
           {
             "name": "body",
@@ -490,7 +490,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [hours, attributes, categories]"
+            "enum": ["hours", "attributes", "categories"]
           }
         ],
         "responses": {
@@ -530,7 +530,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [hours, attributes, categories]"
+            "enum": ["hours", "attributes", "categories"]
           },
           {
             "name": "body",
@@ -654,14 +654,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, systemRole, name, id, deletedTime]"
+            "enum": ["modifiedTime", "systemRole", "name", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employees]"
+            "enum": ["employees"]
           }
         ],
         "responses": {
@@ -735,7 +735,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employees]"
+            "enum": ["employees"]
           }
         ],
         "responses": {
@@ -775,7 +775,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employees]"
+            "enum": ["employees"]
           },
           {
             "name": "body",
@@ -846,7 +846,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [labelKey, label, opensCashDrawer, enabled, visible, instruction, id, merchantId, systemTenderId, deletedTime, modifiedTime]"
+            "enum": ["labelKey", "label", "opensCashDrawer", "enabled", "visible", "instruction", "id", "merchantId", "systemTenderId", "deletedTime", "modifiedTime"]
           }
         ],
         "responses": {
@@ -1190,7 +1190,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, model, name, orderPrefix, serial, deleted_time, merchant.id, merchant.name, deviceTypeName]"
+            "enum": ["id", "model", "name", "orderPrefix", "serial", "deleted_time", "merchant.id", "merchant.name", "deviceTypeName"]
           }
         ],
         "responses": {
