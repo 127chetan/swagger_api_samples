@@ -48,7 +48,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+                            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
                         }
                     },
                     {
@@ -57,7 +57,10 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee, device]"
+                            "enum": [
+                                "employee",
+                                "device"
+                            ]
                         }
                     }
                 ],
@@ -106,7 +109,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+                            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
                         }
                     },
                     {
@@ -115,7 +118,10 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee, device]"
+                            "enum": [
+                                "employee",
+                                "device"
+                            ]
                         }
                     }
                 ],
@@ -164,7 +170,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+                            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
                         }
                     },
                     {
@@ -173,7 +179,10 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": "[employee, device]"
+                            "enum": [
+                                "employee",
+                                "device"
+                            ]
                         }
                     }
                 ],
