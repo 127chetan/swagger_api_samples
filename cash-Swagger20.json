@@ -37,14 +37,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
@@ -86,14 +86,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
@@ -135,14 +135,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
