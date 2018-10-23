@@ -40,14 +40,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -82,14 +82,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -122,7 +122,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           },
           {
             "name": "body",
@@ -170,14 +170,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -217,7 +217,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           },
           {
             "name": "body",
