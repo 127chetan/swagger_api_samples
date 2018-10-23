@@ -15,6 +15,9 @@
   "produces": [
     "application/json"
   ],
+  "x-samples-languages": [
+    "curl", "node", "java", "swift", "csharp"
+  ],
   "paths": {
     "/v3/merchants/{mId}/employees": {
       "get": {
