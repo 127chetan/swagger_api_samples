@@ -4,6 +4,28 @@
         "version": "3",
         "title": "Cash"
     },
+    "servers": [
+        {
+            "url": "https://api.clover.com/v3",
+            "description": "Production server"
+        },
+        {
+            "url": "https://api.eu.clover.com",
+            "description": "Production server for EU"
+        },
+        {
+            "url": "https://apisandbox.dev.clover.com",
+            "description": "Sandbox development server"
+        }
+    ],
+    "x-samples-languages": [
+        "curl",
+        "node",
+        "java",
+        "swift",
+        "objectivec",
+        "csharp"
+    ],
     "paths": {
         "/v3/merchants/{mId}/cash_events": {
             "get": {
@@ -171,12 +193,13 @@
             }
         }
     },
-    "servers": [
-        {
-            "url": "https://apisandbox.dev.clover.com/"
-        }
-    ],
     "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        },
         "schemas": {
             "Role": {
                 "title": "role",
