@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "https://api.clover.com/v3",
+            "url": "https://api.clover.com",
             "description": "Production server"
         },
         {
