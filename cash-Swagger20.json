@@ -1,458 +1,479 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "3",
-    "title": "Cash"
-  },
-  "host": "apisandbox.dev.clover.com",
-  "basePath": "/",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "paths": {
-    "/v3/merchants/{mId}/cash_events": {
-      "get": {
-        "description": "Get all cash events",
-        "summary": "GetAllCashEvents",
-        "operationId": "V3MerchantsCashEventsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [employee, device]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/CashEvent"
-            }
-          }
-        },
-        "security": []
-      }
+    "openapi": "3.0.0",
+    "info": {
+        "version": "3",
+        "title": "Cash"
     },
-    "/v3/merchants/{mId}/employees/{empId}/cash_events": {
-      "get": {
-        "description": "Get all cash events for an employee",
-        "summary": "GetEmployeeCashEvents",
-        "operationId": "V3MerchantsEmployeesCashEventsByMIdAndEmpIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "empId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Employee Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [employee, device]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/CashEvent"
+    "paths": {
+        "/v3/merchants/{mId}/cash_events": {
+            "get": {
+                "description": "Get all cash events",
+                "summary": "GetAllCashEvents",
+                "operationId": "V3MerchantsCashEventsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [employee, device]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CashEvent"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
             }
-          }
         },
-        "security": []
-      }
+        "/v3/merchants/{mId}/employees/{empId}/cash_events": {
+            "get": {
+                "description": "Get all cash events for an employee",
+                "summary": "GetEmployeeCashEvents",
+                "operationId": "V3MerchantsEmployeesCashEventsByMIdAndEmpIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "empId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Employee Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [employee, device]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CashEvent"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/devices/{deviceId}/cash_events": {
+            "get": {
+                "description": "Get all cash events for a device",
+                "summary": "GetDeviceCashEvents",
+                "operationId": "V3MerchantsDevicesCashEventsByMIdAndDeviceIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deviceId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Device Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [employee, device]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CashEvent"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
     },
-    "/v3/merchants/{mId}/devices/{deviceId}/cash_events": {
-      "get": {
-        "description": "Get all cash events for a device",
-        "summary": "GetDeviceCashEvents",
-        "operationId": "V3MerchantsDevicesCashEventsByMIdAndDeviceIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "deviceId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Device Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [employee, device]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/CashEvent"
+    "servers": [
+        {
+            "url": "https://apisandbox.dev.clover.com/"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "Role": {
+                "title": "role",
+                "example": "ADMIN",
+                "type": "string",
+                "enum": [
+                    "ADMIN",
+                    "MANAGER",
+                    "EMPLOYEE"
+                ]
+            },
+            "Employee": {
+                "title": "Employee",
+                "type": "object",
+                "properties": {
+                    "role": {
+                        "$ref": "#/components/schemas/Role"
+                    },
+                    "roles": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "payments": {
+                        "description": "This employee's payments",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "inviteSent": {
+                        "description": "Returns true if this employee was sent an invite to activate their account",
+                        "type": "boolean"
+                    },
+                    "customId": {
+                        "description": "Custom ID of the employee",
+                        "type": "string"
+                    },
+                    "employeeCards": {
+                        "description": "This employee's employee cards",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "pin": {
+                        "description": "Employee PIN (hashed)",
+                        "type": "string"
+                    },
+                    "isOwner": {
+                        "description": "Returns true if this employee is the owner account for this merchant",
+                        "type": "boolean"
+                    },
+                    "claimedTime": {
+                        "description": "Timestamp of when this employee claimed their account",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "Full name of the employee",
+                        "type": "string"
+                    },
+                    "nickname": {
+                        "description": "Nickname of the employee (shows up on receipts)",
+                        "type": "string"
+                    },
+                    "shifts": {
+                        "description": "This employee's shifts",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "unhashedPin": {
+                        "description": "Employee PIN",
+                        "type": "string"
+                    },
+                    "orders": {
+                        "description": "This employee's orders",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "deletedTime": {
+                        "description": "Timestamp of when this employee was deleted",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "email": {
+                        "description": "Email of the employee (optional)",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "Type": {
+                "title": "type",
+                "example": "LOAD",
+                "type": "string",
+                "enum": [
+                    "LOAD",
+                    "TRANSACTION",
+                    "OPEN",
+                    "ADJUSTMENT",
+                    "COUNT",
+                    "UNLOAD"
+                ]
+            },
+            "CashEvent": {
+                "title": "CashEvent",
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "description": "Any additional information regarding the event",
+                        "type": "string"
+                    },
+                    "amountChange": {
+                        "description": "The amount that was either added, removed of modified by the event",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "merchant": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/Type"
+                    },
+                    "employee": {
+                        "$ref": "#/components/schemas/Employee"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Device"
+                    },
+                    "timestamp": {
+                        "description": "Time at which the event was exectued",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "Reference": {
+                "title": "Reference",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    }
+                }
+            },
+            "Device": {
+                "title": "Device",
+                "type": "object",
+                "properties": {
+                    "offlinePaymentsTotalPaymentsLimit": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "simIccid": {
+                        "description": "The ICCID of the SIM in the device (if present)",
+                        "type": "string"
+                    },
+                    "offlinePaymentsTotalPaymentsLimitDefault": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "terminalId": {
+                        "description": "The merchant device's terminal Id. FD-IPG sets the merchant_device terminal Id for LATAM devices",
+                        "type": "string"
+                    },
+                    "imsi": {
+                        "description": "The IMSI of the SIM in the device (if present)",
+                        "type": "string"
+                    },
+                    "offlinePaymentsLimitDefault": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "terminalPrefix": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "maxOfflineDays": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "model": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "offlinePaymentsMaxTotalPaymentsLimit": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "pinDisabled": {
+                        "description": "Whether this device has PIN prompt disabled.",
+                        "type": "boolean"
+                    },
+                    "merchant": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "deviceTypeName": {
+                        "description": "The type of device. Possible values are \"GOLDLEAF\" (Station), \"LEAFCUTTER\" (Mobile), \"MAPLECUTTER\" (Mini), \"CLOVER_GO\" (Clover Go), or \"OTHER\" (Unknown).",
+                        "type": "string"
+                    },
+                    "bundleIndicator": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "offlinePaymentsMaxLimit": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "deviceCertificate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "offlinePaymentsLimit": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "showOfflinePayments": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "orderPrefix": {
+                        "description": "A prefix that will be applied to order numbers. This is useful if the merchant and/or customer needs to track which device an order came from.",
+                        "type": "string"
+                    },
+                    "pedCertificate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "offlinePaymentsAll": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "secureReports": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "serial": {
+                        "description": "The device's serial number.",
+                        "type": "string"
+                    },
+                    "offlinePaymentsPromptThresholdDefault": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "offlinePayments": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "description": "Name of the device (if entered)",
+                        "type": "string"
+                    },
+                    "imei": {
+                        "description": "The IMEI of the device",
+                        "type": "string"
+                    },
+                    "allowStoreAndForward": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "offlinePaymentsPromptThreshold": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
             }
-          }
-        },
-        "security": []
-      }
+        }
     }
-  },
-  "definitions": {
-    "Role": {
-      "title": "role",
-      "example": "ADMIN",
-      "type": "string",
-      "enum": [
-        "ADMIN",
-        "MANAGER",
-        "EMPLOYEE"
-      ]
-    },
-    "Employee": {
-      "title": "Employee",
-      "type": "object",
-      "properties": {
-        "role": {
-          "$ref": "#/definitions/Role"
-        },
-        "roles": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "payments": {
-          "description": "This employee's payments",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "inviteSent": {
-          "description": "Returns true if this employee was sent an invite to activate their account",
-          "type": "boolean"
-        },
-        "customId": {
-          "description": "Custom ID of the employee",
-          "type": "string"
-        },
-        "employeeCards": {
-          "description": "This employee's employee cards",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "pin": {
-          "description": "Employee PIN (hashed)",
-          "type": "string"
-        },
-        "isOwner": {
-          "description": "Returns true if this employee is the owner account for this merchant",
-          "type": "boolean"
-        },
-        "claimedTime": {
-          "description": "Timestamp of when this employee claimed their account",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "Full name of the employee",
-          "type": "string"
-        },
-        "nickname": {
-          "description": "Nickname of the employee (shows up on receipts)",
-          "type": "string"
-        },
-        "shifts": {
-          "description": "This employee's shifts",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "unhashedPin": {
-          "description": "Employee PIN",
-          "type": "string"
-        },
-        "orders": {
-          "description": "This employee's orders",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "deletedTime": {
-          "description": "Timestamp of when this employee was deleted",
-          "type": "integer",
-          "format": "int64"
-        },
-        "email": {
-          "description": "Email of the employee (optional)",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name"
-      ]
-    },
-    "Type": {
-      "title": "type",
-      "example": "LOAD",
-      "type": "string",
-      "enum": [
-        "LOAD",
-        "TRANSACTION",
-        "OPEN",
-        "ADJUSTMENT",
-        "COUNT",
-        "UNLOAD"
-      ]
-    },
-    "CashEvent": {
-      "title": "CashEvent",
-      "type": "object",
-      "properties": {
-        "note": {
-          "description": "Any additional information regarding the event",
-          "type": "string"
-        },
-        "amountChange": {
-          "description": "The amount that was either added, removed of modified by the event",
-          "type": "integer",
-          "format": "int64"
-        },
-        "merchant": {
-          "$ref": "#/definitions/Reference"
-        },
-        "type": {
-          "$ref": "#/definitions/Type"
-        },
-        "employee": {
-          "$ref": "#/definitions/Employee"
-        },
-        "device": {
-          "$ref": "#/definitions/Device"
-        },
-        "timestamp": {
-          "description": "Time at which the event was exectued",
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "Reference": {
-      "title": "Reference",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        }
-      }
-    },
-    "Device": {
-      "title": "Device",
-      "type": "object",
-      "properties": {
-        "offlinePaymentsTotalPaymentsLimit": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "simIccid": {
-          "description": "The ICCID of the SIM in the device (if present)",
-          "type": "string"
-        },
-        "offlinePaymentsTotalPaymentsLimitDefault": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "terminalId": {
-          "description": "The merchant device's terminal Id. FD-IPG sets the merchant_device terminal Id for LATAM devices",
-          "type": "string"
-        },
-        "imsi": {
-          "description": "The IMSI of the SIM in the device (if present)",
-          "type": "string"
-        },
-        "offlinePaymentsLimitDefault": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "terminalPrefix": {
-          "description": "",
-          "type": "integer",
-          "format": "int32"
-        },
-        "maxOfflineDays": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "model": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "offlinePaymentsMaxTotalPaymentsLimit": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "pinDisabled": {
-          "description": "Whether this device has PIN prompt disabled.",
-          "type": "boolean"
-        },
-        "merchant": {
-          "$ref": "#/definitions/Reference"
-        },
-        "deviceTypeName": {
-          "description": "The type of device. Possible values are \"GOLDLEAF\" (Station), \"LEAFCUTTER\" (Mobile), \"MAPLECUTTER\" (Mini), \"CLOVER_GO\" (Clover Go), or \"OTHER\" (Unknown).",
-          "type": "string"
-        },
-        "bundleIndicator": {
-          "description": "",
-          "type": "string"
-        },
-        "offlinePaymentsMaxLimit": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "deviceCertificate": {
-          "description": "",
-          "type": "string"
-        },
-        "offlinePaymentsLimit": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "showOfflinePayments": {
-          "description": "",
-          "type": "boolean"
-        },
-        "orderPrefix": {
-          "description": "A prefix that will be applied to order numbers. This is useful if the merchant and/or customer needs to track which device an order came from.",
-          "type": "string"
-        },
-        "pedCertificate": {
-          "description": "",
-          "type": "string"
-        },
-        "offlinePaymentsAll": {
-          "description": "",
-          "type": "boolean"
-        },
-        "secureReports": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "serial": {
-          "description": "The device's serial number.",
-          "type": "string"
-        },
-        "offlinePaymentsPromptThresholdDefault": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "offlinePayments": {
-          "description": "",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "Name of the device (if entered)",
-          "type": "string"
-        },
-        "imei": {
-          "description": "The IMEI of the device",
-          "type": "string"
-        },
-        "allowStoreAndForward": {
-          "description": "",
-          "type": "boolean"
-        },
-        "offlinePaymentsPromptThreshold": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    }
-  }
 }

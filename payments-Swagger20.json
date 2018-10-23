@@ -1,2321 +1,2400 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "3",
-    "title": "Payments"
-  },
-  "host": "apisandbox.dev.clover.com",
-  "basePath": "/",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "paths": {
-    "/v3/merchants/{mId}/authorizations": {
-      "get": {
-        "description": "Get all authorizations.",
-        "summary": "GetAuthorizations",
-        "operationId": "V3MerchantsAuthorizationsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [last4, note, amount, tabName, orderId, cardType, orderModifiedTime, type, device.id, result, authcode, closingPaymentId, merchantId, paymentId, createdTime, id, deletedTime]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [payment]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
-            }
-          }
-        },
-        "security": []
-      },
-      "post": {
-        "description": "Create an authorization on a Payment",
-        "summary": "CreateAuthorization",
-        "operationId": "V3MerchantsAuthorizationsByMIdPost",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
-            }
-          }
-        },
-        "security": []
-      }
+    "openapi": "3.0.0",
+    "info": {
+        "version": "3",
+        "title": "Payments"
     },
-    "/v3/merchants/{mId}/authorizations/{authId}": {
-      "get": {
-        "description": "Get a single authorization",
-        "summary": "GetAuthorization",
-        "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "authId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
+    "paths": {
+        "/v3/merchants/{mId}/authorizations": {
+            "get": {
+                "description": "Get all authorizations.",
+                "summary": "GetAuthorizations",
+                "operationId": "V3MerchantsAuthorizationsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [last4, note, amount, tabName, orderId, cardType, orderModifiedTime, type, device.id, result, authcode, closingPaymentId, merchantId, paymentId, createdTime, id, deletedTime]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [payment]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Authorization"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            },
+            "post": {
+                "description": "Create an authorization on a Payment",
+                "summary": "CreateAuthorization",
+                "operationId": "V3MerchantsAuthorizationsByMIdPost",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Authorization"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/Authorization"
+                }
             }
-          }
         },
-        "security": []
-      },
-      "post": {
-        "summary": "UpdateAuthorization",
-        "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdPost",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "authId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
+        "/v3/merchants/{mId}/authorizations/{authId}": {
+            "get": {
+                "description": "Get a single authorization",
+                "summary": "GetAuthorization",
+                "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "authId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Authorization"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            },
+            "post": {
+                "summary": "UpdateAuthorization",
+                "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdPost",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "authId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/Authorization"
+                }
+            },
+            "delete": {
+                "summary": "DeleteAuthorization",
+                "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdDelete",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "authId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/Authorization"
+                }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
         },
-        "security": []
-      },
-      "delete": {
-        "summary": "DeleteAuthorization",
-        "operationId": "V3MerchantsAuthorizationsByMIdAndAuthIdDelete",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "authId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Authorization"
+        "/v3/merchants/{mId}/payments": {
+            "get": {
+                "description": "Get all payments",
+                "summary": "GetPayments",
+                "operationId": "V3MerchantsPaymentsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [tender, taxRates, germanInfo, lineItemPayments, cardTransaction, dccInfo, appTracking, refunds, order, transactionInfo]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
         },
-        "security": []
-      }
+        "/v3/merchants/{mId}/payments/{payId}": {
+            "get": {
+                "description": "Get a single payment",
+                "summary": "GetPayment",
+                "operationId": "V3MerchantsPaymentsByMIdAndPayIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Payment Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            },
+            "post": {
+                "summary": "UpdatePayment",
+                "operationId": "V3MerchantsPaymentsByMIdAndPayIdPost",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Payment Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Payment"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v3/merchants/{mId}/orders/{orderId}/payments": {
+            "get": {
+                "description": "Get all payments for an order",
+                "summary": "GetOrderPayments",
+                "operationId": "V3MerchantsOrdersPaymentsByMIdAndOrderIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Order Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/employees/{empId}/payments": {
+            "get": {
+                "description": "Get all payments under an employee",
+                "summary": "GetEmployeePayments",
+                "operationId": "V3MerchantsEmployeesPaymentsByMIdAndEmpIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "empId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Employee Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/refunds": {
+            "get": {
+                "description": "Get all refunds for a merchant",
+                "summary": "GetRefunds",
+                "operationId": "V3MerchantsRefundsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Refund"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/refunds/{refundId}": {
+            "get": {
+                "description": "Get a single refund",
+                "summary": "GetRefund",
+                "operationId": "V3MerchantsRefundsByMIdAndRefundIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "refundId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Refund"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/credits": {
+            "get": {
+                "description": "Get a list of credits",
+                "summary": "GetCredits",
+                "operationId": "V3MerchantsCreditsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter fields: [device.id, result, orderType.id, merchantId, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, cardType, order.id, failed, merchantTender.databaseId, clientCreatedTime, taxAmount, orderType.databaseId]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Credit"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/credits/{cId}": {
+            "get": {
+                "description": "Get a single credit",
+                "summary": "GetCredit",
+                "operationId": "V3MerchantsCreditsByMIdAndCIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Credit"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/credit_refunds": {
+            "get": {
+                "description": "Get a list of credit refunds",
+                "summary": "GetCreditRefunds",
+                "operationId": "V3MerchantsCreditRefundsByMIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [credit, germanInfo, appTracking]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Credit"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v3/merchants/{mId}/credit_refunds/{crId}": {
+            "get": {
+                "description": "Get a credit refund",
+                "summary": "GetCreditRefund",
+                "operationId": "V3MerchantsCreditRefundsByMIdAndCrIdGet",
+                "parameters": [
+                    {
+                        "name": "mId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Merchant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "crId",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "required": false,
+                        "description": "Expandable fields: [credit, germanInfo, appTracking]",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditRefund"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
     },
-    "/v3/merchants/{mId}/payments": {
-      "get": {
-        "description": "Get all payments",
-        "summary": "GetPayments",
-        "operationId": "V3MerchantsPaymentsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [tender, taxRates, germanInfo, lineItemPayments, cardTransaction, dccInfo, appTracking, refunds, order, transactionInfo]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
+    "servers": [
+        {
+            "url": "https://apisandbox.dev.clover.com/"
+        }
+    ],
+    "components": {
+        "requestBodies": {
+            "Authorization": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Authorization"
+                        }
+                    }
+                }
             }
-          }
         },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/payments/{payId}": {
-      "get": {
-        "description": "Get a single payment",
-        "summary": "GetPayment",
-        "operationId": "V3MerchantsPaymentsByMIdAndPayIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "payId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Payment Id"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
+        "schemas": {
+            "TaxableAmountRate": {
+                "title": "TaxableAmountRate",
+                "type": "object",
+                "properties": {
+                    "taxableAmount": {
+                        "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isVat": {
+                        "description": "Whether the taxable amount includes tax.",
+                        "type": "boolean"
+                    },
+                    "rate": {
+                        "description": "The tax rate. 100% = 1e7.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "Tax rate name. This field is optional.",
+                        "type": "string"
+                    },
+                    "transactionRef": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "id": {
+                        "description": "Tax rate id.",
+                        "type": "string"
+                    },
+                    "taxAmount": {
+                        "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "Address": {
+                "title": "Address",
+                "type": "object",
+                "properties": {
+                    "zip": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "address3": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "address2": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "address1": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "zip",
+                    "country",
+                    "city",
+                    "address1",
+                    "state"
+                ]
+            },
+            "ServiceChargeAmount": {
+                "title": "ServiceChargeAmount",
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Customer": {
+                "title": "Customer",
+                "type": "object",
+                "properties": {
+                    "customerSince": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "firstName": {
+                        "description": "First/given name of the customer",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "description": "Last name/surname of the customer",
+                        "type": "string"
+                    },
+                    "addresses": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Address"
+                        }
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/CustomerMetadata"
+                    },
+                    "emailAddresses": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EmailAddress"
+                        }
+                    },
+                    "cards": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Card"
+                        }
+                    },
+                    "marketingAllowed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "merchant": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "orders": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "phoneNumbers": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PhoneNumber"
+                        }
+                    }
+                }
+            },
+            "IdType": {
+                "title": "idType",
+                "example": "DRIVERS_LICENSE",
+                "type": "string",
+                "enum": [
+                    "DRIVERS_LICENSE",
+                    "PASSPORT"
+                ]
+            },
+            "CashAdvanceCustomerIdentification": {
+                "title": "CashAdvanceCustomerIdentification",
+                "type": "object",
+                "properties": {
+                    "addressZipCode": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addressCountry": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "idType": {
+                        "$ref": "#/components/schemas/IdType"
+                    },
+                    "serialNumber": {
+                        "description": "Identification serial number",
+                        "type": "string"
+                    },
+                    "maskedSerialNumber": {
+                        "description": "Masked identification serial number",
+                        "type": "string"
+                    },
+                    "issuingState": {
+                        "description": "State in which identification was issued",
+                        "type": "string"
+                    },
+                    "addressState": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "customerName": {
+                        "description": "Full customer name",
+                        "type": "string"
+                    },
+                    "issuingCountry": {
+                        "description": "Country in which identification was issued",
+                        "type": "string"
+                    },
+                    "addressStreet1": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addressStreet2": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "encryptedSerialNumber": {
+                        "description": "Encrypted identification serial number",
+                        "type": "string"
+                    },
+                    "expirationDate": {
+                        "description": "Expiration date in format MMDDYYYY",
+                        "type": "string"
+                    },
+                    "addressCity": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "LineItemPayment": {
+                "title": "LineItemPayment",
+                "type": "object",
+                "properties": {
+                    "binName": {
+                        "description": "Bin this line item payment was for",
+                        "type": "string"
+                    },
+                    "percentage": {
+                        "description": "Percent of this line item covered by this payment",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "refunded": {
+                        "description": "Payment has been refunded",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "Unique identifier; TBD this is confusing because it's used as either line item id or payment id",
+                        "type": "string"
+                    }
+                }
+            },
+            "CardType": {
+                "title": "cardType",
+                "example": "VISA",
+                "type": "string",
+                "enum": [
+                    "VISA",
+                    "MC",
+                    "AMEX",
+                    "DISCOVER",
+                    "DINERS_CLUB",
+                    "JCB",
+                    "MAESTRO",
+                    "SOLO",
+                    "LASER",
+                    "CHINA_UNION_PAY",
+                    "CARTE_BLANCHE",
+                    "UNKNOWN",
+                    "GIFT_CARD",
+                    "EBT",
+                    "GIROCARD",
+                    "INTERAC",
+                    "OTHER"
+                ]
+            },
+            "Type": {
+                "title": "type",
+                "example": "TAB",
+                "type": "string",
+                "enum": [
+                    "TAB",
+                    "AUTH"
+                ]
+            },
+            "Authorization": {
+                "title": "Authorization",
+                "type": "object",
+                "properties": {
+                    "authcode": {
+                        "description": "Authorization code",
+                        "type": "string"
+                    },
+                    "last4": {
+                        "description": "Last 4 digits of credit card used for authorization",
+                        "type": "string"
+                    },
+                    "note": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "tabName": {
+                        "description": "Name of tab",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "Amount authorized",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "closingPayment": {
+                        "$ref": "#/components/schemas/Payment"
+                    },
+                    "cardType": {
+                        "$ref": "#/components/schemas/CardType"
+                    },
+                    "createdTime": {
+                        "description": "Time authorization was recorded on server",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "payment": {
+                        "$ref": "#/components/schemas/Payment"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/Type"
+                    }
+                }
+            },
+            "Result": {
+                "title": "result",
+                "example": "SUCCESS",
+                "type": "string",
+                "enum": [
+                    "SUCCESS",
+                    "FAIL",
+                    "INITIATED",
+                    "VOIDED",
+                    "VOIDING",
+                    "VOID_FAILED",
+                    "AUTH",
+                    "AUTH_COMPLETED"
+                ]
+            },
+            "Credit": {
+                "title": "Credit",
+                "type": "object",
+                "properties": {
+                    "tender": {
+                        "$ref": "#/components/schemas/Tender"
+                    },
+                    "amount": {
+                        "description": "Amount paid",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "voidReason": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "germanInfo": {
+                        "$ref": "#/components/schemas/GermanInfo"
+                    },
+                    "cardTransaction": {
+                        "$ref": "#/components/schemas/CardTransaction"
+                    },
+                    "transactionSettings": {
+                        "$ref": "#/components/schemas/TransactionSettings"
+                    },
+                    "dccInfo": {
+                        "$ref": "#/components/schemas/DCCInfo"
+                    },
+                    "employee": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/Result"
+                    },
+                    "clientCreatedTime": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "taxRates": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TaxableAmountRate"
+                        }
+                    },
+                    "orderRef": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "appTracking": {
+                        "$ref": "#/components/schemas/AppTracking"
+                    },
+                    "createdTime": {
+                        "description": "Time payment was recorded on server",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "voided": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "creditRefunds": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CreditRefund"
+                        }
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "customers": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "taxAmount": {
+                        "description": "Amount paid in tax",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Reference"
+                    }
+                }
+            },
+            "CreditRefund": {
+                "title": "CreditRefund",
+                "type": "object",
+                "properties": {
+                    "clientCreatedTime": {
+                        "description": "The time when the refund was recorded on the client",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "orderRef": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "germanInfo": {
+                        "$ref": "#/components/schemas/GermanInfo"
+                    },
+                    "appTracking": {
+                        "$ref": "#/components/schemas/AppTracking"
+                    },
+                    "createdTime": {
+                        "description": "The time when the refund was recorded on the server",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "credit": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "employee": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Reference"
+                    }
+                }
+            },
+            "GermanInfo": {
+                "title": "GermanInfo",
+                "type": "object",
+                "properties": {
+                    "customerTransactionDOLValues": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "traceNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "transactionAID": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "merchantJournalDOL": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "transactionTypeGermany": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvMandate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "merchantJournalDOLValues": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "hostResponsePrintDataBM60": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvReceiptFormat": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "cardSequenceNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "receiptNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "transactionCaseGermany": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvIban": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "cardTrack2": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "receiptType": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvCreditorId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "terminalID": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "oldTraceNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "configProductLabel": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvExtAppLabel": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvPreNotification": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "configMerchantId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "hostResponseAidParBMP53": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "sepaElvMandateId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "transactionScriptResults": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "transactionMSApp": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "merchantTransactionDOLValues": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "SignatureEntryLocation": {
+                "title": "signatureEntryLocation",
+                "example": "ON_SCREEN",
+                "type": "string",
+                "enum": [
+                    "ON_SCREEN",
+                    "ON_PAPER",
+                    "NONE"
+                ]
+            },
+            "TipMode": {
+                "title": "tipMode",
+                "example": "TIP_PROVIDED",
+                "type": "string",
+                "enum": [
+                    "TIP_PROVIDED",
+                    "ON_SCREEN_BEFORE_PAYMENT",
+                    "ON_SCREEN_AFTER_PAYMENT",
+                    "ON_PAPER",
+                    "NO_TIP"
+                ]
+            },
+            "TransactionSettings": {
+                "title": "TransactionSettings",
+                "type": "object",
+                "properties": {
+                    "disableCashBack": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "disableDuplicateCheck": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "cloverShouldHandleReceipts": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "returnResultOnTransactionComplete": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "cardEntryMethods": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "disableRestartTransactionOnFailure": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "forceOfflinePayment": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "signatureEntryLocation": {
+                        "$ref": "#/components/schemas/SignatureEntryLocation"
+                    },
+                    "tipMode": {
+                        "$ref": "#/components/schemas/TipMode"
+                    },
+                    "allowOfflinePayment": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "disableReceiptSelection": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "autoAcceptSignature": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "forcePinEntryOnSwipe": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "signatureThreshold": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "tippableAmount": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "autoAcceptPaymentConfirmations": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "approveOfflinePaymentWithoutPrompt": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "SignatureDisclaimer": {
+                "title": "SignatureDisclaimer",
+                "type": "object",
+                "properties": {
+                    "disclaimerText": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "SelectedService": {
+                "title": "selectedService",
+                "example": "NONE",
+                "type": "string",
+                "enum": [
+                    "NONE",
+                    "PAYMENT",
+                    "REFUND",
+                    "CANCELLATION",
+                    "PRE_AUTH",
+                    "UPDATE_PRE_AUTH",
+                    "PAYMENT_COMPLETION",
+                    "CASH_ADVANCE",
+                    "DEFERRED_PAYMENT",
+                    "DEFERRED_PAYMENT_COMPLETION",
+                    "VOICE_AUTHORISATION",
+                    "CARDHOLDER_DETECTION"
+                ]
+            },
+            "AccountSelection": {
+                "title": "accountSelection",
+                "example": "CREDIT",
+                "type": "string",
+                "enum": [
+                    "CREDIT",
+                    "DEBIT",
+                    "CHECKING",
+                    "SAVINGS"
+                ]
+            },
+            "TransactionResult": {
+                "title": "transactionResult",
+                "example": "APPROVED",
+                "type": "string",
+                "enum": [
+                    "APPROVED",
+                    "DECLINED",
+                    "ABORTED",
+                    "VOICE_AUTHORISATION",
+                    "PAYMENT_PART_ONLY",
+                    "PARTIALLY_APPROVED",
+                    "NONE"
+                ]
+            },
+            "ReversalReason": {
+                "title": "reversalReason",
+                "example": "CHIP_DECLINE",
+                "type": "string",
+                "enum": [
+                    "CHIP_DECLINE",
+                    "CARDHOLDER_CANCELLATION",
+                    "COMMUNICATION_ERROR",
+                    "OTHER_REASON"
+                ]
+            },
+            "TxFormat": {
+                "title": "txFormat",
+                "example": "DEFAULT",
+                "type": "string",
+                "enum": [
+                    "DEFAULT",
+                    "NEXO"
+                ]
+            },
+            "TransactionInfo": {
+                "title": "TransactionInfo",
+                "type": "object",
+                "properties": {
+                    "receiptExtraData": {
+                        "description": "Extra data for receipt",
+                        "type": "string"
+                    },
+                    "selectedService": {
+                        "$ref": "#/components/schemas/SelectedService"
+                    },
+                    "identityDocument": {
+                        "$ref": "#/components/schemas/IdentityDocument"
+                    },
+                    "accountSelection": {
+                        "$ref": "#/components/schemas/AccountSelection"
+                    },
+                    "reversalMacKsn": {
+                        "description": "MAC KSN for reversal",
+                        "type": "string"
+                    },
+                    "transactionLocale": {
+                        "description": "Locale for the transaction (e.g. en-CA)",
+                        "type": "string"
+                    },
+                    "maskedTrack2": {
+                        "description": "Masked track2 data",
+                        "type": "string"
+                    },
+                    "installmentsPlanDesc": {
+                        "description": "AR Installments: selected plan desc",
+                        "type": "string"
+                    },
+                    "transactionResult": {
+                        "$ref": "#/components/schemas/TransactionResult"
+                    },
+                    "transactionTags": {
+                        "description": "Contains a hex string with needed TLV tags for certification",
+                        "type": "string"
+                    },
+                    "merchantIdentifier": {
+                        "description": "When concatenated with the Acquirer Identifier, uniquely identifies a given merchant",
+                        "type": "string"
+                    },
+                    "reversalReason": {
+                        "$ref": "#/components/schemas/ReversalReason"
+                    },
+                    "merchantNameLocation": {
+                        "description": "Indicates the name and location of the merchant",
+                        "type": "string"
+                    },
+                    "receiptNumber": {
+                        "description": "Transaction Receipt Number",
+                        "type": "string"
+                    },
+                    "reversalMac": {
+                        "description": "MAC for reversal",
+                        "type": "string"
+                    },
+                    "batchNumber": {
+                        "description": "Transaction Batch Number",
+                        "type": "string"
+                    },
+                    "txFormat": {
+                        "$ref": "#/components/schemas/TxFormat"
+                    },
+                    "fiscalInvoiceNumber": {
+                        "description": "Consists of 4 digits prefix + 8 digits",
+                        "type": "string"
+                    },
+                    "installmentsPlanCode": {
+                        "description": "AR Installments: plan alphanum code",
+                        "type": "string"
+                    },
+                    "installmentsQuantity": {
+                        "description": "AR Installments: number of installments",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "terminalIdentification": {
+                        "description": "Designates the unique location of a terminal at a merchant",
+                        "type": "string"
+                    },
+                    "languageIndicator": {
+                        "description": "2 character language used for the transaction.  Deprecated in factor of transactionLocale.",
+                        "type": "string"
+                    },
+                    "stan": {
+                        "description": "STAN(System Audit Trace Number)",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "reversalStan": {
+                        "description": "STAN for reversal",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "installmentsPlanId": {
+                        "description": "AR Installments: selected plan id",
+                        "type": "string"
+                    },
+                    "cardTypeLabel": {
+                        "description": "Card type label",
+                        "type": "string"
+                    }
+                }
+            },
+            "VaultedCard": {
+                "title": "VaultedCard",
+                "type": "object",
+                "properties": {
+                    "last4": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "cardholderName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "first6": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "expirationDate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "token": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "last4",
+                    "first6"
+                ]
+            },
+            "CustomerMetadata": {
+                "title": "CustomerMetadata",
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "description": "A note about the customer.",
+                        "type": "string"
+                    },
+                    "modifiedTime": {
+                        "description": "The timestamp from when this customer's data was last updated.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "businessName": {
+                        "description": "The name of the business the customer is associated with.",
+                        "type": "string"
+                    },
+                    "dobDay": {
+                        "description": "The day part of the date of birth for this customer.",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dobYear": {
+                        "description": "The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dobMonth": {
+                        "description": "The month part of the date of birth for this customer.",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "Reference": {
+                "title": "Reference",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    }
+                }
+            },
+            "IdentityDocument": {
+                "title": "IdentityDocument",
+                "type": "object",
+                "properties": {
+                    "number": {
+                        "description": "The identification number",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Type of personal identification: National Document, Passport, etc",
+                        "type": "string"
+                    }
+                }
+            },
+            "CashAdvanceExtra": {
+                "title": "CashAdvanceExtra",
+                "type": "object",
+                "properties": {
+                    "cashAdvanceCustomerIdentification": {
+                        "$ref": "#/components/schemas/CashAdvanceCustomerIdentification"
+                    },
+                    "cashAdvanceSerialNum": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Tender": {
+                "title": "Tender",
+                "type": "object",
+                "properties": {
+                    "instructions": {
+                        "description": "Label Key",
+                        "type": "string"
+                    },
+                    "visible": {
+                        "description": "If this merchant tender is visible",
+                        "type": "boolean"
+                    },
+                    "editable": {
+                        "description": "If this merchant tender is editable",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "Label Key",
+                        "type": "string"
+                    },
+                    "labelKey": {
+                        "description": "Label Key",
+                        "type": "string"
+                    },
+                    "opensCashDrawer": {
+                        "description": "If this tender opens the cash drawer",
+                        "type": "boolean"
+                    },
+                    "supportsTipping": {
+                        "description": "Allow tipping on payment from tender",
+                        "type": "boolean"
+                    },
+                    "enabled": {
+                        "description": "If this merchant tender is enabled",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PaymentTaxRate": {
+                "title": "PaymentTaxRate",
+                "type": "object",
+                "properties": {
+                    "taxableAmount": {
+                        "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDefault": {
+                        "description": "Whether the tax rate was configued as a default tax rate at the time that the payment was created.",
+                        "type": "boolean"
+                    },
+                    "isVat": {
+                        "description": "Whether merchant is configured as VAT",
+                        "type": "boolean"
+                    },
+                    "rate": {
+                        "description": "The tax rate. 100% = 1e7.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "Tax rate name. This field is optional.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Tax rate id.",
+                        "type": "string"
+                    },
+                    "taxAmount": {
+                        "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "required": [
+                    "taxableAmount",
+                    "rate",
+                    "name"
+                ]
+            },
+            "EmailAddress": {
+                "title": "EmailAddress",
+                "type": "object",
+                "properties": {
+                    "emailAddress": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "verifiedTime": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "required": [
+                    "emailAddress"
+                ]
+            },
+            "AppTracking": {
+                "title": "AppTracking",
+                "type": "object",
+                "properties": {
+                    "developerAppId": {
+                        "description": "The uuid from the developer application.  This is typically populated and used only on the back end.",
+                        "type": "string"
+                    },
+                    "applicationVersion": {
+                        "description": "A string representing a semanticversion.  See http://semver.org/",
+                        "type": "string"
+                    },
+                    "sourceSDKVersion": {
+                        "description": "A string representing a semanticversion.  See http://semver.org/",
+                        "type": "string"
+                    },
+                    "sourceSDK": {
+                        "description": "A string representing a SDK",
+                        "type": "string"
+                    },
+                    "applicationID": {
+                        "description": "A string representing an application",
+                        "type": "string"
+                    },
+                    "applicationName": {
+                        "description": "The name of the developer application.",
+                        "type": "string"
+                    }
+                }
+            },
+            "Card": {
+                "title": "Card",
+                "type": "object",
+                "properties": {
+                    "last4": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "cardType": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "first6": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "expirationDate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "token": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "last4",
+                    "first6"
+                ]
+            },
+            "EntryType": {
+                "title": "entryType",
+                "example": "SWIPED",
+                "type": "string",
+                "enum": [
+                    "SWIPED",
+                    "KEYED",
+                    "VOICE",
+                    "VAULTED",
+                    "OFFLINE_SWIPED",
+                    "OFFLINE_KEYED",
+                    "EMV_CONTACT",
+                    "EMV_CONTACTLESS",
+                    "MSD_CONTACTLESS",
+                    "PINPAD_MANUAL_ENTRY",
+                    "QR_CODE",
+                    "SCANNED"
+                ]
+            },
+            "AvsResult": {
+                "title": "avsResult",
+                "example": "SUCCESS",
+                "type": "string",
+                "enum": [
+                    "SUCCESS",
+                    "ZIP_CODE_MATCH",
+                    "ZIP_CODE_MATCH_ADDRESS_NOT_CHECKED",
+                    "ADDRESS_MATCH",
+                    "ADDRESS_MATCH_ZIP_NOT_CHECKED",
+                    "NEITHER_MATCH",
+                    "SERVICE_FAILURE",
+                    "SERVICE_UNAVAILABLE",
+                    "NOT_CHECKED",
+                    "ZIP_CODE_NOT_MATCHED_ADDRESS_NOT_CHECKED",
+                    "ADDRESS_NOT_MATCHED_ZIP_CODE_NOT_CHECKED"
+                ]
+            },
+            "Type3637": {
+                "title": "type3637",
+                "example": "AUTH",
+                "type": "string",
+                "enum": [
+                    "AUTH",
+                    "PREAUTH",
+                    "PREAUTHCAPTURE",
+                    "ADJUST",
+                    "VOID",
+                    "VOIDRETURN",
+                    "RETURN",
+                    "REFUND",
+                    "NAKEDREFUND",
+                    "GETBALANCE",
+                    "BATCHCLOSE",
+                    "ACTIVATE",
+                    "BALANCE_LOCK",
+                    "LOAD",
+                    "CASHOUT",
+                    "CASHOUT_ACTIVE_STATUS",
+                    "REDEMPTION",
+                    "REDEMPTION_UNLOCK",
+                    "RELOAD",
+                    "CASH_ADVANCE",
+                    "VOID_CREDIT",
+                    "REFUND_CREDIT",
+                    "INTERNET_ACTIVATE",
+                    "TOKEN_REQUEST",
+                    "VERIFICATION"
+                ]
+            },
+            "GatewayTxState": {
+                "title": "gatewayTxState",
+                "example": "INITIATED",
+                "type": "string",
+                "enum": [
+                    "INITIATED",
+                    "INITIATED_ON_AUTH",
+                    "ACKNOWLEDGED",
+                    "CONNECT_FAILED",
+                    "TIMEOUT",
+                    "FAILED",
+                    "REVERSE_INITIATED",
+                    "REVERSE_INITIATED_ON_AUTH",
+                    "REVERSED",
+                    "REVERSAL_FAILED",
+                    "EXTERNAL"
+                ]
+            },
+            "State": {
+                "title": "state",
+                "example": "PENDING",
+                "type": "string",
+                "enum": [
+                    "PENDING",
+                    "CLOSED"
+                ]
+            },
+            "CardTransaction": {
+                "title": "CardTransaction",
+                "type": "object",
+                "properties": {
+                    "entryType": {
+                        "$ref": "#/components/schemas/EntryType"
+                    },
+                    "last4": {
+                        "description": "The last four digits of the card number",
+                        "type": "string"
+                    },
+                    "authCode": {
+                        "description": "Authorization code (if successful)",
+                        "type": "string"
+                    },
+                    "avsResult": {
+                        "$ref": "#/components/schemas/AvsResult"
+                    },
+                    "cardType": {
+                        "$ref": "#/components/schemas/CardType"
+                    },
+                    "transactionNo": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/Type3637"
+                    },
+                    "first6": {
+                        "description": "The first four digits of the card number",
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "begBalance": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "token": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "vaultedCard": {
+                        "$ref": "#/components/schemas/VaultedCard"
+                    },
+                    "endBalance": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cardholderName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "gatewayTxState": {
+                        "$ref": "#/components/schemas/GatewayTxState"
+                    },
+                    "currency": {
+                        "description": "Currency code",
+                        "type": "string"
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/State"
+                    }
+                }
+            },
+            "VoidReason": {
+                "title": "voidReason",
+                "example": "USER_CANCEL",
+                "type": "string",
+                "enum": [
+                    "USER_CANCEL",
+                    "TRANSPORT_ERROR",
+                    "REJECT_SIGNATURE",
+                    "REJECT_PARTIAL_AUTH",
+                    "NOT_APPROVED",
+                    "FAILED",
+                    "AUTH_CLOSED_NEW_CARD",
+                    "DEVELOPER_PAY_PARTIAL_AUTH",
+                    "REJECT_DUPLICATE",
+                    "REJECT_OFFLINE",
+                    "GIFTCARD_LOAD_FAILED",
+                    "USER_GIFTCARD_LOAD_CANCEL",
+                    "DEVELOPER_PAY_TIP_ADJUST_FAILED"
+                ]
+            },
+            "Payment": {
+                "title": "Payment",
+                "type": "object",
+                "properties": {
+                    "modifiedTime": {
+                        "description": "Last modified time of the payment",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "note": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "voidReason": {
+                        "$ref": "#/components/schemas/VoidReason"
+                    },
+                    "lineItemPayments": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LineItemPayment"
+                        }
+                    },
+                    "germanInfo": {
+                        "$ref": "#/components/schemas/GermanInfo"
+                    },
+                    "cashTendered": {
+                        "description": "Amount of cash given by the customer",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cardTransaction": {
+                        "$ref": "#/components/schemas/CardTransaction"
+                    },
+                    "transactionSettings": {
+                        "$ref": "#/components/schemas/TransactionSettings"
+                    },
+                    "cashbackAmount": {
+                        "description": "Amount given back in a cash back transaction",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cashAdvanceExtra": {
+                        "$ref": "#/components/schemas/CashAdvanceExtra"
+                    },
+                    "employee": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "refunds": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Refund"
+                        }
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/Result"
+                    },
+                    "offline": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "serviceCharge": {
+                        "$ref": "#/components/schemas/ServiceChargeAmount"
+                    },
+                    "taxRates": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PaymentTaxRate"
+                        }
+                    },
+                    "createdTime": {
+                        "description": "Time payment was recorded on server",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "externalPaymentId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "tender": {
+                        "$ref": "#/components/schemas/Tender"
+                    },
+                    "amount": {
+                        "description": "Total amount paid",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "signatureDisclaimer": {
+                        "$ref": "#/components/schemas/SignatureDisclaimer"
+                    },
+                    "tipAmount": {
+                        "description": "Amount paid in tips",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "dccInfo": {
+                        "$ref": "#/components/schemas/DCCInfo"
+                    },
+                    "transactionInfo": {
+                        "$ref": "#/components/schemas/TransactionInfo"
+                    },
+                    "clientCreatedTime": {
+                        "description": "",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "additionalCharges": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AdditionalChargeAmount"
+                        }
+                    },
+                    "appTracking": {
+                        "$ref": "#/components/schemas/AppTracking"
+                    },
+                    "taxAmount": {
+                        "description": "Amount paid in tax",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Reference"
+                    }
+                }
+            },
+            "Refund": {
+                "title": "Refund",
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "description": "Total amount refunded, including tax and tip",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "overrideMerchantTender": {
+                        "$ref": "#/components/schemas/Tender"
+                    },
+                    "voidReason": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "germanInfo": {
+                        "$ref": "#/components/schemas/GermanInfo"
+                    },
+                    "tipAmount": {
+                        "description": "Tip amount refunded",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cardTransaction": {
+                        "$ref": "#/components/schemas/CardTransaction"
+                    },
+                    "taxableAmountRates": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TaxableAmountRate"
+                        }
+                    },
+                    "employee": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "lineItems": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "clientCreatedTime": {
+                        "description": "The time when the refund was recorded on the client",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "serviceChargeAmount": {
+                        "$ref": "#/components/schemas/ServiceChargeAmount"
+                    },
+                    "additionalCharges": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AdditionalChargeAmount"
+                        }
+                    },
+                    "orderRef": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "appTracking": {
+                        "$ref": "#/components/schemas/AppTracking"
+                    },
+                    "createdTime": {
+                        "description": "The time when the refund was recorded on the server",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "payment": {
+                        "$ref": "#/components/schemas/Reference"
+                    },
+                    "voided": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "Unique identifier",
+                        "type": "string"
+                    },
+                    "taxAmount": {
+                        "description": "Tax amount refunded",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Reference"
+                    }
+                }
+            },
+            "PhoneNumber": {
+                "title": "PhoneNumber",
+                "type": "object",
+                "properties": {
+                    "phoneNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "phoneNumber"
+                ]
+            },
+            "DCCInfo": {
+                "title": "DCCInfo",
+                "type": "object",
+                "properties": {
+                    "marginRatePercentage": {
+                        "description": "Margin Rate Percentage",
+                        "type": "string"
+                    },
+                    "dccApplied": {
+                        "description": "Flag indicating whether DCC was applied on this txn",
+                        "type": "boolean"
+                    },
+                    "exchangeRate": {
+                        "description": "Exchange Rate",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "exchangeRateSourceTimeStamp": {
+                        "description": "Exchange Rate Source Timestamp",
+                        "type": "string"
+                    },
+                    "inquiryRateId": {
+                        "description": "Inquiry Rate ID (IPG)",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "exchangeRateSourceName": {
+                        "description": "Exchange Rate Source Name",
+                        "type": "string"
+                    },
+                    "foreignCurrencyCode": {
+                        "description": "Foreign currency code",
+                        "type": "string"
+                    },
+                    "foreignAmount": {
+                        "description": "Foreign (transaction) amount",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "Type4546": {
+                "title": "type4546",
+                "example": "INTERAC",
+                "type": "string",
+                "enum": [
+                    "INTERAC"
+                ]
+            },
+            "AdditionalChargeAmount": {
+                "title": "AdditionalChargeAmount",
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "description": "Amount of the additional charge",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "id": {
+                        "description": "Additional charge id",
+                        "type": "string"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/Type4546"
+                    }
+                }
             }
-          }
-        },
-        "security": []
-      },
-      "post": {
-        "summary": "UpdatePayment",
-        "operationId": "V3MerchantsPaymentsByMIdAndPayIdPost",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "payId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Payment Id"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/orders/{orderId}/payments": {
-      "get": {
-        "description": "Get all payments for an order",
-        "summary": "GetOrderPayments",
-        "operationId": "V3MerchantsOrdersPaymentsByMIdAndOrderIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "orderId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Order Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/employees/{empId}/payments": {
-      "get": {
-        "description": "Get all payments under an employee",
-        "summary": "GetEmployeePayments",
-        "operationId": "V3MerchantsEmployeesPaymentsByMIdAndEmpIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "empId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Employee Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/refunds": {
-      "get": {
-        "description": "Get all refunds for a merchant",
-        "summary": "GetRefunds",
-        "operationId": "V3MerchantsRefundsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Refund"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/refunds/{refundId}": {
-      "get": {
-        "description": "Get a single refund",
-        "summary": "GetRefund",
-        "operationId": "V3MerchantsRefundsByMIdAndRefundIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "refundId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Refund"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/credits": {
-      "get": {
-        "description": "Get a list of credits",
-        "summary": "GetCredits",
-        "operationId": "V3MerchantsCreditsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Filter fields: [device.id, result, orderType.id, merchantId, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, cardType, order.id, failed, merchantTender.databaseId, clientCreatedTime, taxAmount, orderType.databaseId]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Credit"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/credits/{cId}": {
-      "get": {
-        "description": "Get a single credit",
-        "summary": "GetCredit",
-        "operationId": "V3MerchantsCreditsByMIdAndCIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "cId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Credit"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/credit_refunds": {
-      "get": {
-        "description": "Get a list of credit refunds",
-        "summary": "GetCreditRefunds",
-        "operationId": "V3MerchantsCreditRefundsByMIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [credit, germanInfo, appTracking]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Credit"
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/v3/merchants/{mId}/credit_refunds/{crId}": {
-      "get": {
-        "description": "Get a credit refund",
-        "summary": "GetCreditRefund",
-        "operationId": "V3MerchantsCreditRefundsByMIdAndCrIdGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "mId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Merchant Id"
-          },
-          {
-            "name": "crId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": ""
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: [credit, germanInfo, appTracking]"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/CreditRefund"
-            }
-          }
-        },
-        "security": []
-      }
+        }
     }
-  },
-  "definitions": {
-    "TaxableAmountRate": {
-      "title": "TaxableAmountRate",
-      "type": "object",
-      "properties": {
-        "taxableAmount": {
-          "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "isVat": {
-          "description": "Whether the taxable amount includes tax.",
-          "type": "boolean"
-        },
-        "rate": {
-          "description": "The tax rate. 100% = 1e7.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "Tax rate name. This field is optional.",
-          "type": "string"
-        },
-        "transactionRef": {
-          "$ref": "#/definitions/Reference"
-        },
-        "id": {
-          "description": "Tax rate id.",
-          "type": "string"
-        },
-        "taxAmount": {
-          "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "Address": {
-      "title": "Address",
-      "type": "object",
-      "properties": {
-        "zip": {
-          "description": "",
-          "type": "string"
-        },
-        "country": {
-          "description": "",
-          "type": "string"
-        },
-        "address3": {
-          "description": "",
-          "type": "string"
-        },
-        "address2": {
-          "description": "",
-          "type": "string"
-        },
-        "city": {
-          "description": "",
-          "type": "string"
-        },
-        "address1": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "",
-          "type": "string"
-        },
-        "state": {
-          "description": "",
-          "type": "string"
-        }
-      },
-      "required": [
-        "zip",
-        "country",
-        "city",
-        "address1",
-        "state"
-      ]
-    },
-    "ServiceChargeAmount": {
-      "title": "ServiceChargeAmount",
-      "type": "object",
-      "properties": {
-        "amount": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "",
-          "type": "string"
-        }
-      }
-    },
-    "Customer": {
-      "title": "Customer",
-      "type": "object",
-      "properties": {
-        "customerSince": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "firstName": {
-          "description": "First/given name of the customer",
-          "type": "string"
-        },
-        "lastName": {
-          "description": "Last name/surname of the customer",
-          "type": "string"
-        },
-        "addresses": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Address"
-          }
-        },
-        "metadata": {
-          "$ref": "#/definitions/CustomerMetadata"
-        },
-        "emailAddresses": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EmailAddress"
-          }
-        },
-        "cards": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Card"
-          }
-        },
-        "marketingAllowed": {
-          "description": "",
-          "type": "boolean"
-        },
-        "merchant": {
-          "$ref": "#/definitions/Reference"
-        },
-        "orders": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "phoneNumbers": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhoneNumber"
-          }
-        }
-      }
-    },
-    "IdType": {
-      "title": "idType",
-      "example": "DRIVERS_LICENSE",
-      "type": "string",
-      "enum": [
-        "DRIVERS_LICENSE",
-        "PASSPORT"
-      ]
-    },
-    "CashAdvanceCustomerIdentification": {
-      "title": "CashAdvanceCustomerIdentification",
-      "type": "object",
-      "properties": {
-        "addressZipCode": {
-          "description": "",
-          "type": "string"
-        },
-        "addressCountry": {
-          "description": "",
-          "type": "string"
-        },
-        "idType": {
-          "$ref": "#/definitions/IdType"
-        },
-        "serialNumber": {
-          "description": "Identification serial number",
-          "type": "string"
-        },
-        "maskedSerialNumber": {
-          "description": "Masked identification serial number",
-          "type": "string"
-        },
-        "issuingState": {
-          "description": "State in which identification was issued",
-          "type": "string"
-        },
-        "addressState": {
-          "description": "",
-          "type": "string"
-        },
-        "customerName": {
-          "description": "Full customer name",
-          "type": "string"
-        },
-        "issuingCountry": {
-          "description": "Country in which identification was issued",
-          "type": "string"
-        },
-        "addressStreet1": {
-          "description": "",
-          "type": "string"
-        },
-        "addressStreet2": {
-          "description": "",
-          "type": "string"
-        },
-        "encryptedSerialNumber": {
-          "description": "Encrypted identification serial number",
-          "type": "string"
-        },
-        "expirationDate": {
-          "description": "Expiration date in format MMDDYYYY",
-          "type": "string"
-        },
-        "addressCity": {
-          "description": "",
-          "type": "string"
-        }
-      }
-    },
-    "LineItemPayment": {
-      "title": "LineItemPayment",
-      "type": "object",
-      "properties": {
-        "binName": {
-          "description": "Bin this line item payment was for",
-          "type": "string"
-        },
-        "percentage": {
-          "description": "Percent of this line item covered by this payment",
-          "type": "integer",
-          "format": "int64"
-        },
-        "refunded": {
-          "description": "Payment has been refunded",
-          "type": "boolean"
-        },
-        "id": {
-          "description": "Unique identifier; TBD this is confusing because it's used as either line item id or payment id",
-          "type": "string"
-        }
-      }
-    },
-    "CardType": {
-      "title": "cardType",
-      "example": "VISA",
-      "type": "string",
-      "enum": [
-        "VISA",
-        "MC",
-        "AMEX",
-        "DISCOVER",
-        "DINERS_CLUB",
-        "JCB",
-        "MAESTRO",
-        "SOLO",
-        "LASER",
-        "CHINA_UNION_PAY",
-        "CARTE_BLANCHE",
-        "UNKNOWN",
-        "GIFT_CARD",
-        "EBT",
-        "GIROCARD",
-        "INTERAC",
-        "OTHER"
-      ]
-    },
-    "Type": {
-      "title": "type",
-      "example": "TAB",
-      "type": "string",
-      "enum": [
-        "TAB",
-        "AUTH"
-      ]
-    },
-    "Authorization": {
-      "title": "Authorization",
-      "type": "object",
-      "properties": {
-        "authcode": {
-          "description": "Authorization code",
-          "type": "string"
-        },
-        "last4": {
-          "description": "Last 4 digits of credit card used for authorization",
-          "type": "string"
-        },
-        "note": {
-          "description": "",
-          "type": "string"
-        },
-        "tabName": {
-          "description": "Name of tab",
-          "type": "string"
-        },
-        "amount": {
-          "description": "Amount authorized",
-          "type": "integer",
-          "format": "int64"
-        },
-        "closingPayment": {
-          "$ref": "#/definitions/Payment"
-        },
-        "cardType": {
-          "$ref": "#/definitions/CardType"
-        },
-        "createdTime": {
-          "description": "Time authorization was recorded on server",
-          "type": "integer",
-          "format": "int64"
-        },
-        "payment": {
-          "$ref": "#/definitions/Payment"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/Type"
-        }
-      }
-    },
-    "Result": {
-      "title": "result",
-      "example": "SUCCESS",
-      "type": "string",
-      "enum": [
-        "SUCCESS",
-        "FAIL",
-        "INITIATED",
-        "VOIDED",
-        "VOIDING",
-        "VOID_FAILED",
-        "AUTH",
-        "AUTH_COMPLETED"
-      ]
-    },
-    "Credit": {
-      "title": "Credit",
-      "type": "object",
-      "properties": {
-        "tender": {
-          "$ref": "#/definitions/Tender"
-        },
-        "amount": {
-          "description": "Amount paid",
-          "type": "integer",
-          "format": "int64"
-        },
-        "voidReason": {
-          "description": "",
-          "type": "string"
-        },
-        "germanInfo": {
-          "$ref": "#/definitions/GermanInfo"
-        },
-        "cardTransaction": {
-          "$ref": "#/definitions/CardTransaction"
-        },
-        "transactionSettings": {
-          "$ref": "#/definitions/TransactionSettings"
-        },
-        "dccInfo": {
-          "$ref": "#/definitions/DCCInfo"
-        },
-        "employee": {
-          "$ref": "#/definitions/Reference"
-        },
-        "result": {
-          "$ref": "#/definitions/Result"
-        },
-        "clientCreatedTime": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "taxRates": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TaxableAmountRate"
-          }
-        },
-        "orderRef": {
-          "$ref": "#/definitions/Reference"
-        },
-        "appTracking": {
-          "$ref": "#/definitions/AppTracking"
-        },
-        "createdTime": {
-          "description": "Time payment was recorded on server",
-          "type": "integer",
-          "format": "int64"
-        },
-        "voided": {
-          "description": "",
-          "type": "boolean"
-        },
-        "creditRefunds": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreditRefund"
-          }
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "customers": {
-          "$ref": "#/definitions/Customer"
-        },
-        "taxAmount": {
-          "description": "Amount paid in tax",
-          "type": "integer",
-          "format": "int64"
-        },
-        "device": {
-          "$ref": "#/definitions/Reference"
-        }
-      }
-    },
-    "CreditRefund": {
-      "title": "CreditRefund",
-      "type": "object",
-      "properties": {
-        "clientCreatedTime": {
-          "description": "The time when the refund was recorded on the client",
-          "type": "integer",
-          "format": "int64"
-        },
-        "orderRef": {
-          "$ref": "#/definitions/Reference"
-        },
-        "germanInfo": {
-          "$ref": "#/definitions/GermanInfo"
-        },
-        "appTracking": {
-          "$ref": "#/definitions/AppTracking"
-        },
-        "createdTime": {
-          "description": "The time when the refund was recorded on the server",
-          "type": "integer",
-          "format": "int64"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "credit": {
-          "$ref": "#/definitions/Reference"
-        },
-        "employee": {
-          "$ref": "#/definitions/Reference"
-        },
-        "device": {
-          "$ref": "#/definitions/Reference"
-        }
-      }
-    },
-    "GermanInfo": {
-      "title": "GermanInfo",
-      "type": "object",
-      "properties": {
-        "customerTransactionDOLValues": {
-          "description": "",
-          "type": "string"
-        },
-        "traceNumber": {
-          "description": "",
-          "type": "string"
-        },
-        "transactionAID": {
-          "description": "",
-          "type": "string"
-        },
-        "merchantJournalDOL": {
-          "description": "",
-          "type": "string"
-        },
-        "transactionTypeGermany": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvMandate": {
-          "description": "",
-          "type": "string"
-        },
-        "merchantJournalDOLValues": {
-          "description": "",
-          "type": "string"
-        },
-        "hostResponsePrintDataBM60": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvReceiptFormat": {
-          "description": "",
-          "type": "string"
-        },
-        "cardSequenceNumber": {
-          "description": "",
-          "type": "string"
-        },
-        "receiptNumber": {
-          "description": "",
-          "type": "string"
-        },
-        "transactionCaseGermany": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvIban": {
-          "description": "",
-          "type": "string"
-        },
-        "cardTrack2": {
-          "description": "",
-          "type": "string"
-        },
-        "receiptType": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvCreditorId": {
-          "description": "",
-          "type": "string"
-        },
-        "terminalID": {
-          "description": "",
-          "type": "string"
-        },
-        "oldTraceNumber": {
-          "description": "",
-          "type": "string"
-        },
-        "configProductLabel": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvExtAppLabel": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvPreNotification": {
-          "description": "",
-          "type": "string"
-        },
-        "configMerchantId": {
-          "description": "",
-          "type": "string"
-        },
-        "hostResponseAidParBMP53": {
-          "description": "",
-          "type": "string"
-        },
-        "sepaElvMandateId": {
-          "description": "",
-          "type": "string"
-        },
-        "transactionScriptResults": {
-          "description": "",
-          "type": "string"
-        },
-        "transactionMSApp": {
-          "description": "",
-          "type": "string"
-        },
-        "merchantTransactionDOLValues": {
-          "description": "",
-          "type": "string"
-        }
-      }
-    },
-    "SignatureEntryLocation": {
-      "title": "signatureEntryLocation",
-      "example": "ON_SCREEN",
-      "type": "string",
-      "enum": [
-        "ON_SCREEN",
-        "ON_PAPER",
-        "NONE"
-      ]
-    },
-    "TipMode": {
-      "title": "tipMode",
-      "example": "TIP_PROVIDED",
-      "type": "string",
-      "enum": [
-        "TIP_PROVIDED",
-        "ON_SCREEN_BEFORE_PAYMENT",
-        "ON_SCREEN_AFTER_PAYMENT",
-        "ON_PAPER",
-        "NO_TIP"
-      ]
-    },
-    "TransactionSettings": {
-      "title": "TransactionSettings",
-      "type": "object",
-      "properties": {
-        "disableCashBack": {
-          "description": "",
-          "type": "boolean"
-        },
-        "disableDuplicateCheck": {
-          "description": "",
-          "type": "boolean"
-        },
-        "cloverShouldHandleReceipts": {
-          "description": "",
-          "type": "boolean"
-        },
-        "returnResultOnTransactionComplete": {
-          "description": "",
-          "type": "boolean"
-        },
-        "cardEntryMethods": {
-          "description": "",
-          "type": "integer",
-          "format": "int32"
-        },
-        "disableRestartTransactionOnFailure": {
-          "description": "",
-          "type": "boolean"
-        },
-        "forceOfflinePayment": {
-          "description": "",
-          "type": "boolean"
-        },
-        "signatureEntryLocation": {
-          "$ref": "#/definitions/SignatureEntryLocation"
-        },
-        "tipMode": {
-          "$ref": "#/definitions/TipMode"
-        },
-        "allowOfflinePayment": {
-          "description": "",
-          "type": "boolean"
-        },
-        "disableReceiptSelection": {
-          "description": "",
-          "type": "boolean"
-        },
-        "autoAcceptSignature": {
-          "description": "",
-          "type": "boolean"
-        },
-        "forcePinEntryOnSwipe": {
-          "description": "",
-          "type": "boolean"
-        },
-        "signatureThreshold": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "tippableAmount": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "autoAcceptPaymentConfirmations": {
-          "description": "",
-          "type": "boolean"
-        },
-        "approveOfflinePaymentWithoutPrompt": {
-          "description": "",
-          "type": "boolean"
-        }
-      }
-    },
-    "SignatureDisclaimer": {
-      "title": "SignatureDisclaimer",
-      "type": "object",
-      "properties": {
-        "disclaimerText": {
-          "description": "",
-          "type": "string"
-        }
-      }
-    },
-    "SelectedService": {
-      "title": "selectedService",
-      "example": "NONE",
-      "type": "string",
-      "enum": [
-        "NONE",
-        "PAYMENT",
-        "REFUND",
-        "CANCELLATION",
-        "PRE_AUTH",
-        "UPDATE_PRE_AUTH",
-        "PAYMENT_COMPLETION",
-        "CASH_ADVANCE",
-        "DEFERRED_PAYMENT",
-        "DEFERRED_PAYMENT_COMPLETION",
-        "VOICE_AUTHORISATION",
-        "CARDHOLDER_DETECTION"
-      ]
-    },
-    "AccountSelection": {
-      "title": "accountSelection",
-      "example": "CREDIT",
-      "type": "string",
-      "enum": [
-        "CREDIT",
-        "DEBIT",
-        "CHECKING",
-        "SAVINGS"
-      ]
-    },
-    "TransactionResult": {
-      "title": "transactionResult",
-      "example": "APPROVED",
-      "type": "string",
-      "enum": [
-        "APPROVED",
-        "DECLINED",
-        "ABORTED",
-        "VOICE_AUTHORISATION",
-        "PAYMENT_PART_ONLY",
-        "PARTIALLY_APPROVED",
-        "NONE"
-      ]
-    },
-    "ReversalReason": {
-      "title": "reversalReason",
-      "example": "CHIP_DECLINE",
-      "type": "string",
-      "enum": [
-        "CHIP_DECLINE",
-        "CARDHOLDER_CANCELLATION",
-        "COMMUNICATION_ERROR",
-        "OTHER_REASON"
-      ]
-    },
-    "TxFormat": {
-      "title": "txFormat",
-      "example": "DEFAULT",
-      "type": "string",
-      "enum": [
-        "DEFAULT",
-        "NEXO"
-      ]
-    },
-    "TransactionInfo": {
-      "title": "TransactionInfo",
-      "type": "object",
-      "properties": {
-        "receiptExtraData": {
-          "description": "Extra data for receipt",
-          "type": "string"
-        },
-        "selectedService": {
-          "$ref": "#/definitions/SelectedService"
-        },
-        "identityDocument": {
-          "$ref": "#/definitions/IdentityDocument"
-        },
-        "accountSelection": {
-          "$ref": "#/definitions/AccountSelection"
-        },
-        "reversalMacKsn": {
-          "description": "MAC KSN for reversal",
-          "type": "string"
-        },
-        "transactionLocale": {
-          "description": "Locale for the transaction (e.g. en-CA)",
-          "type": "string"
-        },
-        "maskedTrack2": {
-          "description": "Masked track2 data",
-          "type": "string"
-        },
-        "installmentsPlanDesc": {
-          "description": "AR Installments: selected plan desc",
-          "type": "string"
-        },
-        "transactionResult": {
-          "$ref": "#/definitions/TransactionResult"
-        },
-        "transactionTags": {
-          "description": "Contains a hex string with needed TLV tags for certification",
-          "type": "string"
-        },
-        "merchantIdentifier": {
-          "description": "When concatenated with the Acquirer Identifier, uniquely identifies a given merchant",
-          "type": "string"
-        },
-        "reversalReason": {
-          "$ref": "#/definitions/ReversalReason"
-        },
-        "merchantNameLocation": {
-          "description": "Indicates the name and location of the merchant",
-          "type": "string"
-        },
-        "receiptNumber": {
-          "description": "Transaction Receipt Number",
-          "type": "string"
-        },
-        "reversalMac": {
-          "description": "MAC for reversal",
-          "type": "string"
-        },
-        "batchNumber": {
-          "description": "Transaction Batch Number",
-          "type": "string"
-        },
-        "txFormat": {
-          "$ref": "#/definitions/TxFormat"
-        },
-        "fiscalInvoiceNumber": {
-          "description": "Consists of 4 digits prefix + 8 digits",
-          "type": "string"
-        },
-        "installmentsPlanCode": {
-          "description": "AR Installments: plan alphanum code",
-          "type": "string"
-        },
-        "installmentsQuantity": {
-          "description": "AR Installments: number of installments",
-          "type": "integer",
-          "format": "int32"
-        },
-        "terminalIdentification": {
-          "description": "Designates the unique location of a terminal at a merchant",
-          "type": "string"
-        },
-        "languageIndicator": {
-          "description": "2 character language used for the transaction.  Deprecated in factor of transactionLocale.",
-          "type": "string"
-        },
-        "stan": {
-          "description": "STAN(System Audit Trace Number)",
-          "type": "integer",
-          "format": "int32"
-        },
-        "reversalStan": {
-          "description": "STAN for reversal",
-          "type": "integer",
-          "format": "int32"
-        },
-        "installmentsPlanId": {
-          "description": "AR Installments: selected plan id",
-          "type": "string"
-        },
-        "cardTypeLabel": {
-          "description": "Card type label",
-          "type": "string"
-        }
-      }
-    },
-    "VaultedCard": {
-      "title": "VaultedCard",
-      "type": "object",
-      "properties": {
-        "last4": {
-          "description": "",
-          "type": "string"
-        },
-        "cardholderName": {
-          "description": "",
-          "type": "string"
-        },
-        "first6": {
-          "description": "",
-          "type": "string"
-        },
-        "expirationDate": {
-          "description": "",
-          "type": "string"
-        },
-        "token": {
-          "description": "",
-          "type": "string"
-        }
-      },
-      "required": [
-        "last4",
-        "first6"
-      ]
-    },
-    "CustomerMetadata": {
-      "title": "CustomerMetadata",
-      "type": "object",
-      "properties": {
-        "note": {
-          "description": "A note about the customer.",
-          "type": "string"
-        },
-        "modifiedTime": {
-          "description": "The timestamp from when this customer's data was last updated.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "businessName": {
-          "description": "The name of the business the customer is associated with.",
-          "type": "string"
-        },
-        "dobDay": {
-          "description": "The day part of the date of birth for this customer.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "dobYear": {
-          "description": "The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "dobMonth": {
-          "description": "The month part of the date of birth for this customer.",
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "Reference": {
-      "title": "Reference",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        }
-      }
-    },
-    "IdentityDocument": {
-      "title": "IdentityDocument",
-      "type": "object",
-      "properties": {
-        "number": {
-          "description": "The identification number",
-          "type": "string"
-        },
-        "type": {
-          "description": "Type of personal identification: National Document, Passport, etc",
-          "type": "string"
-        }
-      }
-    },
-    "CashAdvanceExtra": {
-      "title": "CashAdvanceExtra",
-      "type": "object",
-      "properties": {
-        "cashAdvanceCustomerIdentification": {
-          "$ref": "#/definitions/CashAdvanceCustomerIdentification"
-        },
-        "cashAdvanceSerialNum": {
-          "description": "",
-          "type": "string"
-        }
-      }
-    },
-    "Tender": {
-      "title": "Tender",
-      "type": "object",
-      "properties": {
-        "instructions": {
-          "description": "Label Key",
-          "type": "string"
-        },
-        "visible": {
-          "description": "If this merchant tender is visible",
-          "type": "boolean"
-        },
-        "editable": {
-          "description": "If this merchant tender is editable",
-          "type": "boolean"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "label": {
-          "description": "Label Key",
-          "type": "string"
-        },
-        "labelKey": {
-          "description": "Label Key",
-          "type": "string"
-        },
-        "opensCashDrawer": {
-          "description": "If this tender opens the cash drawer",
-          "type": "boolean"
-        },
-        "supportsTipping": {
-          "description": "Allow tipping on payment from tender",
-          "type": "boolean"
-        },
-        "enabled": {
-          "description": "If this merchant tender is enabled",
-          "type": "boolean"
-        }
-      }
-    },
-    "PaymentTaxRate": {
-      "title": "PaymentTaxRate",
-      "type": "object",
-      "properties": {
-        "taxableAmount": {
-          "description": "The sub-total of line items that the tax was based on. For VAT, this amount includes tax. For all others, this amount does not include tax.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "isDefault": {
-          "description": "Whether the tax rate was configued as a default tax rate at the time that the payment was created.",
-          "type": "boolean"
-        },
-        "isVat": {
-          "description": "Whether merchant is configured as VAT",
-          "type": "boolean"
-        },
-        "rate": {
-          "description": "The tax rate. 100% = 1e7.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "Tax rate name. This field is optional.",
-          "type": "string"
-        },
-        "id": {
-          "description": "Tax rate id.",
-          "type": "string"
-        },
-        "taxAmount": {
-          "description": "The amount of tax collected. In cases where there are multiple payments for an order then it may be necessary to add an extra cent of tax to the last payment.",
-          "type": "integer",
-          "format": "int64"
-        }
-      },
-      "required": [
-        "taxableAmount",
-        "rate",
-        "name"
-      ]
-    },
-    "EmailAddress": {
-      "title": "EmailAddress",
-      "type": "object",
-      "properties": {
-        "emailAddress": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "",
-          "type": "string"
-        },
-        "verifiedTime": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        }
-      },
-      "required": [
-        "emailAddress"
-      ]
-    },
-    "AppTracking": {
-      "title": "AppTracking",
-      "type": "object",
-      "properties": {
-        "developerAppId": {
-          "description": "The uuid from the developer application.  This is typically populated and used only on the back end.",
-          "type": "string"
-        },
-        "applicationVersion": {
-          "description": "A string representing a semanticversion.  See http://semver.org/",
-          "type": "string"
-        },
-        "sourceSDKVersion": {
-          "description": "A string representing a semanticversion.  See http://semver.org/",
-          "type": "string"
-        },
-        "sourceSDK": {
-          "description": "A string representing a SDK",
-          "type": "string"
-        },
-        "applicationID": {
-          "description": "A string representing an application",
-          "type": "string"
-        },
-        "applicationName": {
-          "description": "The name of the developer application.",
-          "type": "string"
-        }
-      }
-    },
-    "Card": {
-      "title": "Card",
-      "type": "object",
-      "properties": {
-        "last4": {
-          "description": "",
-          "type": "string"
-        },
-        "firstName": {
-          "description": "",
-          "type": "string"
-        },
-        "lastName": {
-          "description": "",
-          "type": "string"
-        },
-        "cardType": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "",
-          "type": "string"
-        },
-        "first6": {
-          "description": "",
-          "type": "string"
-        },
-        "expirationDate": {
-          "description": "",
-          "type": "string"
-        },
-        "token": {
-          "description": "",
-          "type": "string"
-        }
-      },
-      "required": [
-        "last4",
-        "first6"
-      ]
-    },
-    "EntryType": {
-      "title": "entryType",
-      "example": "SWIPED",
-      "type": "string",
-      "enum": [
-        "SWIPED",
-        "KEYED",
-        "VOICE",
-        "VAULTED",
-        "OFFLINE_SWIPED",
-        "OFFLINE_KEYED",
-        "EMV_CONTACT",
-        "EMV_CONTACTLESS",
-        "MSD_CONTACTLESS",
-        "PINPAD_MANUAL_ENTRY",
-        "QR_CODE",
-        "SCANNED"
-      ]
-    },
-    "AvsResult": {
-      "title": "avsResult",
-      "example": "SUCCESS",
-      "type": "string",
-      "enum": [
-        "SUCCESS",
-        "ZIP_CODE_MATCH",
-        "ZIP_CODE_MATCH_ADDRESS_NOT_CHECKED",
-        "ADDRESS_MATCH",
-        "ADDRESS_MATCH_ZIP_NOT_CHECKED",
-        "NEITHER_MATCH",
-        "SERVICE_FAILURE",
-        "SERVICE_UNAVAILABLE",
-        "NOT_CHECKED",
-        "ZIP_CODE_NOT_MATCHED_ADDRESS_NOT_CHECKED",
-        "ADDRESS_NOT_MATCHED_ZIP_CODE_NOT_CHECKED"
-      ]
-    },
-    "Type3637": {
-      "title": "type3637",
-      "example": "AUTH",
-      "type": "string",
-      "enum": [
-        "AUTH",
-        "PREAUTH",
-        "PREAUTHCAPTURE",
-        "ADJUST",
-        "VOID",
-        "VOIDRETURN",
-        "RETURN",
-        "REFUND",
-        "NAKEDREFUND",
-        "GETBALANCE",
-        "BATCHCLOSE",
-        "ACTIVATE",
-        "BALANCE_LOCK",
-        "LOAD",
-        "CASHOUT",
-        "CASHOUT_ACTIVE_STATUS",
-        "REDEMPTION",
-        "REDEMPTION_UNLOCK",
-        "RELOAD",
-        "CASH_ADVANCE",
-        "VOID_CREDIT",
-        "REFUND_CREDIT",
-        "INTERNET_ACTIVATE",
-        "TOKEN_REQUEST",
-        "VERIFICATION"
-      ]
-    },
-    "GatewayTxState": {
-      "title": "gatewayTxState",
-      "example": "INITIATED",
-      "type": "string",
-      "enum": [
-        "INITIATED",
-        "INITIATED_ON_AUTH",
-        "ACKNOWLEDGED",
-        "CONNECT_FAILED",
-        "TIMEOUT",
-        "FAILED",
-        "REVERSE_INITIATED",
-        "REVERSE_INITIATED_ON_AUTH",
-        "REVERSED",
-        "REVERSAL_FAILED",
-        "EXTERNAL"
-      ]
-    },
-    "State": {
-      "title": "state",
-      "example": "PENDING",
-      "type": "string",
-      "enum": [
-        "PENDING",
-        "CLOSED"
-      ]
-    },
-    "CardTransaction": {
-      "title": "CardTransaction",
-      "type": "object",
-      "properties": {
-        "entryType": {
-          "$ref": "#/definitions/EntryType"
-        },
-        "last4": {
-          "description": "The last four digits of the card number",
-          "type": "string"
-        },
-        "authCode": {
-          "description": "Authorization code (if successful)",
-          "type": "string"
-        },
-        "avsResult": {
-          "$ref": "#/definitions/AvsResult"
-        },
-        "cardType": {
-          "$ref": "#/definitions/CardType"
-        },
-        "transactionNo": {
-          "description": "",
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/Type3637"
-        },
-        "first6": {
-          "description": "The first four digits of the card number",
-          "type": "string"
-        },
-        "referenceId": {
-          "description": "",
-          "type": "string"
-        },
-        "begBalance": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "token": {
-          "description": "",
-          "type": "string"
-        },
-        "vaultedCard": {
-          "$ref": "#/definitions/VaultedCard"
-        },
-        "endBalance": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "cardholderName": {
-          "description": "",
-          "type": "string"
-        },
-        "gatewayTxState": {
-          "$ref": "#/definitions/GatewayTxState"
-        },
-        "currency": {
-          "description": "Currency code",
-          "type": "string"
-        },
-        "state": {
-          "$ref": "#/definitions/State"
-        }
-      }
-    },
-    "VoidReason": {
-      "title": "voidReason",
-      "example": "USER_CANCEL",
-      "type": "string",
-      "enum": [
-        "USER_CANCEL",
-        "TRANSPORT_ERROR",
-        "REJECT_SIGNATURE",
-        "REJECT_PARTIAL_AUTH",
-        "NOT_APPROVED",
-        "FAILED",
-        "AUTH_CLOSED_NEW_CARD",
-        "DEVELOPER_PAY_PARTIAL_AUTH",
-        "REJECT_DUPLICATE",
-        "REJECT_OFFLINE",
-        "GIFTCARD_LOAD_FAILED",
-        "USER_GIFTCARD_LOAD_CANCEL",
-        "DEVELOPER_PAY_TIP_ADJUST_FAILED"
-      ]
-    },
-    "Payment": {
-      "title": "Payment",
-      "type": "object",
-      "properties": {
-        "modifiedTime": {
-          "description": "Last modified time of the payment",
-          "type": "integer",
-          "format": "int64"
-        },
-        "note": {
-          "description": "",
-          "type": "string"
-        },
-        "voidReason": {
-          "$ref": "#/definitions/VoidReason"
-        },
-        "lineItemPayments": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LineItemPayment"
-          }
-        },
-        "germanInfo": {
-          "$ref": "#/definitions/GermanInfo"
-        },
-        "cashTendered": {
-          "description": "Amount of cash given by the customer",
-          "type": "integer",
-          "format": "int64"
-        },
-        "cardTransaction": {
-          "$ref": "#/definitions/CardTransaction"
-        },
-        "transactionSettings": {
-          "$ref": "#/definitions/TransactionSettings"
-        },
-        "cashbackAmount": {
-          "description": "Amount given back in a cash back transaction",
-          "type": "integer",
-          "format": "int64"
-        },
-        "cashAdvanceExtra": {
-          "$ref": "#/definitions/CashAdvanceExtra"
-        },
-        "employee": {
-          "$ref": "#/definitions/Reference"
-        },
-        "refunds": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Refund"
-          }
-        },
-        "result": {
-          "$ref": "#/definitions/Result"
-        },
-        "offline": {
-          "description": "",
-          "type": "boolean"
-        },
-        "serviceCharge": {
-          "$ref": "#/definitions/ServiceChargeAmount"
-        },
-        "taxRates": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PaymentTaxRate"
-          }
-        },
-        "createdTime": {
-          "description": "Time payment was recorded on server",
-          "type": "integer",
-          "format": "int64"
-        },
-        "externalPaymentId": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "order": {
-          "$ref": "#/definitions/Reference"
-        },
-        "tender": {
-          "$ref": "#/definitions/Tender"
-        },
-        "amount": {
-          "description": "Total amount paid",
-          "type": "integer",
-          "format": "int64"
-        },
-        "signatureDisclaimer": {
-          "$ref": "#/definitions/SignatureDisclaimer"
-        },
-        "tipAmount": {
-          "description": "Amount paid in tips",
-          "type": "integer",
-          "format": "int64"
-        },
-        "dccInfo": {
-          "$ref": "#/definitions/DCCInfo"
-        },
-        "transactionInfo": {
-          "$ref": "#/definitions/TransactionInfo"
-        },
-        "clientCreatedTime": {
-          "description": "",
-          "type": "integer",
-          "format": "int64"
-        },
-        "additionalCharges": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdditionalChargeAmount"
-          }
-        },
-        "appTracking": {
-          "$ref": "#/definitions/AppTracking"
-        },
-        "taxAmount": {
-          "description": "Amount paid in tax",
-          "type": "integer",
-          "format": "int64"
-        },
-        "device": {
-          "$ref": "#/definitions/Reference"
-        }
-      }
-    },
-    "Refund": {
-      "title": "Refund",
-      "type": "object",
-      "properties": {
-        "amount": {
-          "description": "Total amount refunded, including tax and tip",
-          "type": "integer",
-          "format": "int64"
-        },
-        "overrideMerchantTender": {
-          "$ref": "#/definitions/Tender"
-        },
-        "voidReason": {
-          "description": "",
-          "type": "string"
-        },
-        "germanInfo": {
-          "$ref": "#/definitions/GermanInfo"
-        },
-        "tipAmount": {
-          "description": "Tip amount refunded",
-          "type": "integer",
-          "format": "int64"
-        },
-        "cardTransaction": {
-          "$ref": "#/definitions/CardTransaction"
-        },
-        "taxableAmountRates": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TaxableAmountRate"
-          }
-        },
-        "employee": {
-          "$ref": "#/definitions/Reference"
-        },
-        "lineItems": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Reference"
-          }
-        },
-        "clientCreatedTime": {
-          "description": "The time when the refund was recorded on the client",
-          "type": "integer",
-          "format": "int64"
-        },
-        "serviceChargeAmount": {
-          "$ref": "#/definitions/ServiceChargeAmount"
-        },
-        "additionalCharges": {
-          "description": "",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdditionalChargeAmount"
-          }
-        },
-        "orderRef": {
-          "$ref": "#/definitions/Reference"
-        },
-        "appTracking": {
-          "$ref": "#/definitions/AppTracking"
-        },
-        "createdTime": {
-          "description": "The time when the refund was recorded on the server",
-          "type": "integer",
-          "format": "int64"
-        },
-        "payment": {
-          "$ref": "#/definitions/Reference"
-        },
-        "voided": {
-          "description": "",
-          "type": "boolean"
-        },
-        "id": {
-          "description": "Unique identifier",
-          "type": "string"
-        },
-        "taxAmount": {
-          "description": "Tax amount refunded",
-          "type": "integer",
-          "format": "int64"
-        },
-        "device": {
-          "$ref": "#/definitions/Reference"
-        }
-      }
-    },
-    "PhoneNumber": {
-      "title": "PhoneNumber",
-      "type": "object",
-      "properties": {
-        "phoneNumber": {
-          "description": "",
-          "type": "string"
-        },
-        "id": {
-          "description": "",
-          "type": "string"
-        }
-      },
-      "required": [
-        "phoneNumber"
-      ]
-    },
-    "DCCInfo": {
-      "title": "DCCInfo",
-      "type": "object",
-      "properties": {
-        "marginRatePercentage": {
-          "description": "Margin Rate Percentage",
-          "type": "string"
-        },
-        "dccApplied": {
-          "description": "Flag indicating whether DCC was applied on this txn",
-          "type": "boolean"
-        },
-        "exchangeRate": {
-          "description": "Exchange Rate",
-          "type": "integer",
-          "format": "int32"
-        },
-        "exchangeRateSourceTimeStamp": {
-          "description": "Exchange Rate Source Timestamp",
-          "type": "string"
-        },
-        "inquiryRateId": {
-          "description": "Inquiry Rate ID (IPG)",
-          "type": "integer",
-          "format": "int64"
-        },
-        "exchangeRateSourceName": {
-          "description": "Exchange Rate Source Name",
-          "type": "string"
-        },
-        "foreignCurrencyCode": {
-          "description": "Foreign currency code",
-          "type": "string"
-        },
-        "foreignAmount": {
-          "description": "Foreign (transaction) amount",
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "Type4546": {
-      "title": "type4546",
-      "example": "INTERAC",
-      "type": "string",
-      "enum": [
-        "INTERAC"
-      ]
-    },
-    "AdditionalChargeAmount": {
-      "title": "AdditionalChargeAmount",
-      "type": "object",
-      "properties": {
-        "amount": {
-          "description": "Amount of the additional charge",
-          "type": "integer",
-          "format": "int64"
-        },
-        "id": {
-          "description": "Additional charge id",
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/Type4546"
-        }
-      }
-    }
-  }
 }
