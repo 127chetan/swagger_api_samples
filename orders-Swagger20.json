@@ -40,14 +40,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, modifiedTime, orderType, cardTransaction.last4, manualTransaction, employee.name, title, device.id, clientCreatedTime, total, payType, customer.id, testMode, createdTime, id, state, deletedTime]"
+            "enum": ["employee.id", "note", "modifiedTime", "orderType", "cardTransaction.last4", "manualTransaction", "employee.name", "title", "device.id", "clientCreatedTime", "total", "payType", "customer.id", "testMode", "createdTime", "id", "state", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, serviceCharge, discounts, credits, payments, refunds]"
+            "enum": ["lineItems", "serviceCharge", "discounts", "credits", "payments", "refunds"]
           }
         ],
         "responses": {
@@ -121,7 +121,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           }
         ],
         "responses": {
@@ -161,7 +161,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           },
           {
             "name": "body",
@@ -370,7 +370,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           }
         ],
         "responses": {
@@ -458,7 +458,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           }
         ],
         "responses": {
@@ -505,7 +505,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           },
           {
             "name": "body",
@@ -1009,7 +1009,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [reason, id, name, price, quantity, printed, deletedTime, merchantId, orderId, removedById]"
+            "enum": ["reason", "id", "name", "price", "quantity", "printed", "deletedTime", "merchantId", "orderId", "removedById"]
           }
         ],
         "responses": {
