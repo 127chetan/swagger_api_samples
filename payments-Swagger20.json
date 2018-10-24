@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}/authorizations": {
@@ -37,14 +52,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [last4, note, amount, tabName, orderId, cardType, orderModifiedTime, type, device.id, result, authcode, closingPaymentId, merchantId, paymentId, createdTime, id, deletedTime]"
+            "enum": ["last4", "note", "amount", "tabName", "orderId", "cardType", "orderModifiedTime", "type", "device.id", "result", "authcode", "closingPaymentId", "merchantId", "paymentId", "createdTime", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [payment]"
+            "enum": ["payment"]
           }
         ],
         "responses": {
@@ -54,8 +69,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an authorization on a Payment",
@@ -89,8 +103,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/authorizations/{authId}": {
@@ -121,7 +134,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
+            "enum": ["cardTransaction", "dccInfo", "germanInfo", "appTracking", "taxRates", "lineItemPayments", "refunds", "order", "tender", "employee", "transactionInfo"]
           }
         ],
         "responses": {
@@ -131,8 +144,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "summary": "UpdateAuthorization",
@@ -169,8 +181,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "summary": "DeleteAuthorization",
@@ -207,8 +218,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/payments": {
@@ -232,14 +242,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
+            "enum": ["modifiedTime", "voidReason", "cardTransaction.last4", "cashTendered", "device.id", "result", "offline", "cardTransaction.transactionNo", "orderType.id", "paymentRefundId", "cardTransaction.state", "merchantId", "createdTime", "externalPaymentId", "voided", "id", "tender.id", "deletedTime", "employee.id", "order.modifiedTime", "amount", "tipAmount", "cardType", "order.id", "clientCreatedTime", "taxAmount", "orderType.databaseId", "cardTypeLabel"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tender, taxRates, germanInfo, lineItemPayments, cardTransaction, dccInfo, appTracking, refunds, order, transactionInfo]"
+            "enum": ["tender", "taxRates", "germanInfo", "lineItemPayments", "cardTransaction", "dccInfo", "appTracking", "refunds", "order", "transactionInfo"]
           }
         ],
         "responses": {
@@ -249,8 +259,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/payments/{payId}": {
@@ -281,7 +290,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
+            "enum": ["cardTransaction", "dccInfo", "germanInfo", "appTracking", "taxRates", "lineItemPayments", "refunds", "order", "tender", "employee", "transactionInfo"]
           }
         ],
         "responses": {
@@ -291,8 +300,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "summary": "UpdatePayment",
@@ -329,8 +337,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/payments": {
@@ -361,14 +368,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
+            "enum": ["modifiedTime", "voidReason", "cardTransaction.last4", "cashTendered", "device.id", "result", "offline", "cardTransaction.transactionNo", "orderType.id", "paymentRefundId", "cardTransaction.state", "merchantId", "createdTime", "externalPaymentId", "voided", "id", "tender.id", "deletedTime", "employee.id", "order.modifiedTime", "amount", "tipAmount", "cardType", "order.id", "clientCreatedTime", "taxAmount", "orderType.databaseId", "cardTypeLabel"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
+            "enum": ["cardTransaction", "dccInfo", "germanInfo", "appTracking", "taxRates", "lineItemPayments", "refunds", "order", "tender", "employee", "transactionInfo"]
           }
         ],
         "responses": {
@@ -378,8 +385,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/payments": {
@@ -410,14 +416,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, voidReason, cardTransaction.last4, cashTendered, device.id, result, offline, cardTransaction.transactionNo, orderType.id, paymentRefundId, cardTransaction.state, merchantId, createdTime, externalPaymentId, voided, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, tipAmount, cardType, order.id, clientCreatedTime, taxAmount, orderType.databaseId, cardTypeLabel]"
+            "enum": ["modifiedTime", "voidReason", "cardTransaction.last4", "cashTendered", "device.id", "result", "offline", "cardTransaction.transactionNo", "orderType.id", "paymentRefundId", "cardTransaction.state", "merchantId", "createdTime", "externalPaymentId", "voided", "id", "tender.id", "deletedTime", "employee.id", "order.modifiedTime", "amount", "tipAmount", "cardType", "order.id", "clientCreatedTime", "taxAmount", "orderType.databaseId", "cardTypeLabel"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [cardTransaction, dccInfo, germanInfo, appTracking, taxRates, lineItemPayments, refunds, order, tender, employee, transactionInfo]"
+            "enum": ["cardTransaction", "dccInfo", "germanInfo", "appTracking", "taxRates", "lineItemPayments", "refunds", "order", "tender", "employee", "transactionInfo"]
           }
         ],
         "responses": {
@@ -427,8 +433,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/refunds": {
@@ -452,7 +457,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]"
+            "enum": ["payment", "germanInfo", "appTracking", "employee", "overrideMerchantTender", "serviceCharge", "lineItems"]
           }
         ],
         "responses": {
@@ -462,8 +467,7 @@
               "$ref": "#/definitions/Refund"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/refunds/{refundId}": {
@@ -494,7 +498,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [payment, germanInfo, appTracking, employee, overrideMerchantTender, serviceCharge, lineItems]"
+            "enum": ["payment", "germanInfo", "appTracking", "employee", "overrideMerchantTender", "serviceCharge", "lineItems"]
           }
         ],
         "responses": {
@@ -504,8 +508,7 @@
               "$ref": "#/definitions/Refund"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credits": {
@@ -529,14 +532,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [device.id, result, orderType.id, merchantId, id, tender.id, deletedTime, employee.id, order.modifiedTime, amount, cardType, order.id, failed, merchantTender.databaseId, clientCreatedTime, taxAmount, orderType.databaseId]"
+            "enum": ["device.id", "result", "orderType.id", "merchantId", "id", "tender.id", "deletedTime", "employee.id", "order.modifiedTime", "amount", "cardType", "order.id", "failed", "merchantTender.databaseId", "clientCreatedTime", "taxAmount", "orderType.databaseId"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]"
+            "enum": ["dccInfo", "germanInfo", "appTracking", "tender", "employee", "cardTransaction", "order", "taxRates"]
           }
         ],
         "responses": {
@@ -546,8 +549,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credits/{cId}": {
@@ -578,7 +580,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [dccInfo, germanInfo, appTracking, tender, employee, cardTransaction, order, taxRates]"
+            "enum": ["dccInfo", "germanInfo", "appTracking", "tender", "employee", "cardTransaction", "order", "taxRates"]
           }
         ],
         "responses": {
@@ -588,8 +590,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credit_refunds": {
@@ -613,7 +614,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [credit, germanInfo, appTracking]"
+            "enum": ["credit", "germanInfo", "appTracking"]
           }
         ],
         "responses": {
@@ -623,8 +624,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credit_refunds/{crId}": {
@@ -655,7 +655,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [credit, germanInfo, appTracking]"
+            "enum": ["credit", "germanInfo", "appTracking"]
           }
         ],
         "responses": {
@@ -665,8 +665,7 @@
               "$ref": "#/definitions/CreditRefund"
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },

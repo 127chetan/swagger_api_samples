@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/apps/{aId}/merchants/{mId}/notifications": {
@@ -53,8 +68,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/apps/{aId}/devices/{dId}/notifications": {
@@ -94,8 +108,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

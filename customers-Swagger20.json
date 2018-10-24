@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}/customers.csv": {
@@ -37,14 +52,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -54,8 +69,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers": {
@@ -79,14 +93,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -96,8 +110,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a customer",
@@ -119,7 +132,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           },
           {
             "name": "body",
@@ -135,8 +148,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}": {
@@ -167,14 +179,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, firstName, lastName, fullName, customerSince, marketingAllowed, deletedTime, phoneNumber, emailAddress]"
+            "enum": ["id", "firstName", "lastName", "fullName", "customerSince", "marketingAllowed", "deletedTime", "phoneNumber", "emailAddress"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           }
         ],
         "responses": {
@@ -184,8 +196,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a customer",
@@ -214,7 +225,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [addresses, emailAddresses, phoneNumbers, cards, metadata]"
+            "enum": ["addresses", "emailAddresses", "phoneNumbers", "cards", "metadata"]
           },
           {
             "name": "body",
@@ -230,8 +241,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer",
@@ -269,8 +279,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/phone_numbers": {
@@ -310,8 +319,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/phone_numbers/{phoneId}": {
@@ -358,8 +366,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer phone number",
@@ -395,8 +402,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/email_addresses": {
@@ -436,8 +442,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/email_addresses/{emailId}": {
@@ -484,8 +489,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer email address",
@@ -521,8 +525,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/addresses": {
@@ -562,8 +565,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/addresses/{addressId}": {
@@ -610,8 +612,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer address",
@@ -647,8 +648,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/cards": {
@@ -688,8 +688,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/cards/{cardId}": {
@@ -736,8 +735,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer card",
@@ -773,8 +771,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/metadata": {
@@ -814,8 +811,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

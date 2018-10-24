@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}/orders": {
@@ -37,14 +52,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, modifiedTime, orderType, cardTransaction.last4, manualTransaction, employee.name, title, device.id, clientCreatedTime, total, payType, customer.id, testMode, createdTime, id, state, deletedTime]"
+            "enum": ["employee.id", "note", "modifiedTime", "orderType", "cardTransaction.last4", "manualTransaction", "employee.name", "title", "device.id", "clientCreatedTime", "total", "payType", "customer.id", "testMode", "createdTime", "id", "state", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, serviceCharge, discounts, credits, payments, refunds]"
+            "enum": ["lineItems", "serviceCharge", "discounts", "credits", "payments", "refunds"]
           }
         ],
         "responses": {
@@ -54,8 +69,7 @@
               "$ref": "#/definitions/Order"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an order",
@@ -86,8 +100,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}": {
@@ -118,7 +131,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           }
         ],
         "responses": {
@@ -128,8 +141,7 @@
               "$ref": "#/definitions/Order"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an order",
@@ -158,7 +170,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [lineItems, customers, payments, credits, refunds, serviceCharge, discounts]"
+            "enum": ["lineItems", "customers", "payments", "credits", "refunds", "serviceCharge", "discounts"]
           },
           {
             "name": "body",
@@ -174,8 +186,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an order",
@@ -213,8 +224,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/discounts": {
@@ -248,8 +258,7 @@
               "$ref": "#/definitions/Discount"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a discount on an order or line item",
@@ -287,8 +296,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/discounts/{discountId}": {
@@ -335,8 +343,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items": {
@@ -367,7 +374,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           }
         ],
         "responses": {
@@ -377,8 +384,7 @@
               "$ref": "#/definitions/LineItem"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a new line item",
@@ -416,8 +422,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}": {
@@ -455,7 +460,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           }
         ],
         "responses": {
@@ -465,8 +470,7 @@
               "$ref": "#/definitions/LineItem"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a line item",
@@ -502,7 +506,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, orderType, discounts, modifications, taxRates, payments]"
+            "enum": ["employee", "orderType", "discounts", "modifications", "taxRates", "payments"]
           },
           {
             "name": "body",
@@ -518,8 +522,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Void a line item",
@@ -564,8 +567,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/discounts": {
@@ -612,8 +614,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/discounts/{discountId}": {
@@ -667,8 +668,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/modifications": {
@@ -715,8 +715,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/modifications/{modificationId}": {
@@ -770,8 +769,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/bulk_line_items": {
@@ -811,8 +809,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/payments": {
@@ -852,8 +849,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/service_charge/": {
@@ -892,8 +888,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/service_charge/{chargeId}": {
@@ -940,8 +935,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/voided_line_items": {
@@ -981,8 +975,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/voided_line_items": {
@@ -1006,7 +999,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [reason, id, name, price, quantity, printed, deletedTime, merchantId, orderId, removedById]"
+            "enum": ["reason", "id", "name", "price", "quantity", "printed", "deletedTime", "merchantId", "orderId", "removedById"]
           }
         ],
         "responses": {
@@ -1016,8 +1009,7 @@
               "$ref": "#/definitions/VoidedLineItem"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{oldLineItemId}/exchange/{lineItemId}": {
@@ -1071,8 +1063,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

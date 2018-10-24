@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}/cash_events": {
@@ -37,14 +52,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
@@ -54,8 +69,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/cash_events": {
@@ -86,14 +100,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
@@ -103,8 +117,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/devices/{deviceId}/cash_events": {
@@ -135,14 +148,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [employee.id, note, amountChange, employee.name, type, device.id, timestamp]"
+            "enum": ["employee.id", "note", "amountChange", "employee.name", "type", "device.id", "timestamp"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [employee, device]"
+            "enum": ["employee", "device"]
           }
         ],
         "responses": {
@@ -152,8 +165,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },

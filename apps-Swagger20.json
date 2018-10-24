@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/apps/{aId}/merchants/{mId}/billing_info": {
@@ -47,8 +62,7 @@
               "$ref": "#/definitions/AppBillingInfo"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/apps/{aId}/merchants/{mId}/metereds/{meteredId}": {
@@ -89,8 +103,7 @@
               "$ref": "#/definitions/AppMeteredEvent"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an app billing metered event",
@@ -129,8 +142,7 @@
               "$ref": "#/definitions/AppMeteredEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/apps/{aId}/merchants/{mId}/metereds/{meteredId}/events/{eventId}": {

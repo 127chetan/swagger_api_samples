@@ -9,11 +9,26 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
+  ],
+  "x-samples-languages": [
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/merchants/{mId}/items": {
@@ -37,14 +52,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+            "enum": ["id", "name", "sku", "modifiedTime", "deleted", "hidden", "price", "alternateName", "itemCode", "item.id", "option.id", "tags.id", "tags.name", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           }
         ],
         "responses": {
@@ -54,8 +69,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an inventory item",
@@ -77,7 +91,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           },
           {
             "name": "body",
@@ -93,8 +107,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Bulk delete inventory items",
@@ -116,8 +129,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/items/{itemId}": {
@@ -148,7 +160,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           }
         ],
         "responses": {
@@ -158,8 +170,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an existing inventory item",
@@ -188,7 +199,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [tags, categories, taxRates, modifierGroups, itemStock, options]"
+            "enum": ["tags", "categories", "taxRates", "modifierGroups", "itemStock", "options"]
           },
           {
             "name": "body",
@@ -204,8 +215,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an inventory item",
@@ -234,8 +244,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/bulk_items": {
@@ -268,8 +277,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create multiple inventory items.",
@@ -300,8 +308,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/item_stocks": {
@@ -328,8 +335,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/item_stocks/{itemId}": {
@@ -363,8 +369,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update the stock of an inventory item",
@@ -402,8 +407,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete the stock of an inventory item",
@@ -432,8 +436,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/item_groups": {
@@ -457,14 +460,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, name, id, deletedTime]"
+            "enum": ["modifiedTime", "name", "id", "deletedTime"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           }
         ],
         "responses": {
@@ -474,8 +477,7 @@
               "$ref": "#/definitions/ItemGroup"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an item group",
@@ -497,7 +499,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           },
           {
             "name": "body",
@@ -513,8 +515,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/item_groups/{itemGroupId}": {
@@ -545,7 +546,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           }
         ],
         "responses": {
@@ -555,8 +556,7 @@
               "$ref": "#/definitions/ItemGroup"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an item group",
@@ -585,7 +585,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, attributes]"
+            "enum": ["items", "attributes"]
           },
           {
             "name": "body",
@@ -601,8 +601,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an item group",
@@ -631,8 +630,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tags": {
@@ -656,14 +654,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+            "enum": ["id", "name", "modifiedTime", "deleted"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -673,8 +671,7 @@
               "$ref": "#/definitions/Tag"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a tag",
@@ -705,8 +702,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tags/{tagId}": {
@@ -737,7 +733,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -747,8 +743,7 @@
               "$ref": "#/definitions/Tag"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single tag",
@@ -777,7 +772,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           },
           {
             "name": "body",
@@ -793,8 +788,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a tag",
@@ -823,8 +817,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/items/{itemId}/tags": {
@@ -855,14 +848,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, modifiedTime, deleted]"
+            "enum": ["id", "name", "modifiedTime", "deleted"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -872,8 +865,7 @@
               "$ref": "#/definitions/Tag"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tags/{tagId}/items": {
@@ -904,14 +896,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, hidden, itemCode, alternateName, option.id, deleted, item.id, price, name, id, sku, itemGroup.id]"
+            "enum": ["modifiedTime", "hidden", "itemCode", "alternateName", "option.id", "deleted", "item.id", "price", "name", "id", "sku", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items, printers]"
+            "enum": ["items", "printers"]
           }
         ],
         "responses": {
@@ -921,8 +913,7 @@
               "$ref": "#/definitions/Item"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tag_items": {
@@ -946,8 +937,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tax_rates": {
@@ -971,14 +961,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [isDefault, rate, items.id, name, id, taxAmount, taxType]"
+            "enum": ["isDefault", "rate", "items.id", "name", "id", "taxAmount", "taxType"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -988,8 +978,7 @@
               "$ref": "#/definitions/TaxRate"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a tax rate for a merchant",
@@ -1011,7 +1000,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1030,8 +1019,7 @@
               "$ref": "#/definitions/TaxRate"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tax_rates/{taxId}": {
@@ -1062,7 +1050,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1072,8 +1060,7 @@
               "$ref": "#/definitions/TaxRate"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single tax rate",
@@ -1111,8 +1098,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a single tax rate",
@@ -1141,8 +1127,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/categories": {
@@ -1166,14 +1151,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1183,8 +1168,7 @@
               "$ref": "#/definitions/Category"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an item category",
@@ -1206,7 +1190,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1222,8 +1206,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/categories/{catId}": {
@@ -1254,7 +1237,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1264,8 +1247,7 @@
               "$ref": "#/definitions/Category"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a category",
@@ -1294,7 +1276,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           },
           {
             "name": "body",
@@ -1310,8 +1292,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a single item category",
@@ -1340,8 +1321,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/categories/{catId}/items": {
@@ -1372,14 +1352,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1389,8 +1369,7 @@
               "$ref": "#/definitions/Item"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/items/{itemId}/categories": {
@@ -1421,14 +1400,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, deleted, sortOrder, name, id]"
+            "enum": ["modifiedTime", "deleted", "sortOrder", "name", "id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1438,8 +1417,7 @@
               "$ref": "#/definitions/Category"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/category_items": {
@@ -1463,15 +1441,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tax_rate_items": {
@@ -1495,8 +1472,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tax_rates/{taxId}/items": {
@@ -1527,14 +1503,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, name, sku, modifiedTime, deleted, hidden, price, alternateName, itemCode, item.id, option.id, tags.id, tags.name, itemGroup.id]"
+            "enum": ["id", "name", "sku", "modifiedTime", "deleted", "hidden", "price", "alternateName", "itemCode", "item.id", "option.id", "tags.id", "tags.name", "itemGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [items]"
+            "enum": ["items"]
           }
         ],
         "responses": {
@@ -1544,8 +1520,7 @@
               "$ref": "#/definitions/Item"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifier_groups": {
@@ -1569,14 +1544,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, sortOrder, name, id, category.id, showByDefault, negativeSortOrder]"
+            "enum": ["modifiedTime", "item.id", "sortOrder", "name", "id", "category.id", "showByDefault", "negativeSortOrder"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1586,8 +1561,7 @@
               "$ref": "#/definitions/ModifierGroup"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a modifier group",
@@ -1609,7 +1583,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           },
           {
             "name": "body",
@@ -1625,8 +1599,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifier_groups/{modGroupId}": {
@@ -1657,7 +1630,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1667,8 +1640,7 @@
               "$ref": "#/definitions/ModifierGroup"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a modifier group",
@@ -1697,7 +1669,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           },
           {
             "name": "body",
@@ -1713,8 +1685,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a modifier group",
@@ -1743,8 +1714,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/item_modifier_groups": {
@@ -1768,8 +1738,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifier_group_sort_orders": {
@@ -1802,8 +1771,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifiers": {
@@ -1827,14 +1795,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+            "enum": ["modifiedTime", "price", "name", "alternateName", "id", "modifierGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           }
         ],
         "responses": {
@@ -1844,8 +1812,7 @@
               "$ref": "#/definitions/Modifier"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifier_groups/{modGroupId}/modifiers": {
@@ -1876,14 +1843,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, price, name, alternateName, id, modifierGroup.id]"
+            "enum": ["modifiedTime", "price", "name", "alternateName", "id", "modifierGroup.id"]
           },
           {
             "name": "expand",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifiers, items]"
+            "enum": ["modifiers", "items"]
           }
         ],
         "responses": {
@@ -1893,8 +1860,7 @@
               "$ref": "#/definitions/Modifier"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a modifier",
@@ -1923,7 +1889,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           },
           {
             "name": "body",
@@ -1939,8 +1905,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/modifier_groups/{modGroupId}/modifiers/{modId}": {
@@ -1978,7 +1943,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           }
         ],
         "responses": {
@@ -1988,8 +1953,7 @@
               "$ref": "#/definitions/Modifier"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single modifier",
@@ -2025,7 +1989,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [modifierGroup]"
+            "enum": ["modifierGroup"]
           },
           {
             "name": "body",
@@ -2041,8 +2005,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a single modifier",
@@ -2078,8 +2041,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/attributes": {
@@ -2103,7 +2065,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, name, id, deletedTime, itemGroup.id]"
+            "enum": ["modifiedTime", "name", "id", "deletedTime", "itemGroup.id"]
           }
         ],
         "responses": {
@@ -2113,8 +2075,7 @@
               "$ref": "#/definitions/Attribute"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an attribute",
@@ -2136,7 +2097,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [options]"
+            "enum": ["options"]
           },
           {
             "name": "body",
@@ -2152,8 +2113,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/attributes/{attributeId}": {
@@ -2187,8 +2147,7 @@
               "$ref": "#/definitions/Attribute"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single attribute",
@@ -2217,7 +2176,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Expandable fields: [options]"
+            "enum": ["options"]
           },
           {
             "name": "body",
@@ -2233,8 +2192,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a single attribute",
@@ -2263,8 +2221,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/options": {
@@ -2288,14 +2245,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: []"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           }
         ],
         "responses": {
@@ -2305,8 +2255,7 @@
               "$ref": "#/definitions/Option"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/attributes/{attributeId}/options": {
@@ -2337,14 +2286,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: []"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           }
         ],
         "responses": {
@@ -2354,8 +2296,7 @@
               "$ref": "#/definitions/Option"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an option",
@@ -2380,13 +2321,6 @@
             "description": "Attribute Id"
           },
           {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: []"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": false,
@@ -2400,8 +2334,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/attributes/{attributeId}/options/{optionId}": {
@@ -2439,14 +2372,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [modifiedTime, item.id, name, attribute.id, id, deletedTime]"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: []"
+            "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
           }
         ],
         "responses": {
@@ -2456,8 +2382,7 @@
               "$ref": "#/definitions/Option"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an option",
@@ -2489,13 +2414,6 @@
             "description": "Option Id"
           },
           {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "Expandable fields: []"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": false,
@@ -2509,8 +2427,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an option",
@@ -2546,8 +2463,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/option_items": {
@@ -2571,8 +2487,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/discounts": {
@@ -2596,7 +2511,7 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Filter fields: [id, amount, percentage, modifiedtime]"
+            "enum": ["id", "amount", "percentage", "modifiedtime"]
           }
         ],
         "responses": {
@@ -2606,8 +2521,7 @@
               "$ref": "#/definitions/Discount"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an discount",
@@ -2638,8 +2552,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/discounts/{discountId}": {
@@ -2673,8 +2586,7 @@
               "$ref": "#/definitions/Discount"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an discount",
@@ -2712,8 +2624,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a discount",
@@ -2742,8 +2653,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },
