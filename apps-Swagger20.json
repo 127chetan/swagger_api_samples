@@ -28,7 +28,7 @@
     "application/json"
   ],
   "x-samples-languages": [
-    "curl", "node", "java", "swift", "csharp"
+    "curl", "node", "javascript", "java", "swift", "csharp"
   ],
   "paths": {
     "/v3/apps/{aId}/merchants/{mId}/billing_info": {
