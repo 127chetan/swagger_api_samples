@@ -69,8 +69,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/cash_events": {
@@ -118,8 +117,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/devices/{deviceId}/cash_events": {
@@ -167,8 +165,7 @@
               "$ref": "#/definitions/CashEvent"
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },
