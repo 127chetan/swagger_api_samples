@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
@@ -57,8 +69,7 @@
               "$ref": "#/definitions/Order"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an order",
@@ -89,8 +100,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}": {
@@ -131,8 +141,7 @@
               "$ref": "#/definitions/Order"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an order",
@@ -177,8 +186,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an order",
@@ -216,8 +224,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/discounts": {
@@ -251,8 +258,7 @@
               "$ref": "#/definitions/Discount"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a discount on an order or line item",
@@ -290,8 +296,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/discounts/{discountId}": {
@@ -338,8 +343,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items": {
@@ -380,8 +384,7 @@
               "$ref": "#/definitions/LineItem"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a new line item",
@@ -419,8 +422,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}": {
@@ -468,8 +470,7 @@
               "$ref": "#/definitions/LineItem"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a line item",
@@ -521,8 +522,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Void a line item",
@@ -567,8 +567,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/discounts": {
@@ -615,8 +614,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/discounts/{discountId}": {
@@ -670,8 +668,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/modifications": {
@@ -718,8 +715,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{lineItemId}/modifications/{modificationId}": {
@@ -773,8 +769,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/bulk_line_items": {
@@ -814,8 +809,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/payments": {
@@ -855,8 +849,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/service_charge/": {
@@ -895,8 +888,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/service_charge/{chargeId}": {
@@ -943,8 +935,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/voided_line_items": {
@@ -984,8 +975,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/voided_line_items": {
@@ -1019,8 +1009,7 @@
               "$ref": "#/definitions/VoidedLineItem"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/line_items/{oldLineItemId}/exchange/{lineItemId}": {
@@ -1074,8 +1063,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

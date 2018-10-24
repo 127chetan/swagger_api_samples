@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
@@ -57,8 +69,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers": {
@@ -99,8 +110,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a customer",
@@ -138,8 +148,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}": {
@@ -187,8 +196,7 @@
               "$ref": "#/definitions/Customer"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a customer",
@@ -233,8 +241,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer",
@@ -272,8 +279,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/phone_numbers": {
@@ -313,8 +319,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/phone_numbers/{phoneId}": {
@@ -361,8 +366,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer phone number",
@@ -398,8 +402,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/email_addresses": {
@@ -439,8 +442,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/email_addresses/{emailId}": {
@@ -487,8 +489,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer email address",
@@ -524,8 +525,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/addresses": {
@@ -565,8 +565,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/addresses/{addressId}": {
@@ -613,8 +612,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer address",
@@ -650,8 +648,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/cards": {
@@ -691,8 +688,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/cards/{cardId}": {
@@ -739,8 +735,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a customer card",
@@ -776,8 +771,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/customers/{customerId}/metadata": {
@@ -817,8 +811,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

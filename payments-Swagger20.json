@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
@@ -57,8 +69,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an authorization on a Payment",
@@ -92,8 +103,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/authorizations/{authId}": {
@@ -134,8 +144,7 @@
               "$ref": "#/definitions/Authorization"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "summary": "UpdateAuthorization",
@@ -172,8 +181,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "summary": "DeleteAuthorization",
@@ -210,8 +218,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/payments": {
@@ -252,8 +259,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/payments/{payId}": {
@@ -294,8 +300,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "summary": "UpdatePayment",
@@ -332,8 +337,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/orders/{orderId}/payments": {
@@ -381,8 +385,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/payments": {
@@ -430,8 +433,7 @@
               "$ref": "#/definitions/Payment"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/refunds": {
@@ -465,8 +467,7 @@
               "$ref": "#/definitions/Refund"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/refunds/{refundId}": {
@@ -507,8 +508,7 @@
               "$ref": "#/definitions/Refund"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credits": {
@@ -549,8 +549,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credits/{cId}": {
@@ -591,8 +590,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credit_refunds": {
@@ -626,8 +624,7 @@
               "$ref": "#/definitions/Credit"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/credit_refunds/{crId}": {
@@ -668,8 +665,7 @@
               "$ref": "#/definitions/CreditRefund"
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },

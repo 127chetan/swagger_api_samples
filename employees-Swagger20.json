@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
@@ -57,8 +69,7 @@
               "$ref": "#/definitions/Employee"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create an employee",
@@ -96,8 +107,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}": {
@@ -138,8 +148,7 @@
               "$ref": "#/definitions/Employee"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update an employee",
@@ -184,8 +193,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an employee",
@@ -214,8 +222,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/shifts": {
@@ -256,8 +263,7 @@
               "$ref": "#/definitions/Shift"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/shifts/{shiftId}": {
@@ -298,8 +304,7 @@
               "$ref": "#/definitions/Shift"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/shifts.csv": {
@@ -333,8 +338,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/shifts": {
@@ -382,8 +386,7 @@
               "$ref": "#/definitions/Shift"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create shift for an employee",
@@ -421,8 +424,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/shifts/{shiftId}": {
@@ -470,8 +472,7 @@
               "$ref": "#/definitions/Shift"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single shift",
@@ -523,8 +524,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a single shift",
@@ -560,8 +560,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employees/{empId}/orders": {
@@ -609,8 +608,7 @@
               "$ref": "#/definitions/Order"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employee_cards": {
@@ -643,8 +641,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "summary": "CreateOrUpdateEmployeeCard",
@@ -674,8 +671,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/employee_cards/{employeeCardId}": {
@@ -708,8 +704,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "summary": "DeleteEmployeeCard",
@@ -737,8 +732,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     }
   },

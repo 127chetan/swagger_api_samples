@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
@@ -50,8 +62,7 @@
               "$ref": "#/definitions/Merchant"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a merchant",
@@ -89,8 +100,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/address": {
@@ -117,8 +127,7 @@
               "$ref": "#/definitions/Address"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/gateway": {
@@ -145,8 +154,7 @@
               "$ref": "#/definitions/Gateway"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/properties": {
@@ -173,8 +181,7 @@
               "$ref": "#/definitions/MerchantProperties"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update merchant properties",
@@ -205,8 +212,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/default_service_charge": {
@@ -233,8 +239,7 @@
               "$ref": "#/definitions/ServiceCharge"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/sync/{table}": {
@@ -268,8 +273,7 @@
               "type": "object"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tip_suggestions": {
@@ -303,8 +307,7 @@
               "$ref": "#/definitions/TipSuggestion"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tip_suggestions/{tId}": {
@@ -338,8 +341,7 @@
               "$ref": "#/definitions/TipSuggestion"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single tip suggestion",
@@ -377,8 +379,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/order_types": {
@@ -419,8 +420,7 @@
               "$ref": "#/definitions/OrderType"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create Order Type For Merchant",
@@ -458,8 +458,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/order_types/{orderTypeId}": {
@@ -500,8 +499,7 @@
               "$ref": "#/definitions/OrderType"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single order type",
@@ -546,8 +544,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete an order type",
@@ -576,8 +573,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/order_type_categories": {
@@ -601,8 +597,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/system_order_types": {
@@ -629,8 +624,7 @@
               "$ref": "#/definitions/SystemOrderType"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/roles": {
@@ -671,8 +665,7 @@
               "$ref": "#/definitions/Role"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a role",
@@ -703,8 +696,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/roles/{rId}": {
@@ -745,8 +737,7 @@
               "$ref": "#/definitions/Role"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a single role",
@@ -791,8 +782,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a role",
@@ -821,8 +811,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tenders": {
@@ -856,8 +845,7 @@
               "$ref": "#/definitions/Tender"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Adds a new tender",
@@ -891,8 +879,7 @@
               "$ref": "#/definitions/Tender"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/tenders/{tenderId}": {
@@ -926,8 +913,7 @@
               "$ref": "#/definitions/Tender"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Updates an existing tender",
@@ -965,8 +951,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Deletes an existing tender",
@@ -995,8 +980,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/opening_hours": {
@@ -1023,8 +1007,7 @@
               "$ref": "#/definitions/HoursSet"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Create a set of merchant opening hours",
@@ -1058,8 +1041,7 @@
               "$ref": "#/definitions/HoursSet"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/opening_hours/{hId}": {
@@ -1093,8 +1075,7 @@
               "$ref": "#/definitions/HoursSet"
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "description": "Update a set of merchant opening hours",
@@ -1135,8 +1116,7 @@
               "$ref": "#/definitions/HoursSet"
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "description": "Delete a set of merchant opening hours",
@@ -1165,8 +1145,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/devices": {
@@ -1200,8 +1179,7 @@
               "$ref": "#/definitions/Device"
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/v3/merchants/{mId}/devices/{deviceId}": {
@@ -1235,8 +1213,7 @@
               "$ref": "#/definitions/Device"
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },
