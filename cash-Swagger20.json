@@ -9,6 +9,18 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "ApiToken": {
+        "type": "apiKey",
+        "name": "access_token",
+        "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiToken": []
+    } 
+  ],
   "consumes": [
     "application/json"
   ],
