@@ -2292,13 +2292,6 @@
             "required": false,
             "type": "string",
             "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [""]
           }
         ],
         "responses": {
@@ -2341,13 +2334,6 @@
             "required": false,
             "type": "string",
             "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [""]
           }
         ],
         "responses": {
@@ -2381,13 +2367,6 @@
             "required": true,
             "type": "string",
             "description": "Attribute Id"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [""]
           },
           {
             "name": "body",
@@ -2443,13 +2422,6 @@
             "required": false,
             "type": "string",
             "enum": ["modifiedTime", "item.id", "name", "attribute.id", "id", "deletedTime"]
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [""]
           }
         ],
         "responses": {
@@ -2490,13 +2462,6 @@
             "required": true,
             "type": "string",
             "description": "Option Id"
-          },
-          {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [""]
           },
           {
             "name": "body",
